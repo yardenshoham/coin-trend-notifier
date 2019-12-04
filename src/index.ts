@@ -1,1 +1,5 @@
-console.log("App started");
+function main(): void {
+  console.log("App started");
+}
+
+main();

@@ -4,6 +4,7 @@
   "description": "📈 Get notified when cryptocurrency trends are identified",
   "main": "./index.ts",
   "scripts": {
+    "start": "ts-node ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,9 @@
   "homepage": "https://github.com/YardenShoham/coin-trend-notifier#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3"
   }
 }
