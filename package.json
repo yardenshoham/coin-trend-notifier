@@ -1,0 +1,25 @@
+{
+  "name": "coin-trend-notifier",
+  "version": "1.0.0",
+  "description": "📈 Get notified when cryptocurrency trends are identified",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YardenShoham/coin-trend-notifier.git"
+  },
+  "keywords": [
+    "cryptocurrency"
+  ],
+  "author": "Yarden Shoham <hrsi88@gmail.com> (https://github.com/yardenshoham)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YardenShoham/coin-trend-notifier/issues"
+  },
+  "homepage": "https://github.com/YardenShoham/coin-trend-notifier#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
