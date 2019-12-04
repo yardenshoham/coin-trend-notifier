@@ -35,6 +35,12 @@ export class Chance extends EventEmitter {
     this._decayPeriod = decayPeriod;
   }
 
+  /**
+   * Sets a decay period.
+   *
+   * It clears the the previous setInterval and calls a new one with the appropriate time interval.
+   * @param value The new decay period.
+   */
   public set decayPeriod(value: number) {
     this._decayPeriod = value;
     if (this._decayPeriodClearCode) {
