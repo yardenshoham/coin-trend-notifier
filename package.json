@@ -2,9 +2,9 @@
   "name": "coin-trend-notifier",
   "version": "1.0.0",
   "description": "📈 Get notified when cryptocurrency trends are identified",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
