@@ -70,16 +70,16 @@ export class Chance extends EventEmitter {
    * Sets the chance's probability.
    *
    * If appropriate, fires an event with the probability information.
-   * @param value The new decay period.
+   * @param probability The new probability sample.
    */
-  public set probability(value: number) {
-    if (value < -1 || value > 1) {
+  public addProbability(probability: number) {
+    if (probability < -1 || probability > 1) {
       console.log("value must be between -1 and 1");
       return;
     }
 
     const oldProbability = this._probability;
-    this._probability = (oldProbability + value) / 2;
+    this._probability = (oldProbability + probability) / 2;
 
     const percentileAmount: number = config.get("percentileAmount");
     const symbolEventName: string = config.get("symbolEventName");
