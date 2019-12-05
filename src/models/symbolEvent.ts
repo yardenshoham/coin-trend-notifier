@@ -3,6 +3,8 @@ import { CryptoSymbol } from "./cryptoSymbol";
 /**
  * An event that's fired when a probability for a cryptocurrency's value is going to rise/fall
  * with a certain probability.
+ *
+ * @event
  */
 export class SymbolEvent {
   /**
