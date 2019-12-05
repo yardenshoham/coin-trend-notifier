@@ -1,5 +1,6 @@
 import { EventEmitter } from "events";
 import { CryptoSymbol } from "./cryptoSymbol";
+import { SymbolEvent } from "./symbolEvent";
 
 /**
  * Represents a chance or probability that a certain symbol's value will rise/fall in the near future.
@@ -67,6 +68,33 @@ export class Chance extends EventEmitter {
         this._probability > 0
           ? this._probability - 0.1
           : this._probability + 0.1;
+    }
+  }
+
+  /**
+   * Sets the chance's probability.
+   *
+   * If appropriate, fires an event with the probability information.
+   * @param value The new decay period.
+   */
+  public set probability(value: number) {
+    if (value < -1 || value > 1) {
+      console.log("value must be between -1 and 1");
+      return;
+    }
+
+    const oldProbability = this._probability;
+    this._probability = (oldProbability + value) / 2;
+
+    // we'll need to notify if we've entered a higher percentile
+    if (
+      Math.floor(Math.abs(this._probability) * 10) >
+      Math.floor(Math.abs(oldProbability) * 10)
+    ) {
+      this.emit(
+        "symbolEvent",
+        new SymbolEvent(this._probability, this.cryptoSymbol)
+      );
     }
   }
 }
