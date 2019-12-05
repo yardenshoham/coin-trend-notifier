@@ -20,13 +20,27 @@ export class CryptoSymbol {
   public readonly quoteAsset: Asset;
 
   /**
+   * This object maps a user to their threshold probability to be notified if this symbol rises/falls over this probability.
+   */
+  public preferences: { [userId: string]: number };
+
+  /**
    * Constructs a new crypto symbol object.
    *
    * @param baseAsset The base asset of the symbol.
    * @param quoteAsset The quote asset of the symbol.
    */
-  constructor(baseAsset: Asset, quoteAsset: Asset = new Asset("USDT")) {
+  constructor(
+    baseAsset: Asset,
+    quoteAsset: Asset = new Asset("USDT"),
+    preferences?: { [userId: string]: number }
+  ) {
     this.baseAsset = baseAsset;
     this.quoteAsset = quoteAsset;
+    if (preferences) {
+      this.preferences = preferences;
+    } else {
+      this.preferences = {};
+    }
   }
 }
