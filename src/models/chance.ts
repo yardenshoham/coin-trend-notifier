@@ -1,7 +1,7 @@
 import { EventEmitter } from "events";
 import { CryptoSymbol } from "./cryptoSymbol";
 import { SymbolEvent } from "./symbolEvent";
-import config from "config";
+import * as config from "config";
 
 /**
  * Represents a chance or probability that a certain symbol's value will rise/fall in the near future.
@@ -87,16 +87,16 @@ export class Chance extends EventEmitter {
     const oldProbability = this._probability;
     this._probability = (oldProbability + value) / 2;
 
-    const percentileAmount = config.get("percentileAmount");
-    const symbolEventName = config.get("symbolEventName");
+    const percentileAmount: number = config.get("percentileAmount");
+    const symbolEventName: string = config.get("symbolEventName");
 
     // we'll need to notify if we've entered a higher percentile
     if (
       Math.floor(Math.abs(this._probability) * percentileAmount) >
-      Math.floor(Math.abs(oldProbability) * symbolEventName)
+      Math.floor(Math.abs(oldProbability) * percentileAmount)
     ) {
       this.emit(
-        "symbolEvent",
+        symbolEventName,
         new SymbolEvent(this._probability, this.cryptoSymbol)
       );
     }
