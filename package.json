@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/YardenShoham/coin-trend-notifier#readme",
   "dependencies": {
+    "config": "^3.2.4",
     "express": "^4.17.1",
     "mongoose": "^5.7.13"
   },
