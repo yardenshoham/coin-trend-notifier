@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "doc": "npx typedoc src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ts-mocha --ui tdd 'src/test/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,11 @@
     "mongoose": "^5.7.13"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.6",
     "@types/config": "0.0.36",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.14",
+    "chai": "^4.2.0",
     "mocha": "^6.2.2",
     "ts-mocha": "^6.0.0",
     "ts-node": "^8.5.4",
