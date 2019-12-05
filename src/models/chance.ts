@@ -1,4 +1,5 @@
 import { EventEmitter } from "events";
+import { CryptoSymbol } from "./cryptoSymbol";
 
 /**
  * Represents a chance or probability that a certain symbol's value will rise/fall in the near future.
@@ -14,7 +15,7 @@ export class Chance extends EventEmitter {
   /**
    * The code returned by setInterval to clear when a new [[decayPeriod]] is set.
    */
-  private _decayPeriodClearCode: number;
+  private _decayPeriodClearCode: NodeJS.Timeout;
 
   /**
    * The "probability" an asset will rise/fall.
@@ -23,6 +24,11 @@ export class Chance extends EventEmitter {
    * no change in the symbol's value in the near future.
    */
   private _probability: number = 0;
+
+  /**
+   * The crypto symbol that has this chance.
+   */
+  public cryptoSymbol: CryptoSymbol;
 
   /**
    * Constructs a new chance object, given an optional decay period.
@@ -46,7 +52,10 @@ export class Chance extends EventEmitter {
     if (this._decayPeriodClearCode) {
       clearInterval(this._decayPeriodClearCode);
     }
-    setInterval(this.decreaseProbability, this._decayPeriod);
+    this._decayPeriodClearCode = setInterval(
+      this.decreaseProbability,
+      this._decayPeriod
+    );
   }
 
   /**
