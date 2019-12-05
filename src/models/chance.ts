@@ -32,7 +32,7 @@ export class Chance extends EventEmitter {
   constructor(decayPeriod: number = 1209600) {
     super();
 
-    this._decayPeriod = decayPeriod;
+    this.decayPeriod = decayPeriod;
   }
 
   /**
