@@ -69,7 +69,10 @@ export class Chance extends EventEmitter {
   /**
    * Sets the chance's probability.
    *
-   * If appropriate, fires an event with the probability information.
+   * If appropriate, fires a [[SymbolEvent]] with the probability information.
+   *
+   * @emit SymbolEvent The actual event with all relevant information.
+   *
    * @param probability The new probability sample.
    */
   public addProbability(probability: number) {
