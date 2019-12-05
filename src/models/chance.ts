@@ -22,8 +22,7 @@ export class Chance extends EventEmitter {
   /**
    * The "probability" an asset will rise/fall.
    *
-   * 1 means the symbol's value will 100% rise. -1 means the symbol's value will 100% fall. 0 means there will be
-   * no change in the symbol's value in the near future.
+   * 1 means the symbol's value will 100% rise. -1 means the symbol's value will 100% fall. 0 means there will be no change in the symbol's value in the near future.
    */
   private _probability: number = 0;
 
