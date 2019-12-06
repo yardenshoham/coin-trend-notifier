@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "doc": "typedoc src",
-    "test": "nyc --reporter=json --extension '.ts' --exclude 'src/test/**/*.ts' ts-mocha --ui tdd 'src/test/**/*.ts' --exit"
+    "test": "nyc ts-mocha --ui tdd 'src/test/**/*.ts' --exit"
   },
   "repository": {
     "type": "git",
