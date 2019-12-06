@@ -7,6 +7,7 @@ cache:
 install:
   - npm install -g codecov
   - npm install -g nyc
+  - npm install -g ts-mocha
 notifications:
   email: false
 script:
