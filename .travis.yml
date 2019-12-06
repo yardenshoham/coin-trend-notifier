@@ -6,8 +6,9 @@ cache:
     - node_modules
 install:
   - npm install -g codecov
+  - npm install -g nyc
 notifications:
   email: false
 script:
-  - npm run test
-  - codecov
+  - npm test
+  - codecov -f coverage/*.json
