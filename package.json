@@ -5,8 +5,8 @@
   "main": "./index.ts",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "doc": "npx typedoc src",
-    "test": "ts-mocha --ui tdd 'src/test/**/*.ts'"
+    "doc": "typedoc src",
+    "test": "nyc --reporter=json --extension '.ts' ts-mocha --ui tdd 'src/test/**/*.ts' --exit"
   },
   "repository": {
     "type": "git",
