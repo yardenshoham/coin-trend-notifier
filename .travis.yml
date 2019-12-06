@@ -5,9 +5,8 @@ cache:
   directories:
     - node_modules
 install:
+  - npm install
   - npm install -g codecov
-  - npm install -g nyc
-  - npm install -g ts-mocha
 notifications:
   email: false
 script:
