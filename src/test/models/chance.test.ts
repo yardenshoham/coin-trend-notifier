@@ -54,5 +54,44 @@ suite("Chance", function(): void {
         expect(newProbability).to.be.lessThan(lastProbability);
       }
     });
+
+    it("should make sure that, given a long time, the probability goes to 0", function(): void {
+      const chance = new Chance();
+      chance.addProbability(1);
+      // 6 months
+      for (let i = 0; i < 6 * 30; i++) {
+        clock.tick("24:00:00");
+      }
+      expect(chance.probability).to.equal(0);
+      chance.addProbability(-1);
+      // 6 months
+      for (let i = 0; i < 6 * 30; i++) {
+        clock.tick("24:00:00");
+      }
+      expect(chance.probability).to.equal(0);
+    });
+
+    it("should be set with the value given to the constructor", function(): void {
+      const chance = new Chance(1000);
+      chance.addProbability(1);
+      clock.tick(501 * 1000);
+      expect(chance.probability).to.equal(0);
+    });
+
+    it("should change when being set to a different value", function(): void {
+      const chance = new Chance();
+      chance.decayPeriod = 8000;
+      chance.addProbability(1);
+      clock.tick(3999 * 1000);
+      expect(chance.probability).not.to.equal(0);
+      clock.tick(2000);
+      expect(chance.probability).to.equal(0);
+      chance.decayPeriod = 40000;
+      chance.addProbability(1);
+      clock.tick(19999 * 1000);
+      expect(chance.probability).not.to.equal(0);
+      clock.tick(2000);
+      expect(chance.probability).to.equal(0);
+    });
   });
 });
