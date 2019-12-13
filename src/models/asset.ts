@@ -7,7 +7,7 @@ export class Asset {
   /**
    * The name of the asset. Could be "USDT", "ETH", "BTC" etc...
    */
-  public name: string;
+  public readonly name: string;
 
   /**
    * Constructs a new crypto asset.
