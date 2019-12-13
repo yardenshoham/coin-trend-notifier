@@ -35,8 +35,16 @@ suite("Chance", function(): void {
   });
 
   describe("decayPeriod", function(): void {
+    let clock;
+    this.beforeEach(function(): void {
+      clock = lolex.install();
+    });
+
+    this.afterEach(function(): void {
+      clock.uninstall();
+    });
+
     it("should decrease the probability as time goes on", function(): void {
-      const clock = lolex.install();
       const chance = new Chance();
       chance.addProbability(1);
       for (let i = 0; i < 5; i++) {
@@ -45,8 +53,6 @@ suite("Chance", function(): void {
         let newProbability = chance.probability;
         expect(newProbability).to.be.lessThan(lastProbability);
       }
-
-      clock.uninstall();
     });
   });
 });
