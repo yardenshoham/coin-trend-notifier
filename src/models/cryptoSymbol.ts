@@ -41,4 +41,19 @@ export class CryptoSymbol extends EventEmitter {
       }
     );
   }
+
+  /**
+   * Adds a sample to the crypto symbol chance's probability.
+   *
+   * If appropriate, fires a [[SymbolEvent]] with the probability and symbol information.
+   *
+   * @emit The actual event with the current probability and CryptoSymbolInfo object.
+   *
+   * @param probability The new probability sample.
+   *
+   * @throws {RangeError} If the given probability is less than -1 or greater than 1.
+   */
+  public addProbability(probability: number): void {
+    return this.chance.addProbability(probability);
+  }
 }

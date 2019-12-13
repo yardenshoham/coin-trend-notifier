@@ -107,10 +107,11 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_models_cryptosymbol_.cryptosymbol.html#defaultmaxlisteners" class="tsd-kind-icon">default<wbr>Max<wbr>Listeners</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_models_cryptosymbol_.cryptosymbol.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_models_cryptosymbol_.cryptosymbol.html#addprobability" class="tsd-kind-icon">add<wbr>Probability</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_models_cryptosymbol_.cryptosymbol.html#emit" class="tsd-kind-icon">emit</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_models_cryptosymbol_.cryptosymbol.html#eventnames" class="tsd-kind-icon">event<wbr>Names</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_models_cryptosymbol_.cryptosymbol.html#getmaxlisteners" class="tsd-kind-icon">get<wbr>Max<wbr>Listeners</a></li>
@@ -143,7 +144,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/edd6695/src/models/cryptoSymbol.ts#L19">src/models/cryptoSymbol.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/383a6d0/src/models/cryptoSymbol.ts#L19">src/models/cryptoSymbol.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -183,7 +184,7 @@
 					<div class="tsd-signature tsd-kind-icon">chance<span class="tsd-signature-symbol">:</span> <a href="_models_chance_.chance.html" class="tsd-signature-type">Chance</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/edd6695/src/models/cryptoSymbol.ts#L19">src/models/cryptoSymbol.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/383a6d0/src/models/cryptoSymbol.ts#L19">src/models/cryptoSymbol.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -198,7 +199,7 @@
 					<div class="tsd-signature tsd-kind-icon">crypto<wbr>Symbol<wbr>Info<span class="tsd-signature-symbol">:</span> <a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/edd6695/src/models/cryptoSymbol.ts#L14">src/models/cryptoSymbol.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/383a6d0/src/models/cryptoSymbol.ts#L14">src/models/cryptoSymbol.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -219,7 +220,7 @@
 					</aside>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 					<a name="addlistener" class="tsd-anchor"></a>
@@ -264,6 +265,46 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addprobability" class="tsd-anchor"></a>
+					<h3>add<wbr>Probability</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Probability<span class="tsd-signature-symbol">(</span>probability<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/383a6d0/src/models/cryptoSymbol.ts#L56">src/models/cryptoSymbol.ts:56</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds a sample to the crypto symbol chance&#39;s probability.</p>
+								</div>
+								<p>If appropriate, fires a <a href="../modules/_models_symbolevent_.html#symbolevent">SymbolEvent</a> with the probability and symbol information.</p>
+								<dl class="tsd-comment-tags">
+									<dt>emit</dt>
+									<dd><p>The actual event with the current probability and CryptoSymbolInfo object.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{RangeError} If the given probability is less than -1 or greater than 1.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>probability: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The new probability sample.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -817,6 +858,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 								<a href="_models_cryptosymbol_.cryptosymbol.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_models_cryptosymbol_.cryptosymbol.html#addprobability" class="tsd-kind-icon">add<wbr>Probability</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 								<a href="_models_cryptosymbol_.cryptosymbol.html#emit" class="tsd-kind-icon">emit</a>

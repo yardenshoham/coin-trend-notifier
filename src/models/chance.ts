@@ -76,9 +76,9 @@ export class Chance extends EventEmitter {
   };
 
   /**
-   * Sets the chance's probability.
+   * Adds a sample to the the chance's probability.
    *
-   * If appropriate, fires a [[SymbolEvent]] with the probability information.
+   * If appropriate, fires an event with the probability information.
    *
    * @emit The actual event with the current probability.
    *
@@ -86,7 +86,7 @@ export class Chance extends EventEmitter {
    *
    * @throws {RangeError} If the given probability is less than -1 or greater than 1.
    */
-  public addProbability(probability: number) {
+  public addProbability(probability: number): void {
     if (probability < -1 || probability > 1) {
       throw new RangeError("probability must be between -1 and 1");
     }

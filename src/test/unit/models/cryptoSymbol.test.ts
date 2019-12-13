@@ -5,6 +5,7 @@ import { Asset } from "../../../models/asset";
 import { Chance } from "../../../models/chance";
 import * as config from "config";
 import { SymbolEvent } from "../../../models/symbolEvent";
+import { expect } from "chai";
 
 suite("CryptoSymbol", function(): void {
   describe("event handling", function(): void {
@@ -25,6 +26,23 @@ suite("CryptoSymbol", function(): void {
         }
       );
       chance.emit(config.get("chanceEventName"));
+    });
+
+    it("should fire a SymbolEvent with the appropriate probability and CryptoSymbolInfo when a (threshold-passing) probability sample is added", function(): void {
+      const cryptoSymbolInfo = new CryptoSymbolInfo(new Asset("ABC"));
+      const cryptoSymbol = new CryptoSymbol(cryptoSymbolInfo);
+      let called = false;
+      cryptoSymbol.on(
+        config.get("cryptoSymbolEventName"),
+        (symbolEvent: SymbolEvent): void => {
+          expect(called).to.be.false;
+          expect(symbolEvent.cryptoSymbolInfo).to.equal(cryptoSymbolInfo);
+          expect(symbolEvent).to.have.property("probability");
+          called = true;
+        }
+      );
+      cryptoSymbol.addProbability(1);
+      cryptoSymbol.addProbability(0.01);
     });
   });
 });
