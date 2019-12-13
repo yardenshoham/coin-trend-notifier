@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Asset | coin-trend-notifier</title>
+	<title>CryptoSymbolInfo | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_models_asset_.html">&quot;models/asset&quot;</a>
+					<a href="../modules/_models_cryptosymbolinfo_.html">&quot;models/cryptoSymbolInfo&quot;</a>
 				</li>
 				<li>
-					<a href="_models_asset_.asset.html">Asset</a>
+					<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html">CryptoSymbolInfo</a>
 				</li>
 			</ul>
-			<h1>Class Asset</h1>
+			<h1>Class CryptoSymbolInfo</h1>
 		</div>
 	</div>
 </header>
@@ -72,16 +72,17 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Represents a crypto asset.</p>
+						<p>A cryptocurrency symbol. These are the entities for which trades happen.</p>
 					</div>
-					<p>For example: BTC, ETH, USDT...</p>
+					<p>A symbol is a valuation of a base asset against a quote asset. So a symbol has a
+					value of <img src="https://latex.codecogs.com/svg.latex?\frac{quote\;asset}{base\;asset}" title="Quote asset divided by base asset" />. For example, BTCUSDT.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Asset</span>
+						<span class="target">CryptoSymbolInfo</span>
 					</li>
 				</ul>
 			</section>
@@ -92,13 +93,15 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_models_asset_.asset.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_asset_.asset.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#baseasset" class="tsd-kind-icon">base<wbr>Asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#preferences" class="tsd-kind-icon">preferences</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#quoteasset" class="tsd-kind-icon">quote<wbr>Asset</a></li>
 							</ul>
 						</section>
 					</div>
@@ -110,32 +113,48 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Asset<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Crypto<wbr>Symbol<wbr>Info<span class="tsd-signature-symbol">(</span>baseAsset<span class="tsd-signature-symbol">: </span><a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a>, quoteAsset<span class="tsd-signature-symbol">?: </span><a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a>, preferences<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/b43b0fb/src/models/asset.ts#L10">src/models/asset.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/b43b0fb/src/models/cryptoSymbolInfo.ts#L25">src/models/cryptoSymbolInfo.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Constructs a new crypto asset.</p>
+									<p>Constructs a new crypto symbol object.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<h5>baseAsset: <a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>The name of the asset. Could be &quot;USDT&quot;, &quot;ETH&quot;, &quot;BTC&quot; etc...</p>
+											<p>The base asset of the symbol.</p>
 										</div>
 									</div>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> quoteAsset: <a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a><span class="tsd-signature-symbol"> =&nbsp;new Asset(&quot;USDT&quot;)</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The quote asset of the symbol.</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> preferences: <span class="tsd-signature-type">object</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-index-signature">
+											<h5><span class="tsd-signature-symbol">[</span>userId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -143,18 +162,61 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="baseasset" class="tsd-anchor"></a>
+					<h3>base<wbr>Asset</h3>
+					<div class="tsd-signature tsd-kind-icon">base<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/b43b0fb/src/models/asset.ts#L10">src/models/asset.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/b43b0fb/src/models/cryptoSymbolInfo.ts#L13">src/models/cryptoSymbolInfo.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The name of the asset. Could be &quot;USDT&quot;, &quot;ETH&quot;, &quot;BTC&quot; etc...</p>
+							<p>The base asset of the symbol.</p>
 						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="preferences" class="tsd-anchor"></a>
+					<h3>preferences</h3>
+					<div class="tsd-signature tsd-kind-icon">preferences<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/b43b0fb/src/models/cryptoSymbolInfo.ts#L25">src/models/cryptoSymbolInfo.ts:25</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This object maps a user to their threshold probability to be notified if this symbol rises/falls over this probability.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>userId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="quoteasset" class="tsd-anchor"></a>
+					<h3>quote<wbr>Asset</h3>
+					<div class="tsd-signature tsd-kind-icon">quote<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/b43b0fb/src/models/cryptoSymbolInfo.ts#L20">src/models/cryptoSymbolInfo.ts:20</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The quote asset of the symbol.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>USDT</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -168,7 +230,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">&quot;index&quot;</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_models_asset_.html">&quot;models/asset&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -177,7 +239,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_models_cryptosymbol_.html">&quot;models/crypto<wbr>Symbol&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_models_cryptosymbolinfo_.html">&quot;models/crypto<wbr>Symbol<wbr>Info&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -190,13 +252,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_models_asset_.asset.html" class="tsd-kind-icon">Asset</a>
+						<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Info</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_models_asset_.asset.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_models_asset_.asset.html#name" class="tsd-kind-icon">name</a>
+								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#baseasset" class="tsd-kind-icon">base<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#preferences" class="tsd-kind-icon">preferences</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#quoteasset" class="tsd-kind-icon">quote<wbr>Asset</a>
 							</li>
 						</ul>
 					</li>

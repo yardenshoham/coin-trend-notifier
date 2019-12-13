@@ -5,7 +5,7 @@
   "main": "./index.ts",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "doc": "typedoc src",
+    "doc": "typedoc src --exclude src/test",
     "test": "nyc ts-mocha --ui tdd 'src/test/**/*.ts' --exit"
   },
   "repository": {
