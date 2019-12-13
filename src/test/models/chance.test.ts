@@ -1,8 +1,6 @@
 import { Chance } from "./../../models/chance";
 import { suite, describe, it } from "mocha";
 import * as config from "config";
-import * as lolex from "lolex";
-import { expect } from "chai";
 
 suite("Chance", function(): void {
   describe("addProbability()", function(): void {
@@ -31,22 +29,6 @@ suite("Chance", function(): void {
         done("symbolEvent was thrown");
       });
       chance.addProbability(0.001);
-    });
-  });
-
-  describe("decayPeriod", function(): void {
-    it("should decrease the probability as time goes on", function(): void {
-      const clock = lolex.install();
-      const chance = new Chance();
-      chance.addProbability(1);
-      for (let i = 0; i < 5; i++) {
-        let lastProbability = chance.probability;
-        clock.tick("24:00:00");
-        let newProbability = chance.probability;
-        expect(newProbability).to.be.lessThan(lastProbability);
-      }
-
-      clock.uninstall();
     });
   });
 });

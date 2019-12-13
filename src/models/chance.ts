@@ -62,13 +62,9 @@ export class Chance extends EventEmitter {
   /**
    * Takes [[decayPeriod]] 0.1 closer to 0 every time it is called. Should be called a every [[decayPeriod]] / 1000 seconds.
    */
-  private decreaseProbability = (): void => {
-    if (Math.abs(this._probability) < 0.1) {
-      this._probability = 0;
-    } else {
-      this._probability -= Math.sign(this._probability) * 0.1;
-    }
-  };
+  private decreaseProbability(): void {
+    this._probability -= Math.sign(this._probability) * 0.1;
+  }
 
   /**
    * Sets the chance's probability.
