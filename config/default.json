@@ -1,4 +1,5 @@
 {
   "percentileAmount": 10,
-  "symbolEventName": "symbolEvent"
+  "cryptoSymbolEventName": "cryptoSymbolEvent",
+  "chanceEventName": "chanceEvent"
 }

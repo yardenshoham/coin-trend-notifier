@@ -21,10 +21,10 @@ export class SymbolEvent {
    * Constructs an event to be fired.
    *
    * @param probability The probability threshold that was passed and caused this event to be fired.
-   * @param cryptoSymbol  The symbol associated with this event.
+   * @param cryptoSymbolInfo  The symbol associated with this event.
    */
-  constructor(probability: number, cryptoSymbol: CryptoSymbolInfo) {
+  constructor(probability: number, cryptoSymbolInfo: CryptoSymbolInfo) {
     this.probability = probability;
-    this.cryptoSymbolInfo = cryptoSymbol;
+    this.cryptoSymbolInfo = cryptoSymbolInfo;
   }
 }

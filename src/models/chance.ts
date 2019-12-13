@@ -1,5 +1,4 @@
 import { EventEmitter } from "events";
-import { SymbolEvent } from "./symbolEvent";
 import * as config from "config";
 
 /**
@@ -79,17 +78,14 @@ export class Chance extends EventEmitter {
     this._probability = (oldProbability + probability) / 2;
 
     const percentileAmount: number = config.get("percentileAmount");
-    const symbolEventName: string = config.get("symbolEventName");
+    const chanceEventName: string = config.get("chanceEventName");
 
     // we'll need to notify if we've entered a higher percentile
     if (
       Math.floor(Math.abs(this._probability) * percentileAmount) >
       Math.floor(Math.abs(oldProbability) * percentileAmount)
     ) {
-      this.emit(
-        symbolEventName,
-        new SymbolEvent(this._probability, this.cryptoSymbolInfo)
-      );
+      this.emit(chanceEventName, this._probability);
     }
   }
 }
