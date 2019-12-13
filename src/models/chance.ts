@@ -1,5 +1,4 @@
 import { EventEmitter } from "events";
-import { CryptoSymbol } from "./cryptoSymbol";
 import { SymbolEvent } from "./symbolEvent";
 import * as config from "config";
 
@@ -25,11 +24,6 @@ export class Chance extends EventEmitter {
    * 1 means the symbol's value will 100% rise. -1 means the symbol's value will 100% fall. 0 means there will be no change in the symbol's value in the near future.
    */
   private _probability: number = 0;
-
-  /**
-   * The crypto symbol that has this chance.
-   */
-  public cryptoSymbol: CryptoSymbol;
 
   /**
    * Constructs a new chance object, given an optional decay period.
@@ -94,7 +88,7 @@ export class Chance extends EventEmitter {
     ) {
       this.emit(
         symbolEventName,
-        new SymbolEvent(this._probability, this.cryptoSymbol)
+        new SymbolEvent(this._probability, this.cryptoSymbolInfo)
       );
     }
   }

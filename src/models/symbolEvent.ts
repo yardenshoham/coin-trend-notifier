@@ -1,4 +1,4 @@
-import { CryptoSymbol } from "./cryptoSymbol";
+import { CryptoSymbolInfo } from "./cryptoSymbolInfo";
 
 /**
  * An event that's fired when a probability for a cryptocurrency's value is going to rise/fall
@@ -15,7 +15,7 @@ export class SymbolEvent {
   /**
    * The symbol associated with this event. It has a [[probability]] to rise/fall in the near future.
    */
-  public readonly cryptoSymbol: CryptoSymbol;
+  public readonly cryptoSymbolInfo: CryptoSymbolInfo;
 
   /**
    * Constructs an event to be fired.
@@ -23,8 +23,8 @@ export class SymbolEvent {
    * @param probability The probability threshold that was passed and caused this event to be fired.
    * @param cryptoSymbol  The symbol associated with this event.
    */
-  constructor(probability: number, cryptoSymbol: CryptoSymbol) {
+  constructor(probability: number, cryptoSymbol: CryptoSymbolInfo) {
     this.probability = probability;
-    this.cryptoSymbol = cryptoSymbol;
+    this.cryptoSymbolInfo = cryptoSymbol;
   }
 }

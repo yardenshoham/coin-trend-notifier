@@ -6,7 +6,7 @@ import { Asset } from "./asset";
  * A symbol is a valuation of a base asset against a quote asset. So a symbol has a
  * value of <img src="https://latex.codecogs.com/svg.latex?\frac{quote\;asset}{base\;asset}" title="Quote asset divided by base asset" />. For example, BTCUSDT.
  */
-export class CryptoSymbol {
+export class CryptoSymbolInfo {
   /**
    * The base asset of the symbol.
    */
