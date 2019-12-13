@@ -32,6 +32,37 @@ suite("Chance", function(): void {
       });
       chance.addProbability(0.001);
     });
+
+    it("should accept legal values (between -1 and 1)", function(): void {
+      const legalValues = [
+        0.45,
+        -0.777,
+        0.3998,
+        0.9999,
+        1,
+        -0.87,
+        -0.321,
+        -0.4,
+        0,
+        -1
+      ];
+      const chance = new Chance();
+      for (const value of legalValues) {
+        expect(() => {
+          chance.addProbability(value);
+        }, `value: ${value}`).not.to.throw();
+      }
+    });
+
+    it("should not accept illegal values (less than -1 or greater than 1)", function(): void {
+      const illegalValues = [4, 9, 1.8, -8, -16, 45.76, -90, 111111, -544576];
+      const chance = new Chance();
+      for (const value of illegalValues) {
+        expect(() => {
+          chance.addProbability(value);
+        }, `value: ${value}`).to.throw();
+      }
+    });
   });
 
   describe("decayPeriod", function(): void {
@@ -92,6 +123,26 @@ suite("Chance", function(): void {
       expect(chance.probability).not.to.equal(0);
       clock.tick(2000);
       expect(chance.probability).to.equal(0);
+    });
+
+    it("should accept legal values (greater or equal to 1)", function(): void {
+      const legalValues = [1, 400, 1.26, 11, 89.4, 1.1, 1000, 40 ** 3, 44];
+      const chance = new Chance();
+      for (const value of legalValues) {
+        expect(() => {
+          chance.decayPeriod = value;
+        }, `value: ${value}`).not.to.throw();
+      }
+    });
+
+    it("should not accept illegal values (less than 1)", function(): void {
+      const illegalValues = [-7, 0, 0.4, -12, -100, -50.23, 0.002, -0.4];
+      const chance = new Chance();
+      for (const value of illegalValues) {
+        expect(() => {
+          chance.decayPeriod = value;
+        }, `value: ${value}`).to.throw();
+      }
     });
   });
 });

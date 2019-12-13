@@ -39,9 +39,14 @@ export class Chance extends EventEmitter {
    * Sets a decay period.
    *
    * It clears the the previous setInterval and calls a new one with the appropriate time interval.
-   * @param value The new decay period.
+   * @param value The new decay period. Must be greater than 1.
+   *
+   * @throws {RangeError} If value is less than 1.
    */
   public set decayPeriod(value: number) {
+    if (value < 1) {
+      throw new RangeError("decayPeriod must be grater than 1");
+    }
     this._decayPeriod = value;
     if (this._decayPeriodClearCode) {
       clearInterval(this._decayPeriodClearCode);
@@ -75,14 +80,15 @@ export class Chance extends EventEmitter {
    *
    * If appropriate, fires a [[SymbolEvent]] with the probability information.
    *
-   * @emit SymbolEvent The actual event with all relevant information.
+   * @emit The actual event with the current probability.
    *
    * @param probability The new probability sample.
+   *
+   * @throws {RangeError} If the given probability is less than -1 or greater than 1.
    */
   public addProbability(probability: number) {
     if (probability < -1 || probability > 1) {
-      console.log("value must be between -1 and 1");
-      return;
+      throw new RangeError("probability must be between -1 and 1");
     }
 
     const oldProbability = this._probability;
