@@ -7,7 +7,7 @@
     "start": "ts-node ./src/index.ts",
     "doc": "typedoc src --exclude src/test",
     "pretest": "tsc",
-    "test": "nyc mocha --ui tdd 'src/test/**/*.ts' --exit",
+    "test": "nyc mocha",
     "posttest": "rm -rf out .nyc_output"
   },
   "repository": {
