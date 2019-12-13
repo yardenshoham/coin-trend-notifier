@@ -53,6 +53,13 @@ export class Chance extends EventEmitter {
   }
 
   /**
+   * @returns This chance's current probability.
+   */
+  public get probability(): number {
+    return this._probability;
+  }
+
+  /**
    * Takes [[decayPeriod]] 0.1 closer to 0 every time it is called. Should be called a every [[decayPeriod]] / 1000 seconds.
    */
   private decreaseProbability(): void {
