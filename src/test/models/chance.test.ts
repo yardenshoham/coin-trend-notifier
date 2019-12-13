@@ -66,7 +66,7 @@ suite("Chance", function(): void {
   });
 
   describe("decayPeriod", function(): void {
-    let clock;
+    let clock: lolex.InstalledClock;
     this.beforeEach(function(): void {
       clock = lolex.install();
     });

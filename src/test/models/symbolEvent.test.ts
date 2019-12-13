@@ -7,7 +7,7 @@ import { Asset } from "../../models/asset";
 suite("SymbolEvent", function(): void {
   describe("constructor", function(): void {
     it("should be given a probability and a CryptoSymbolInfo object and assign them", function(): void {
-      const probability = 0.47;
+      const probability = 0.1;
       const cryptoSymbolInfo = new CryptoSymbolInfo(
         new Asset("ABC"),
         new Asset("DEF")
