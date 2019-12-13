@@ -1,4 +1,4 @@
-import { Chance } from "../../../models/chance";
+import { Chance } from "../../models/chance";
 import { suite, describe, it } from "mocha";
 import * as config from "config";
 import * as lolex from "lolex";

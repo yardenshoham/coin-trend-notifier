@@ -1,4 +1,4 @@
-import { Asset } from "../../../models/asset";
+import { Asset } from "../../models/asset";
 import { suite, describe, it } from "mocha";
 import { expect } from "chai";
 

@@ -1,7 +1,7 @@
-import { CryptoSymbolInfo } from "../../../models/cryptoSymbolInfo";
+import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
 import { suite, describe, it } from "mocha";
 import { expect } from "chai";
-import { Asset } from "../../../models/asset";
+import { Asset } from "../../models/asset";
 
 suite("CryptoSymbolInfo", function(): void {
   describe("constructor", function(): void {
