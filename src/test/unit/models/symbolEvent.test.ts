@@ -1,8 +1,8 @@
-import { SymbolEvent } from "./../../models/symbolEvent";
+import { SymbolEvent } from "../../../models/symbolEvent";
 import { suite, describe, it } from "mocha";
 import { expect } from "chai";
-import { CryptoSymbolInfo } from "./../../models/cryptoSymbolInfo";
-import { Asset } from "../../models/asset";
+import { CryptoSymbolInfo } from "../../../models/cryptoSymbolInfo";
+import { Asset } from "../../../models/asset";
 
 suite("SymbolEvent", function(): void {
   describe("constructor", function(): void {

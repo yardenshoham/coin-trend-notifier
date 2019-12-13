@@ -1,10 +1,10 @@
-import { CryptoSymbol } from "./../../models/cryptoSymbol";
+import { CryptoSymbol } from "../../../models/cryptoSymbol";
 import { suite, describe, it } from "mocha";
-import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
-import { Asset } from "../../models/asset";
-import { Chance } from "../../models/chance";
+import { CryptoSymbolInfo } from "../../../models/cryptoSymbolInfo";
+import { Asset } from "../../../models/asset";
+import { Chance } from "../../../models/chance";
 import * as config from "config";
-import { SymbolEvent } from "./../../models/symbolEvent";
+import { SymbolEvent } from "../../../models/symbolEvent";
 
 suite("CryptoSymbol", function(): void {
   describe("event handling", function(): void {
