@@ -29,7 +29,12 @@ export class User {
    * @param password The user's password.
    * @param phoneNumber The user's phone number.
    */
-  constructor(email: string, username: string, password: string, phoneNumber?: string) {
+  constructor(
+    email: string,
+    username: string,
+    password: string,
+    phoneNumber?: string
+  ) {
     this.email = email;
     this.username = username;
     this.password = password;
