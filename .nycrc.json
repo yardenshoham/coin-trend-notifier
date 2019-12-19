@@ -1,13 +1,7 @@
 {
   "extends": "@istanbuljs/nyc-config-typescript",
-  "require": [
-    "ts-node/register"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ],
-  "reporter": [
-    "json"
-  ],
+  "require": ["ts-node/register"],
+  "include": ["src/**/*.ts"],
+  "reporter": ["json"],
   "all": true
 }
