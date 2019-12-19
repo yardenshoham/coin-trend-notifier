@@ -1,7 +1,17 @@
+import { id, Repository } from "@yardenshoham/mongodb-typescript";
+import { ObjectId } from "mongodb";
+import { clientPromise } from "../database/client";
+
 /**
  * A user in the system. A user has an email address and, optionally, a phone number.
  */
 export class User {
+  /**
+   * The id of this document in the database.
+   */
+  @id
+  public _id: ObjectId;
+
   /**
    * The user's email address.
    */
@@ -59,3 +69,10 @@ export class User {
     return this._password;
   }
 }
+
+/**
+ * The context from which one could access all [[User]] documents.
+ */
+export const userDbPromise = (async function() {
+  return new Repository<User>(User, await clientPromise, "users");
+})();

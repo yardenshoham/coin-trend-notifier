@@ -1,5 +1,6 @@
 import { EventEmitter } from "events";
 import * as config from "config";
+import { ignore } from "@yardenshoham/mongodb-typescript";
 
 /**
  * Represents a chance or probability that a certain symbol's value will rise/fall in the near future.
@@ -15,7 +16,8 @@ export class Chance extends EventEmitter {
   /**
    * The code returned by setInterval to clear when a new [[decayPeriod]] is set.
    */
-  private _decayPeriodClearCode: NodeJS.Timeout;
+  @ignore
+  private _decayPeriodClearCode: any;
 
   /**
    * The "probability" an asset will rise/fall.

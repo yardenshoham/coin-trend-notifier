@@ -1,4 +1,6 @@
-import { Asset } from "./asset";
+import { ObjectId } from "mongodb";
+import { ref, objectId } from "@yardenshoham/mongodb-typescript";
+import { Asset, assetDbPromise } from "./asset";
 
 /**
  * A cryptocurrency symbol. These are the entities for which trades happen.
@@ -8,21 +10,33 @@ import { Asset } from "./asset";
  */
 export class CryptoSymbolInfo {
   /**
+   * The id of the base asset of the symbol.
+   */
+  @objectId
+  private baseAssetId: ObjectId;
+
+  /**
+   * The id of the quote asset of the symbol.
+   */
+  @objectId
+  private quoteAssetId: ObjectId;
+
+  /**
    * The base asset of the symbol.
    */
-  public readonly baseAsset: Asset;
+  @ref()
+  public baseAsset: Asset;
 
   /**
    * The quote asset of the symbol.
-   *
-   * @default USDT
    */
-  public readonly quoteAsset: Asset;
+  @ref()
+  public quoteAsset: Asset;
 
   /**
    * This object maps a user to their threshold probability to be notified if this symbol rises/falls over this probability.
    */
-  public preferences: { [userId: string]: number };
+  public preferences: Map<string | ObjectId, number>;
 
   /**
    * Constructs a new crypto symbol object.
@@ -32,15 +46,28 @@ export class CryptoSymbolInfo {
    */
   constructor(
     baseAsset: Asset,
-    quoteAsset: Asset = new Asset("USDT"),
-    preferences?: { [userId: string]: number }
+    quoteAsset: Asset,
+    preferences?: Map<string | ObjectId, number>
   ) {
     this.baseAsset = baseAsset;
     this.quoteAsset = quoteAsset;
     if (preferences) {
       this.preferences = preferences;
     } else {
-      this.preferences = {};
+      this.preferences = new Map<string | ObjectId, number>();
     }
+  }
+
+  /**
+   * Populates this crypto symbol info with the appropriate assets.
+   */
+  public async populate() {
+    const assetDb = await assetDbPromise;
+    const [baseAsset, quoteAsset] = await Promise.all([
+      assetDb.findById(this.baseAssetId),
+      assetDb.findById(this.quoteAssetId)
+    ]);
+    this.baseAsset = baseAsset;
+    this.quoteAsset = quoteAsset;
   }
 }

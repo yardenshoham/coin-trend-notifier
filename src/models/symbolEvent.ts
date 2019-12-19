@@ -1,4 +1,7 @@
 import { CryptoSymbolInfo } from "./cryptoSymbolInfo";
+import { id, Repository, nested } from "@yardenshoham/mongodb-typescript";
+import { ObjectId } from "mongodb";
+import { clientPromise } from "../database/client";
 
 /**
  * An event that's fired when a probability for a cryptocurrency's value is going to rise/fall
@@ -8,6 +11,12 @@ import { CryptoSymbolInfo } from "./cryptoSymbolInfo";
  */
 export class SymbolEvent {
   /**
+   * The id of this document in the database.
+   */
+  @id
+  public _id: ObjectId;
+
+  /**
    * The probability threshold that was passed and caused this event to be fired.
    */
   public readonly probability: number;
@@ -15,6 +24,7 @@ export class SymbolEvent {
   /**
    * The symbol associated with this event. It has a [[probability]] to rise/fall in the near future.
    */
+  @nested(() => CryptoSymbolInfo)
   public readonly cryptoSymbolInfo: CryptoSymbolInfo;
 
   /**
@@ -28,3 +38,14 @@ export class SymbolEvent {
     this.cryptoSymbolInfo = cryptoSymbolInfo;
   }
 }
+
+/**
+ * The context from which one could access all [[SymbolEvent]] documents.
+ */
+export const symbolEventDbPromise = (async function() {
+  return new Repository<SymbolEvent>(
+    SymbolEvent,
+    await clientPromise,
+    "symbolEvents"
+  );
+})();

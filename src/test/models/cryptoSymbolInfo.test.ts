@@ -17,16 +17,12 @@ suite("CryptoSymbolInfo", function(): void {
     });
   });
 
-  it("should have a default USDT quote asset", function(): void {
-    const cryptoSymbolInfo = new CryptoSymbolInfo(new Asset("ABC"));
-    expect(cryptoSymbolInfo.quoteAsset.name).to.equal("USDT");
-  });
-
   it("should be optionally given preferences and assign them", function(): void {
-    const preferences = {
-      "123": 0.4,
-      "124": -0.6
-    };
+    const preferences = new Map([
+      ["123", 0.4],
+      ["124", -0.6]
+    ]);
+
     const cryptoSymbolInfo = new CryptoSymbolInfo(
       new Asset("ABC"),
       new Asset("DEF"),

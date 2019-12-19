@@ -102,8 +102,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbol_.cryptosymbol.html#chance" class="tsd-kind-icon">chance</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbol_.cryptosymbol.html#_id" class="tsd-kind-icon">_id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbol_.cryptosymbol.html#cryptosymbolinfo" class="tsd-kind-icon">crypto<wbr>Symbol<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbol_.cryptosymbol.html#currentchance" class="tsd-kind-icon">current<wbr>Chance</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_models_cryptosymbol_.cryptosymbol.html#defaultmaxlisteners" class="tsd-kind-icon">default<wbr>Max<wbr>Listeners</a></li>
 							</ul>
 						</section>
@@ -144,7 +145,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5319cbf/src/models/cryptoSymbol.ts#L19">src/models/cryptoSymbol.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbol.ts#L30">src/models/cryptoSymbol.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -179,17 +180,17 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="chance" class="tsd-anchor"></a>
-					<h3>chance</h3>
-					<div class="tsd-signature tsd-kind-icon">chance<span class="tsd-signature-symbol">:</span> <a href="_models_chance_.chance.html" class="tsd-signature-type">Chance</a></div>
+					<a name="_id" class="tsd-anchor"></a>
+					<h3>_id</h3>
+					<div class="tsd-signature tsd-kind-icon">_id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ObjectId</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5319cbf/src/models/cryptoSymbol.ts#L19">src/models/cryptoSymbol.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbol.ts#L18">src/models/cryptoSymbol.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>This crypto symbol&#39;s current chance to rise/fall.</p>
+							<p>The id of this document in the database.</p>
 						</div>
 					</div>
 				</section>
@@ -199,12 +200,27 @@
 					<div class="tsd-signature tsd-kind-icon">crypto<wbr>Symbol<wbr>Info<span class="tsd-signature-symbol">:</span> <a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5319cbf/src/models/cryptoSymbol.ts#L14">src/models/cryptoSymbol.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbol.ts#L24">src/models/cryptoSymbol.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The information about this crypto symbol (assets, followers etc...).</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="currentchance" class="tsd-anchor"></a>
+					<h3>current<wbr>Chance</h3>
+					<div class="tsd-signature tsd-kind-icon">current<wbr>Chance<span class="tsd-signature-symbol">:</span> <a href="_models_chance_.chance.html" class="tsd-signature-type">Chance</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbol.ts#L30">src/models/cryptoSymbol.ts:30</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This crypto symbol&#39;s current chance to rise/fall.</p>
 						</div>
 					</div>
 				</section>
@@ -278,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5319cbf/src/models/cryptoSymbol.ts#L56">src/models/cryptoSymbol.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbol.ts#L67">src/models/cryptoSymbol.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -818,6 +834,9 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_database_client_.html">&quot;database/client&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">&quot;index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -851,10 +870,13 @@
 								<a href="_models_cryptosymbol_.cryptosymbol.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_models_cryptosymbol_.cryptosymbol.html#chance" class="tsd-kind-icon">chance</a>
+								<a href="_models_cryptosymbol_.cryptosymbol.html#_id" class="tsd-kind-icon">_id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_models_cryptosymbol_.cryptosymbol.html#cryptosymbolinfo" class="tsd-kind-icon">crypto<wbr>Symbol<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_models_cryptosymbol_.cryptosymbol.html#currentchance" class="tsd-kind-icon">current<wbr>Chance</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 								<a href="_models_cryptosymbol_.cryptosymbol.html#defaultmaxlisteners" class="tsd-kind-icon">default<wbr>Max<wbr>Listeners</a>
@@ -914,6 +936,9 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_models_cryptosymbol_.html#cryptosymboldbpromise" class="tsd-kind-icon">crypto<wbr>Symbol<wbr>DbPromise</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

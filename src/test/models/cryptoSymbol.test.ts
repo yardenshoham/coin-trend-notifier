@@ -12,7 +12,7 @@ suite("CryptoSymbol", function(): void {
     it("should fire a SymbolEvent when Chance fires an event", function(done: Mocha.Done): void {
       const chance = new Chance();
       const cryptoSymbol = new CryptoSymbol(
-        new CryptoSymbolInfo(new Asset("ABC")),
+        new CryptoSymbolInfo(new Asset("ABC"), new Asset("DEF")),
         chance
       );
       cryptoSymbol.on(
@@ -29,7 +29,10 @@ suite("CryptoSymbol", function(): void {
     });
 
     it("should fire a SymbolEvent with the appropriate probability and CryptoSymbolInfo when a (threshold-passing) probability sample is added", function(): void {
-      const cryptoSymbolInfo = new CryptoSymbolInfo(new Asset("ABC"));
+      const cryptoSymbolInfo = new CryptoSymbolInfo(
+        new Asset("ABC"),
+        new Asset("DEF")
+      );
       const cryptoSymbol = new CryptoSymbol(cryptoSymbolInfo);
       let called = false;
       cryptoSymbol.on(

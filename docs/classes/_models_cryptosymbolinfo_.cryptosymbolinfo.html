@@ -100,8 +100,16 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#baseasset" class="tsd-kind-icon">base<wbr>Asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#baseassetid" class="tsd-kind-icon">base<wbr>Asset<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#preferences" class="tsd-kind-icon">preferences</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#quoteasset" class="tsd-kind-icon">quote<wbr>Asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#quoteassetid" class="tsd-kind-icon">quote<wbr>Asset<wbr>Id</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#populate" class="tsd-kind-icon">populate</a></li>
 							</ul>
 						</section>
 					</div>
@@ -113,13 +121,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Crypto<wbr>Symbol<wbr>Info<span class="tsd-signature-symbol">(</span>baseAsset<span class="tsd-signature-symbol">: </span><a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a>, quoteAsset<span class="tsd-signature-symbol">?: </span><a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a>, preferences<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Crypto<wbr>Symbol<wbr>Info<span class="tsd-signature-symbol">(</span>baseAsset<span class="tsd-signature-symbol">: </span><a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a>, quoteAsset<span class="tsd-signature-symbol">: </span><a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a>, preferences<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ObjectId</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5319cbf/src/models/cryptoSymbolInfo.ts#L25">src/models/cryptoSymbolInfo.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbolInfo.ts#L39">src/models/cryptoSymbolInfo.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -138,7 +146,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> quoteAsset: <a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a><span class="tsd-signature-symbol"> =&nbsp;new Asset(&quot;USDT&quot;)</span></h5>
+									<h5>quoteAsset: <a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>The quote asset of the symbol.</p>
@@ -146,12 +154,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> preferences: <span class="tsd-signature-type">object</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-index-signature">
-											<h5><span class="tsd-signature-symbol">[</span>userId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">number</span></h5>
-										</li>
-									</ul>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> preferences: <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ObjectId</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></h4>
@@ -167,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">base<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5319cbf/src/models/cryptoSymbolInfo.ts#L13">src/models/cryptoSymbolInfo.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbolInfo.ts#L28">src/models/cryptoSymbolInfo.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -176,27 +179,34 @@
 						</div>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="baseassetid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> base<wbr>Asset<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">base<wbr>Asset<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ObjectId</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbolInfo.ts#L16">src/models/cryptoSymbolInfo.ts:16</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The id of the base asset of the symbol.</p>
+						</div>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="preferences" class="tsd-anchor"></a>
 					<h3>preferences</h3>
-					<div class="tsd-signature tsd-kind-icon">preferences<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">preferences<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ObjectId</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5319cbf/src/models/cryptoSymbolInfo.ts#L25">src/models/cryptoSymbolInfo.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbolInfo.ts#L39">src/models/cryptoSymbolInfo.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>This object maps a user to their threshold probability to be notified if this symbol rises/falls over this probability.</p>
 						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>userId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">number</span></h5>
-							</li>
-						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -205,19 +215,54 @@
 					<div class="tsd-signature tsd-kind-icon">quote<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="_models_asset_.asset.html" class="tsd-signature-type">Asset</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5319cbf/src/models/cryptoSymbolInfo.ts#L20">src/models/cryptoSymbolInfo.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbolInfo.ts#L34">src/models/cryptoSymbolInfo.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The quote asset of the symbol.</p>
 						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>USDT</p>
-							</dd>
-						</dl>
 					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="quoteassetid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> quote<wbr>Asset<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">quote<wbr>Asset<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ObjectId</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbolInfo.ts#L22">src/models/cryptoSymbolInfo.ts:22</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The id of the quote asset of the symbol.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="populate" class="tsd-anchor"></a>
+					<h3>populate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">populate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/59405c1/src/models/cryptoSymbolInfo.ts#L64">src/models/cryptoSymbolInfo.ts:64</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Populates this crypto symbol info with the appropriate assets.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -226,6 +271,9 @@
 				<ul>
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_database_client_.html">&quot;database/client&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">&quot;index&quot;</a>
@@ -263,11 +311,20 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#baseasset" class="tsd-kind-icon">base<wbr>Asset</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#baseassetid" class="tsd-kind-icon">base<wbr>Asset<wbr>Id</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#preferences" class="tsd-kind-icon">preferences</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#quoteasset" class="tsd-kind-icon">quote<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#quoteassetid" class="tsd-kind-icon">quote<wbr>Asset<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_models_cryptosymbolinfo_.cryptosymbolinfo.html#populate" class="tsd-kind-icon">populate</a>
 							</li>
 						</ul>
 					</li>

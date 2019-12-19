@@ -3,19 +3,30 @@ import { Chance } from "./chance";
 import { CryptoSymbolInfo } from "./cryptoSymbolInfo";
 import * as config from "config";
 import { SymbolEvent } from "./symbolEvent";
+import { id, Repository, nested } from "@yardenshoham/mongodb-typescript";
+import { ObjectId } from "mongodb";
+import { clientPromise } from "../database/client";
 
 /**
  * A class to link a crypto symbol's info to its current chance.
  */
 export class CryptoSymbol extends EventEmitter {
   /**
+   * The id of this document in the database.
+   */
+  @id
+  public _id: ObjectId;
+
+  /**
    * The information about this crypto symbol (assets, followers etc...).
    */
+  @nested(() => CryptoSymbolInfo)
   public readonly cryptoSymbolInfo: CryptoSymbolInfo;
 
   /**
    * This crypto symbol's current chance to rise/fall.
    */
+  @nested(() => Chance)
   public readonly chance: Chance;
 
   /**
@@ -57,3 +68,14 @@ export class CryptoSymbol extends EventEmitter {
     return this.chance.addProbability(probability);
   }
 }
+
+/**
+ * The context from which one could access all [[CryptoSymbol]] documents.
+ */
+export const cryptoSymbolDbPromise = (async function() {
+  return new Repository<CryptoSymbol>(
+    CryptoSymbol,
+    await clientPromise,
+    "cryptoSymbols"
+  );
+})();

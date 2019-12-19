@@ -24,10 +24,11 @@
   },
   "homepage": "https://github.com/YardenShoham/coin-trend-notifier#readme",
   "dependencies": {
-    "@typegoose/typegoose": "^6.1.7",
+    "@yardenshoham/mongodb-typescript": "^2.0.5",
     "config": "^3.2.4",
     "express": "^4.17.1",
-    "mongoose": "^5.7.13"
+    "mongodb": "^3.4.1",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^0.1.3",
