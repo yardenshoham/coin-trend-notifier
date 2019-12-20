@@ -4,6 +4,8 @@ node_js:
 cache:
   directories:
     - node_modules
+services:
+  - mongodb
 install:
   - npm install
   - npm install -g codecov
