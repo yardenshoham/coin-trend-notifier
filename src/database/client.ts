@@ -1,12 +1,10 @@
 import { MongoClient } from "mongodb";
+import * as config from "config";
 
 /**
  * The connection to the database.
  */
-export const clientPromise = MongoClient.connect(
-  "mongodb://localhost:27017/test_database",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }
-);
+export const clientPromise = MongoClient.connect(config.get("dbUrl"), {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});

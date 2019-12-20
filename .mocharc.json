@@ -1,7 +1,11 @@
 {
-  "require": ["ts-node/register", "source-map-support/register"],
+  "require": [
+    "ts-node/register",
+    "source-map-support/register",
+    "dotenv/config"
+  ],
   "ui": "tdd",
-  "spec": "src/test/**/*.ts",
+  "spec": "src/test/**/*.test.ts",
   "exit": true,
   "recursive": true
 }
