@@ -19,14 +19,15 @@ export class CryptoSymbol extends EventEmitter {
 
   /**
    * The information about this crypto symbol (assets, followers etc...).
+   * istanbul ignore next
    */
-  @nested(() => CryptoSymbolInfo)
+  @nested(/* istanbul ignore next */ () => CryptoSymbolInfo)
   public readonly cryptoSymbolInfo: CryptoSymbolInfo;
 
   /**
    * This crypto symbol's current chance to rise/fall.
    */
-  @nested(() => Chance)
+  @nested(/* istanbul ignore next */ () => Chance)
   public readonly chance: Chance;
 
   /**

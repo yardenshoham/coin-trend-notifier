@@ -24,7 +24,7 @@ export class SymbolEvent {
   /**
    * The symbol associated with this event. It has a [[probability]] to rise/fall in the near future.
    */
-  @nested(() => CryptoSymbolInfo)
+  @nested(/* istanbul ignore next */ () => CryptoSymbolInfo)
   public readonly cryptoSymbolInfo: CryptoSymbolInfo;
 
   /**
