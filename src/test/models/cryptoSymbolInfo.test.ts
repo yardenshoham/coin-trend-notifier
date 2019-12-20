@@ -1,7 +1,8 @@
 import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
 import { suite, describe, it } from "mocha";
 import { expect } from "chai";
-import { Asset } from "../../models/asset";
+import { Asset, assetDbPromise } from "../../models/asset";
+import { CryptoSymbol, cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
 
 suite("CryptoSymbolInfo", function(): void {
   describe("constructor", function(): void {
@@ -15,19 +16,53 @@ suite("CryptoSymbolInfo", function(): void {
       expect(cryptoSymbolInfo.baseAsset.name).to.equal(base);
       expect(cryptoSymbolInfo.quoteAsset.name).to.equal(quote);
     });
+
+    it("should be optionally given preferences and assign them", function(): void {
+      const preferences = new Map([
+        ["123", 0.4],
+        ["124", -0.6]
+      ]);
+
+      const cryptoSymbolInfo = new CryptoSymbolInfo(
+        new Asset("ABC"),
+        new Asset("DEF"),
+        preferences
+      );
+      expect(cryptoSymbolInfo.preferences).to.equal(preferences);
+    });
   });
 
-  it("should be optionally given preferences and assign them", function(): void {
-    const preferences = new Map([
-      ["123", 0.4],
-      ["124", -0.6]
-    ]);
+  describe("populate()", function() {
+    it("should populate a crypto symbol info's base asset and quote asset", async function() {
+      const assetDb = await assetDbPromise;
+      const cryptoSymbolDb = await cryptoSymbolDbPromise;
 
-    const cryptoSymbolInfo = new CryptoSymbolInfo(
-      new Asset("ABC"),
-      new Asset("DEF"),
-      preferences
-    );
-    expect(cryptoSymbolInfo.preferences).to.equal(preferences);
+      // prepare assets
+      const baseAsset = new Asset("ABC");
+      const quoteAsset = new Asset("DEF");
+      await Promise.all([
+        assetDb.insert(baseAsset),
+        assetDb.insert(quoteAsset)
+      ]);
+
+      // create crypto symbol info
+      const before = new CryptoSymbolInfo(baseAsset, quoteAsset);
+
+      // insert into db
+      await cryptoSymbolDb.insert(new CryptoSymbol(before));
+
+      // get from db
+      const after = (await cryptoSymbolDb.findOne({})).cryptoSymbolInfo;
+
+      // populate with assets
+      await after.populate();
+
+      // cleanup
+      assetDb.c.deleteMany({});
+      cryptoSymbolDb.c.deleteMany({});
+
+      expect(after.baseAsset).to.have.property("name", baseAsset.name);
+      expect(after.quoteAsset).to.have.property("name", quoteAsset.name);
+    });
   });
 });
