@@ -43,16 +43,9 @@
     "lolex": "^5.1.1",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
-    "pre-commit": "^1.2.2",
     "source-map-support": "^0.5.16",
     "ts-node": "^8.5.4",
     "typedoc": "^0.15.3",
     "typescript": "^3.7.3"
-  },
-  "pre-commit": {
-    "run": [
-      "test",
-      "doc"
-    ]
   }
 }
