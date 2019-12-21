@@ -6,6 +6,7 @@ import { SymbolEvent } from "./symbolEvent";
 import { id, Repository, nested } from "@yardenshoham/mongodb-typescript";
 import { ObjectId } from "mongodb";
 import { clientPromise } from "../database/client";
+import { IsDefined } from "class-validator";
 
 /**
  * A class to link a crypto symbol's info to its current chance.
@@ -21,6 +22,7 @@ export class CryptoSymbol extends EventEmitter {
    * The information about this crypto symbol (assets, followers etc...).
    * istanbul ignore next
    */
+  @IsDefined()
   @nested(/* istanbul ignore next */ () => CryptoSymbolInfo)
   public readonly cryptoSymbolInfo: CryptoSymbolInfo;
 

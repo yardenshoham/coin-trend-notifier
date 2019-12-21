@@ -2,6 +2,7 @@ import { CryptoSymbolInfo } from "./cryptoSymbolInfo";
 import { id, Repository, nested } from "@yardenshoham/mongodb-typescript";
 import { ObjectId } from "mongodb";
 import { clientPromise } from "../database/client";
+import { IsDefined } from "class-validator";
 
 /**
  * An event that's fired when a probability for a cryptocurrency's value is going to rise/fall
@@ -19,11 +20,13 @@ export class SymbolEvent {
   /**
    * The probability threshold that was passed and caused this event to be fired.
    */
+  @IsDefined()
   public readonly probability: number;
 
   /**
    * The symbol associated with this event. It has a [[probability]] to rise/fall in the near future.
    */
+  @IsDefined()
   @nested(/* istanbul ignore next */ () => CryptoSymbolInfo)
   public readonly cryptoSymbolInfo: CryptoSymbolInfo;
 

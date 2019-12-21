@@ -1,7 +1,7 @@
 import { id, Repository } from "@yardenshoham/mongodb-typescript";
 import { ObjectId } from "mongodb";
 import { clientPromise } from "../database/client";
-import { IsUppercase } from "class-validator";
+import { IsUppercase, IsDefined } from "class-validator";
 
 /**
  * Represents a crypto asset.
@@ -18,6 +18,7 @@ export class Asset {
   /**
    * The name of the asset. Could be "USDT", "ETH", "BTC" etc...
    */
+  @IsDefined()
   @IsUppercase()
   public readonly name: string;
 
