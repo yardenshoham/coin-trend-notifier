@@ -1,6 +1,8 @@
 import express from "express";
 
-// init express
+/**
+ * The express app that'll represent the api server.
+ */
 const app = express();
 
 // add middleware/settings/routes to express.
