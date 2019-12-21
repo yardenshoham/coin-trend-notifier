@@ -1,6 +1,7 @@
 import { id, Repository } from "@yardenshoham/mongodb-typescript";
 import { ObjectId } from "mongodb";
 import { clientPromise } from "../database/client";
+import { IsEmail, Matches, IsOptional, IsPhoneNumber } from "class-validator";
 
 /**
  * A user in the system. A user has an email address and, optionally, a phone number.
@@ -15,21 +16,28 @@ export class User {
   /**
    * The user's email address.
    */
+  @IsEmail()
   public email: string;
 
   /**
    * The user's username.
+   *
+   * Min length is 2, max length is 20 and contains letters, numbers, underscores and dashes. Must match the following regular expression: `[a-zA-Z0-9_-]{2, 20}`.
    */
+  @Matches(/[a-zA-Z0-9_-]{2, 20}/)
   public username: string;
 
   /**
-   * The user's password.
+   * The user's password hash. Produced from [bcrypt](https://www.npmjs.com/package/bcrypt).
    */
+  @Matches(/^\$2[ayb]\$.{56}$/)
   private _password: string;
 
   /**
-   * The user's phone number.
+   * The user's phone number. Includes international prefix (e.g. +41, +972).
    */
+  @IsOptional()
+  @IsPhoneNumber(null)
   public phoneNumber?: string;
 
   /**
