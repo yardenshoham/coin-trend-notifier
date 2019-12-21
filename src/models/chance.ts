@@ -17,6 +17,8 @@ export class Chance extends EventEmitter {
 
   /**
    * The code returned by setInterval to clear when a new [[decayPeriod]] is set.
+   *
+   * @type NodeJS.Timeout
    */
   @ignore
   private _decayPeriodClearCode: any;

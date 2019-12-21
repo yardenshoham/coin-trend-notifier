@@ -5,7 +5,7 @@
   "main": "./index.ts",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "doc": "typedoc src --exclude src/test",
+    "doc": "typedoc src --exclude src/test --mode file",
     "pretest": "tsc",
     "test": "nyc mocha",
     "posttest": "rm -rf out .nyc_output"
