@@ -10,6 +10,31 @@ import {
 } from "class-validator";
 
 /**
+ * The interface of a user.
+ */
+export interface IUser {
+  /**
+   * The user's email address.
+   */
+  email: string;
+
+  /**
+   * The user's username.
+   */
+  username: string;
+
+  /**
+   * The user's password hash.
+   */
+  _password: string;
+
+  /**
+   * The user's phone number. Includes international prefix (e.g. +41, +972).
+   */
+  phoneNumber?: string;
+}
+
+/**
  * A user in the system. A user has an email address and, optionally, a phone number.
  */
 export class User {
