@@ -15,6 +15,7 @@ suite("CryptoSymbol", function(): void {
         new CryptoSymbolInfo(new Asset("ABC"), new Asset("DEF")),
         chance
       );
+      cryptoSymbol.start();
       cryptoSymbol.on(
         config.get("cryptoSymbolEventName"),
         (symbolEvent: SymbolEvent): void => {
@@ -34,6 +35,7 @@ suite("CryptoSymbol", function(): void {
         new Asset("DEF")
       );
       const cryptoSymbol = new CryptoSymbol(cryptoSymbolInfo);
+      cryptoSymbol.start();
       let called = false;
       cryptoSymbol.on(
         config.get("cryptoSymbolEventName"),

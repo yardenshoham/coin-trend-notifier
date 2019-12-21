@@ -27,14 +27,14 @@ export class Chance extends EventEmitter {
   private _probability: number = 0;
 
   /**
-   * Constructs a new chance object, given an optional decay period.
+   * Constructs a new chance object, given an optional decay period. [[start]] must be called as part of construction.
    *
    * @param decayPeriod The [[decayPeriod]] of this Chance object.
    */
   constructor(decayPeriod: number = 1209600) {
     super();
-
-    this.decayPeriod = decayPeriod;
+    this.removeAllListeners();
+    this._decayPeriod = decayPeriod;
   }
 
   /**
@@ -106,5 +106,12 @@ export class Chance extends EventEmitter {
     ) {
       this.emit(chanceEventName, this._probability);
     }
+  }
+
+  /**
+   * Start automatically decreasing the probability. Must be called after [[constructor]].
+   */
+  public start() {
+    this.decayPeriod = this._decayPeriod;
   }
 }

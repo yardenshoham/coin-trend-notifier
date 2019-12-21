@@ -9,6 +9,7 @@ suite("Chance", function(): void {
     it("should emit an event when a probability reaches a new threshold", function(done: Mocha.Done): void {
       this.timeout(100);
       const chance = new Chance();
+      chance.start();
       chance.on(config.get("chanceEventName"), () => {
         done();
       });
@@ -18,6 +19,7 @@ suite("Chance", function(): void {
     it("should not emit an event when no probability is given", function(done: Mocha.Done): void {
       setTimeout(done, 20);
       const chance = new Chance();
+      chance.start();
       chance.on(config.get("chanceEventName"), () => {
         done("symbolEvent was thrown");
       });
@@ -26,6 +28,7 @@ suite("Chance", function(): void {
     it("should not emit an event when a new probability is given but a new threshold is not reached", function(done: Mocha.Done): void {
       setTimeout(done, 20);
       const chance = new Chance();
+      chance.start();
       chance.addProbability(0.1);
       chance.on(config.get("chanceEventName"), () => {
         done("symbolEvent was thrown");
@@ -47,6 +50,7 @@ suite("Chance", function(): void {
         -1
       ];
       const chance = new Chance();
+      chance.start();
       for (const value of legalValues) {
         expect(() => {
           chance.addProbability(value);
@@ -57,6 +61,7 @@ suite("Chance", function(): void {
     it("should not accept illegal values (less than -1 or greater than 1)", function(): void {
       const illegalValues = [4, 9, 1.8, -8, -16, 45.76, -90, 111111, -544576];
       const chance = new Chance();
+      chance.start();
       for (const value of illegalValues) {
         expect(() => {
           chance.addProbability(value);
@@ -77,6 +82,7 @@ suite("Chance", function(): void {
 
     it("should decrease the probability as time goes on", function(): void {
       const chance = new Chance();
+      chance.start();
       chance.addProbability(1);
       for (let i = 0; i < 5; i++) {
         let lastProbability = chance.probability;
@@ -88,6 +94,7 @@ suite("Chance", function(): void {
 
     it("should make sure that, given a long time, the probability goes to 0", function(): void {
       const chance = new Chance();
+      chance.start();
       chance.addProbability(1);
       // 6 months
       for (let i = 0; i < 6 * 30; i++) {
@@ -104,6 +111,7 @@ suite("Chance", function(): void {
 
     it("should be set with the value given to the constructor", function(): void {
       const chance = new Chance(1000);
+      chance.start();
       chance.addProbability(1);
       clock.tick(501 * 1000);
       expect(chance.probability).to.equal(0);
@@ -111,6 +119,7 @@ suite("Chance", function(): void {
 
     it("should change when being set to a different value", function(): void {
       const chance = new Chance();
+      chance.start();
       chance.decayPeriod = 8000;
       chance.addProbability(1);
       clock.tick(3999 * 1000);
@@ -128,6 +137,7 @@ suite("Chance", function(): void {
     it("should accept legal values (greater or equal to 1)", function(): void {
       const legalValues = [1, 400, 1.26, 11, 89.4, 1.1, 1000, 40 ** 3, 44];
       const chance = new Chance();
+      chance.start();
       for (const value of legalValues) {
         expect(() => {
           chance.decayPeriod = value;
@@ -138,6 +148,7 @@ suite("Chance", function(): void {
     it("should not accept illegal values (less than 1)", function(): void {
       const illegalValues = [-7, 0, 0.4, -12, -100, -50.23, 0.002, -0.4];
       const chance = new Chance();
+      chance.start();
       for (const value of illegalValues) {
         expect(() => {
           chance.decayPeriod = value;

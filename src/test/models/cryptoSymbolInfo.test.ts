@@ -24,8 +24,6 @@ suite("CryptoSymbolInfo", function(): void {
         [new ObjectId(), -0.6]
       ]);
 
-      console.log(preferences);
-
       const cryptoSymbolInfo = new CryptoSymbolInfo(
         new Asset("ABC"),
         new Asset("DEF"),

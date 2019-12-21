@@ -28,7 +28,7 @@ export class CryptoSymbol extends EventEmitter {
    * This crypto symbol's current chance to rise/fall.
    */
   @nested(/* istanbul ignore next */ () => Chance)
-  public readonly chance: Chance;
+  private chance: Chance;
 
   /**
    * Constructs a new crypto symbol.
@@ -39,21 +39,11 @@ export class CryptoSymbol extends EventEmitter {
   constructor(cryptoSymbolInfo: CryptoSymbolInfo, chance?: Chance) {
     super();
 
+    this.removeAllListeners();
+
     this.cryptoSymbolInfo = cryptoSymbolInfo;
-    this.chance = chance ? chance : new Chance();
-
-    // catch the event, add info to it then fire the complete event
-    this.chance.on(
-      config.get("chanceEventName"),
-      (probability: number): void => {
-        this.emit(
-          config.get("cryptoSymbolEventName"),
-          new SymbolEvent(probability, this.cryptoSymbolInfo)
-        );
-      }
-    );
+    this.chance = chance ?? new Chance();
   }
-
   /**
    * Adds a sample to the crypto symbol chance's probability.
    *
@@ -67,6 +57,23 @@ export class CryptoSymbol extends EventEmitter {
    */
   public addProbability(probability: number): void {
     return this.chance.addProbability(probability);
+  }
+
+  /**
+   * Initialize event handling. Should be called every time a [[CryptoSymbol]] is initialized.
+   */
+  public start() {
+    this.chance.start();
+    // catch the event, add info to it then fire the complete event
+    this.chance.on(
+      config.get("chanceEventName"),
+      (probability: number): void => {
+        this.emit(
+          config.get("cryptoSymbolEventName"),
+          new SymbolEvent(probability, this.cryptoSymbolInfo)
+        );
+      }
+    );
   }
 }
 
