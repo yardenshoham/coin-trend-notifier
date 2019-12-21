@@ -3,6 +3,7 @@ import { suite, describe, it } from "mocha";
 import { expect } from "chai";
 import { Asset, assetDbPromise } from "../../models/asset";
 import { CryptoSymbol, cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
+import { ObjectId } from "mongodb";
 
 suite("CryptoSymbolInfo", function(): void {
   describe("constructor", function(): void {
@@ -19,9 +20,11 @@ suite("CryptoSymbolInfo", function(): void {
 
     it("should be optionally given preferences and assign them", function(): void {
       const preferences = new Map([
-        ["123", 0.4],
-        ["124", -0.6]
+        [new ObjectId(), 0.4],
+        [new ObjectId(), -0.6]
       ]);
+
+      console.log(preferences);
 
       const cryptoSymbolInfo = new CryptoSymbolInfo(
         new Asset("ABC"),

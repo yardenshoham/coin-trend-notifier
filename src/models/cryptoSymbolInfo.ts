@@ -36,7 +36,7 @@ export class CryptoSymbolInfo {
   /**
    * This object maps a user to their threshold probability to be notified if this symbol rises/falls over this probability.
    */
-  public preferences: Map<string | ObjectId, number>;
+  public preferences: Map<ObjectId, number>;
 
   /**
    * Constructs a new crypto symbol object.
@@ -47,14 +47,14 @@ export class CryptoSymbolInfo {
   constructor(
     baseAsset: Asset,
     quoteAsset: Asset,
-    preferences?: Map<string | ObjectId, number>
+    preferences?: Map<ObjectId, number>
   ) {
     this.baseAsset = baseAsset;
     this.quoteAsset = quoteAsset;
     if (preferences) {
       this.preferences = preferences;
     } else {
-      this.preferences = new Map<string | ObjectId, number>();
+      this.preferences = new Map<ObjectId, number>();
     }
   }
 
