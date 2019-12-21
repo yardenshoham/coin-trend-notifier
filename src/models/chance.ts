@@ -1,16 +1,18 @@
 import { EventEmitter } from "events";
 import config from "config";
 import { ignore } from "@yardenshoham/mongodb-typescript";
+import { Min, Max } from "class-validator";
 
 /**
  * Represents a chance or probability that a certain symbol's value will rise/fall in the near future.
  */
 export class Chance extends EventEmitter {
   /**
-   * The period of time (in seconds) for the probability to go from 1 or -1 to 0 with no external intervention.
+   * The period of time (in seconds) for the probability to go from 1 or -1 to 0 with no external intervention. Must be at least 3600 (1 hours).
    *
    * @default 1209600 Two weeks.
    */
+  @Min(3600)
   private _decayPeriod: number;
 
   /**
@@ -24,6 +26,8 @@ export class Chance extends EventEmitter {
    *
    * 1 means the symbol's value will 100% rise. -1 means the symbol's value will 100% fall. 0 means there will be no change in the symbol's value in the near future.
    */
+  @Min(-1)
+  @Max(1)
   private _probability: number = 0;
 
   /**

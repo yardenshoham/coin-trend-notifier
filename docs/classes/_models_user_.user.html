@@ -125,7 +125,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/32d7172/src/models/user.ts#L33">src/models/user.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/user.ts#L41">src/models/user.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -181,7 +181,7 @@
 					<div class="tsd-signature tsd-kind-icon">_id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ObjectId</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/32d7172/src/models/user.ts#L13">src/models/user.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/user.ts#L14">src/models/user.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -196,12 +196,12 @@
 					<div class="tsd-signature tsd-kind-icon">_password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/32d7172/src/models/user.ts#L28">src/models/user.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/user.ts#L34">src/models/user.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The user&#39;s password.</p>
+							<p>The user&#39;s password hash. Produced from <a href="https://www.npmjs.com/package/bcrypt">bcrypt</a>.</p>
 						</div>
 					</div>
 				</section>
@@ -211,7 +211,7 @@
 					<div class="tsd-signature tsd-kind-icon">email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/32d7172/src/models/user.ts#L18">src/models/user.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/user.ts#L20">src/models/user.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -226,12 +226,12 @@
 					<div class="tsd-signature tsd-kind-icon">phone<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/32d7172/src/models/user.ts#L33">src/models/user.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/user.ts#L41">src/models/user.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The user&#39;s phone number.</p>
+							<p>The user&#39;s phone number. Includes international prefix (e.g. +41, +972).</p>
 						</div>
 					</div>
 				</section>
@@ -241,13 +241,14 @@
 					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/32d7172/src/models/user.ts#L23">src/models/user.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/user.ts#L28">src/models/user.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The user&#39;s username.</p>
 						</div>
+						<p>Min length is 2, max length is 20 and contains letters, numbers, underscores and dashes. Must match the following regular expression: <code>[a-zA-Z0-9_-]{2, 20}</code>.</p>
 					</div>
 				</section>
 			</section>
@@ -264,7 +265,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/32d7172/src/models/user.ts#L68">src/models/user.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/user.ts#L76">src/models/user.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -278,7 +279,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/32d7172/src/models/user.ts#L60">src/models/user.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/user.ts#L68">src/models/user.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -333,6 +334,12 @@
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/_models_user_.html">&quot;models/user&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_routes_router_.html">&quot;routes/router&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_server_server_.html">&quot;server/server&quot;</a>
 					</li>
 				</ul>
 			</nav>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;models/symbolEvent&quot; | coin-trend-notifier</title>
+	<title>&quot;server/server&quot; | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_models_symbolevent_.html">&quot;models/symbolEvent&quot;</a>
+					<a href="_server_server_.html">&quot;server/server&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;models/symbolEvent&quot;</h1>
+			<h1>External module &quot;server/server&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,141 +71,25 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Events</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-event tsd-parent-kind-external-module"><a href="_models_symbolevent_.html#symbolevent" class="tsd-kind-icon">Symbol<wbr>Event</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_models_symbolevent_.html#symboleventdbpromise" class="tsd-kind-icon">symbol<wbr>Event<wbr>DbPromise</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_server_server_.html#app" class="tsd-kind-icon">app</a></li>
 							</ul>
 						</section>
 					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Events</h2>
-				<section class="tsd-panel tsd-member tsd-kind-event tsd-parent-kind-external-module">
-					<a name="symbolevent" class="tsd-anchor"></a>
-					<h3>Symbol<wbr>Event</h3>
-					<div class="tsd-signature tsd-kind-icon">Symbol<wbr>Event<span class="tsd-signature-symbol">:</span> </div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/symbolEvent.ts#L12">src/models/symbolEvent.ts:12</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>An event that&#39;s fired when a probability for a cryptocurrency&#39;s value is going to rise/fall
-							with a certain probability.</p>
-						</div>
-					</div>
-					<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-event">
-						<a name="symbolevent.constructor" class="tsd-anchor"></a>
-						<h3>constructor</h3>
-						<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-event">
-							<li class="tsd-signature tsd-kind-icon">new <wbr>Symbol<wbr>Event<span class="tsd-signature-symbol">(</span>probability<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, cryptoSymbolInfo<span class="tsd-signature-symbol">: </span><a href="../classes/_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_models_symbolevent_.html#symbolevent" class="tsd-signature-type">SymbolEvent</a></li>
-						</ul>
-						<ul class="tsd-descriptions">
-							<li class="tsd-description">
-								<aside class="tsd-sources">
-									<ul>
-										<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/symbolEvent.ts#L28">src/models/symbolEvent.ts:28</a></li>
-									</ul>
-								</aside>
-								<div class="tsd-comment tsd-typography">
-									<div class="lead">
-										<p>Constructs an event to be fired.</p>
-									</div>
-								</div>
-								<h4 class="tsd-parameters-title">Parameters</h4>
-								<ul class="tsd-parameters">
-									<li>
-										<h5>probability: <span class="tsd-signature-type">number</span></h5>
-										<div class="tsd-comment tsd-typography">
-											<div class="lead">
-												<p>The probability threshold that was passed and caused this event to be fired.</p>
-											</div>
-										</div>
-									</li>
-									<li>
-										<h5>cryptoSymbolInfo: <a href="../classes/_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></h5>
-										<div class="tsd-comment tsd-typography">
-											<div class="lead">
-												<p>The symbol associated with this event.</p>
-											</div>
-										</div>
-									</li>
-								</ul>
-								<h4 class="tsd-returns-title">Returns <a href="_models_symbolevent_.html#symbolevent" class="tsd-signature-type">SymbolEvent</a></h4>
-							</li>
-						</ul>
-					</section>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-event">
-						<a name="symbolevent._id" class="tsd-anchor"></a>
-						<h3>_id</h3>
-						<div class="tsd-signature tsd-kind-icon">_id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ObjectId</span></div>
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/symbolEvent.ts#L17">src/models/symbolEvent.ts:17</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>The id of this document in the database.</p>
-							</div>
-						</div>
-					</section>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-event">
-						<a name="symbolevent.cryptosymbolinfo" class="tsd-anchor"></a>
-						<h3>crypto<wbr>Symbol<wbr>Info</h3>
-						<div class="tsd-signature tsd-kind-icon">crypto<wbr>Symbol<wbr>Info<span class="tsd-signature-symbol">:</span> <a href="../classes/_models_cryptosymbolinfo_.cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></div>
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/symbolEvent.ts#L28">src/models/symbolEvent.ts:28</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>The symbol associated with this event. It has a <a href="../classes/_models_chance_.chance.html#probability">probability</a> to rise/fall in the near future.</p>
-							</div>
-						</div>
-					</section>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-event">
-						<a name="symbolevent.probability" class="tsd-anchor"></a>
-						<h3>probability</h3>
-						<div class="tsd-signature tsd-kind-icon">probability<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/symbolEvent.ts#L22">src/models/symbolEvent.ts:22</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>The probability threshold that was passed and caused this event to be fired.</p>
-							</div>
-						</div>
-					</section>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="symboleventdbpromise" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> symbol<wbr>Event<wbr>DbPromise</h3>
-					<div class="tsd-signature tsd-kind-icon">symbol<wbr>Event<wbr>DbPromise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Repository</span><span class="tsd-signature-symbol">&lt;</span><a href="_models_symbolevent_.html#symbolevent" class="tsd-signature-type">SymbolEvent</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;(async function() {return new Repository&lt;SymbolEvent&gt;(SymbolEvent,await clientPromise,&quot;symbolEvents&quot;);})()</span></div>
+					<a name="app" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> app</h3>
+					<div class="tsd-signature tsd-kind-icon">app<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Express</span><span class="tsd-signature-symbol"> =&nbsp;express()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/models/symbolEvent.ts#L45">src/models/symbolEvent.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/bfb3605/src/server/server.ts#L4">src/server/server.ts:4</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The context from which one could access all <a href="_models_symbolevent_.html#symbolevent">SymbolEvent</a> documents.</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -233,7 +117,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_models_cryptosymbolinfo_.html">&quot;models/crypto<wbr>Symbol<wbr>Info&quot;</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_models_symbolevent_.html">&quot;models/symbol<wbr>Event&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -242,18 +126,15 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_routes_router_.html">&quot;routes/router&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_server_server_.html">&quot;server/server&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-event tsd-parent-kind-external-module">
-						<a href="_models_symbolevent_.html#symbolevent" class="tsd-kind-icon">Symbol<wbr>Event</a>
-					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="_models_symbolevent_.html#symboleventdbpromise" class="tsd-kind-icon">symbol<wbr>Event<wbr>DbPromise</a>
+						<a href="_server_server_.html#app" class="tsd-kind-icon">app</a>
 					</li>
 				</ul>
 			</nav>

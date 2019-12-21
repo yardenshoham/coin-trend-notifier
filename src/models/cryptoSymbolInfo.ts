@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
 import { ref, objectId } from "@yardenshoham/mongodb-typescript";
 import { Asset, assetDbPromise } from "./asset";
+import { Min, Max } from "class-validator";
 
 /**
  * A cryptocurrency symbol. These are the entities for which trades happen.
@@ -36,6 +37,8 @@ export class CryptoSymbolInfo {
   /**
    * This object maps a user to their threshold probability to be notified if this symbol rises/falls over this probability.
    */
+  @Min(-1, { each: true })
+  @Max(1, { each: true })
   public preferences: Map<ObjectId, number>;
 
   /**
