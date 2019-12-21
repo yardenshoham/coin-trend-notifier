@@ -28,6 +28,7 @@
     "config": "^3.2.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "http-status-code": "^2.1.0",
     "mongodb": "^3.4.1",
     "reflect-metadata": "^0.1.13"
   },
