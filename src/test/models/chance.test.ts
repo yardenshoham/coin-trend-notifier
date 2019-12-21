@@ -1,7 +1,7 @@
 import { Chance } from "../../models/chance";
 import { suite, describe, it } from "mocha";
-import * as config from "config";
-import * as lolex from "lolex";
+import config from "config";
+import lolex from "lolex";
 import { expect } from "chai";
 
 suite("Chance", function(): void {

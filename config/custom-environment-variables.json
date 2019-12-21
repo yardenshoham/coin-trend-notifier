@@ -1,3 +1,4 @@
 {
-  "dbUrl": "DB_URL"
+  "dbUrl": "DB_URL",
+  "port": "PORT"
 }

@@ -1,7 +1,7 @@
 import { EventEmitter } from "events";
 import { Chance } from "./chance";
 import { CryptoSymbolInfo } from "./cryptoSymbolInfo";
-import * as config from "config";
+import config from "config";
 import { SymbolEvent } from "./symbolEvent";
 import { id, Repository, nested } from "@yardenshoham/mongodb-typescript";
 import { ObjectId } from "mongodb";

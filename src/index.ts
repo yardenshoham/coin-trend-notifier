@@ -1,7 +1,10 @@
 import "dotenv/config";
+import app from "./server/server";
+import config from "config";
 
-async function main(): Promise<void> {
-  console.log("App started");
-}
+// start the server
+const port = config.has("port") ? config.get("port") : 3000;
 
-main();
+app.listen(port, () => {
+  console.log(`App started on port: ${port}`);
+});

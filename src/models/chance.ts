@@ -1,5 +1,5 @@
 import { EventEmitter } from "events";
-import * as config from "config";
+import config from "config";
 import { ignore } from "@yardenshoham/mongodb-typescript";
 
 /**

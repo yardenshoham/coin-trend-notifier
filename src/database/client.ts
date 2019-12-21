@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb";
-import * as config from "config";
+import config from "config";
 
 /**
  * The connection to the database.
