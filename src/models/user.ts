@@ -39,7 +39,7 @@ export class User {
    * The user's password hash. Produced from [bcrypt](https://www.npmjs.com/package/bcrypt).
    */
   @IsDefined()
-  @Matches(/^\$2[ayb]\$.{56}$/)
+  @Matches(/^\$2[ayb]\$[A-Za-z0-9./]{56}$/)
   private _password: string;
 
   /**
