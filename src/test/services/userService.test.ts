@@ -70,7 +70,6 @@ suite("UserService", function() {
       try {
         await UserService.signUp(user);
       } catch (errors) {
-        console.log(errors);
         for (const error of errors) {
           expect(error).to.be.instanceOf(ValidationError);
         }
