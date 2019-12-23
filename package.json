@@ -6,9 +6,10 @@
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "doc": "typedoc src --exclude src/test --mode file",
-    "pretest": "tsc",
-    "test": "nyc mocha",
-    "posttest": "rm -rf out .nyc_output"
+    "test": "mocha",
+    "precoverage": "tsc",
+    "coverage": "nyc mocha",
+    "postcoverage": "rm -rf out .nyc_output"
   },
   "repository": {
     "type": "git",
