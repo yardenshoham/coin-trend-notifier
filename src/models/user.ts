@@ -10,31 +10,6 @@ import {
 } from "class-validator";
 
 /**
- * The interface of a user.
- */
-export interface IUser {
-  /**
-   * The user's email address.
-   */
-  email: string;
-
-  /**
-   * The user's username.
-   */
-  username: string;
-
-  /**
-   * The user's password hash.
-   */
-  _password: string;
-
-  /**
-   * The user's phone number. Includes international prefix (e.g. +41, +972).
-   */
-  phoneNumber?: string;
-}
-
-/**
  * A user in the system. A user has an email address and, optionally, a phone number.
  */
 export class User {
@@ -57,14 +32,14 @@ export class User {
    * Min length is 2, max length is 20 and contains letters, numbers, underscores and dashes. Must match the following regular expression: `[a-zA-Z0-9_-]{2, 20}`.
    */
   @IsDefined()
-  @Matches(/[a-zA-Z0-9_-]{2, 20}/)
+  @Matches(/^[a-zA-Z0-9_-]{2,20}$/)
   public username: string;
 
   /**
    * The user's password hash. Produced from [bcrypt](https://www.npmjs.com/package/bcrypt).
    */
   @IsDefined()
-  @Matches(/^\$2[ayb]\$[A-Za-z0-9./]{56}$/)
+  @Matches(/^\$2[ayb]\$[\d]{2}\$[./A-Za-z0-9]{53}$/)
   private _password: string;
 
   /**
