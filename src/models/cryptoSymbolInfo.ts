@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { ref, objectId } from "@yardenshoham/mongodb-typescript";
+import { ref, objectId } from "mongodb-typescript";
 import { Asset, assetDbPromise } from "./asset";
 import { Min, Max, IsDefined } from "class-validator";
 

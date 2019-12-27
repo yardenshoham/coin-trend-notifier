@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 import config from "config";
-import { ignore } from "@yardenshoham/mongodb-typescript";
+import { ignore } from "mongodb-typescript";
 import { Min, Max, IsDefined } from "class-validator";
 
 /**

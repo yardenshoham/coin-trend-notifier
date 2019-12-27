@@ -3,7 +3,7 @@ import { Chance } from "./chance";
 import { CryptoSymbolInfo } from "./cryptoSymbolInfo";
 import config from "config";
 import { SymbolEvent } from "./symbolEvent";
-import { id, Repository, nested } from "@yardenshoham/mongodb-typescript";
+import { id, Repository, nested } from "mongodb-typescript";
 import { ObjectId } from "mongodb";
 import { clientPromise } from "../database/client";
 import { IsDefined } from "class-validator";

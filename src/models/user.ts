@@ -1,4 +1,4 @@
-import { id, Repository } from "@yardenshoham/mongodb-typescript";
+import { id, Repository } from "mongodb-typescript";
 import { ObjectId } from "mongodb";
 import { clientPromise } from "../database/client";
 import {
