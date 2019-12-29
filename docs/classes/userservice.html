@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A service to perform various related user methods.</p>
+						<p>A service to perform various user related methods.</p>
 					</div>
 				</div>
 			</section>
@@ -88,6 +88,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="userservice.html#login" class="tsd-kind-icon">login</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="userservice.html#signup" class="tsd-kind-icon">sign<wbr>Up</a></li>
 							</ul>
 						</section>
@@ -96,6 +97,46 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="login" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> login</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">login<span class="tsd-signature-symbol">(</span>userCredentials<span class="tsd-signature-symbol">: </span><a href="../interfaces/userlogindto.html" class="tsd-signature-type">UserLoginDto</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/466cff1/src/services/userService.ts#L67">src/services/userService.ts:67</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Given an email and a password, signs in/logins the user.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p><a href="userdoesnotexisterror.html">UserDoesNotExistError</a> If the provided email wasn&#39;t found in the system.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p><a href="wrongpassworderror.html">WrongPasswordError</a> If the provided password does not match the user&#39;s password.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>userCredentials: <a href="../interfaces/userlogindto.html" class="tsd-signature-type">UserLoginDto</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The credentials (email and password) of the user that wants to login.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The <a href="https://en.wikipedia.org/wiki/JSON_Web_Token">json web token</a> with the payload <a href="../interfaces/userjwtpayload.html">UserJwtPayload</a>.</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="signup" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> sign<wbr>Up</h3>
@@ -106,7 +147,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/services/userService.ts:19</li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/466cff1/src/services/userService.ts#L26">src/services/userService.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -132,6 +173,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/registereduserdto.html" class="tsd-signature-type">RegisteredUserDto</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The registered user.</p>
 						</li>
 					</ul>
 				</section>
@@ -165,11 +207,17 @@
 					<li class=" tsd-kind-class">
 						<a href="useralreadyexistserror.html" class="tsd-kind-icon">User<wbr>Already<wbr>Exists<wbr>Error</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="userdoesnotexisterror.html" class="tsd-kind-icon">User<wbr>Does<wbr>Not<wbr>Exist<wbr>Error</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
 						<a href="userservice.html" class="tsd-kind-icon">User<wbr>Service</a>
 						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="userservice.html#login" class="tsd-kind-icon">login</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="userservice.html#signup" class="tsd-kind-icon">sign<wbr>Up</a>
 							</li>
@@ -177,6 +225,9 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="wrongpassworderror.html" class="tsd-kind-icon">Wrong<wbr>Password<wbr>Error</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/registereduserdto.html" class="tsd-kind-icon">Registered<wbr>User<wbr>Dto</a>
 					</li>
@@ -185,6 +236,12 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/userdtoin.html" class="tsd-kind-icon">User<wbr>Dto<wbr>In</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/userjwtpayload.html" class="tsd-kind-icon">User<wbr>Jwt<wbr>Payload</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/userlogindto.html" class="tsd-kind-icon">User<wbr>Login<wbr>Dto</a>
 					</li>
 					<li class=" tsd-kind-event">
 						<a href="../globals.html#symbolevent" class="tsd-kind-icon">Symbol<wbr>Event</a>

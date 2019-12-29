@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UserDto | coin-trend-notifier</title>
+	<title>UserLoginDto | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="userdto.html">UserDto</a>
+					<a href="userlogindto.html">UserLoginDto</a>
 				</li>
 			</ul>
-			<h1>Interface UserDto</h1>
+			<h1>Interface UserLoginDto</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A general user data transfer object. Should be extended, not used on its own.</p>
+						<p>A User data transfer object. Used for login with an email and a password.</p>
 					</div>
 				</div>
 			</section>
@@ -77,15 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">UserDto</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="registereduserdto.html" class="tsd-signature-type">RegisteredUserDto</a>
-							</li>
-							<li>
-								<a href="userdtoin.html" class="tsd-signature-type">UserDtoIn</a>
-							</li>
-						</ul>
+						<span class="target">UserLoginDto</span>
 					</li>
 				</ul>
 			</section>
@@ -96,9 +88,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#email" class="tsd-kind-icon">email</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#phonenumber" class="tsd-kind-icon">phone<wbr>Number</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#username" class="tsd-kind-icon">username</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userlogindto.html#email" class="tsd-kind-icon">email</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userlogindto.html#password" class="tsd-kind-icon">password</a></li>
 							</ul>
 						</section>
 					</div>
@@ -112,7 +103,7 @@
 					<div class="tsd-signature tsd-kind-icon">email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/interfaces/dtos/userDto.ts:8</li>
+							<li>Defined in src/interfaces/dtos/userLoginDto.ts:8</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -122,32 +113,17 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="phonenumber" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> phone<wbr>Number</h3>
-					<div class="tsd-signature tsd-kind-icon">phone<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="password" class="tsd-anchor"></a>
+					<h3>password</h3>
+					<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/interfaces/dtos/userDto.ts:18</li>
+							<li>Defined in src/interfaces/dtos/userLoginDto.ts:13</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The user&#39;s phone number. Includes international prefix (e.g. +41, +972).</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="username" class="tsd-anchor"></a>
-					<h3>username</h3>
-					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in src/interfaces/dtos/userDto.ts:13</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The user&#39;s username.</p>
+							<p>The user&#39;s password.</p>
 						</div>
 					</div>
 				</section>
@@ -193,33 +169,30 @@
 					<li class=" tsd-kind-interface">
 						<a href="registereduserdto.html" class="tsd-kind-icon">Registered<wbr>User<wbr>Dto</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="userdto.html" class="tsd-kind-icon">User<wbr>Dto</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userdto.html#email" class="tsd-kind-icon">email</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userdto.html#phonenumber" class="tsd-kind-icon">phone<wbr>Number</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userdto.html#username" class="tsd-kind-icon">username</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="userdtoin.html" class="tsd-kind-icon">User<wbr>Dto<wbr>In</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="userjwtpayload.html" class="tsd-kind-icon">User<wbr>Jwt<wbr>Payload</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="userlogindto.html" class="tsd-kind-icon">User<wbr>Login<wbr>Dto</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="userlogindto.html#email" class="tsd-kind-icon">email</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="userlogindto.html#password" class="tsd-kind-icon">password</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-event">
 						<a href="../globals.html#symbolevent" class="tsd-kind-icon">Symbol<wbr>Event</a>
 					</li>

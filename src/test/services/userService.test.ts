@@ -1,11 +1,15 @@
 import { suite, describe, it } from "mocha";
 import chai, { expect } from "chai";
-import UserDtoIn from "./../../dtos/userDtoIn";
+import UserDtoIn from "../../interfaces/dtos/userDtoIn";
 import UserService from "./../../services/userService";
 import { userDbPromise } from "../../models/user";
 import chaiAsPromised from "chai-as-promised";
 import UserAlreadyExistsError from "./../../errors/userAlreadyExistsError";
 import { ValidationError } from "class-validator";
+import jwt from "jsonwebtoken";
+import UserDoesNotExistError from "./../../errors/userDoesNotExistError";
+import UserLoginDto from "./../../interfaces/dtos/userLoginDto";
+import WrongPasswordError from "../../errors/wrongPasswordError";
 
 chai.use(chaiAsPromised);
 
@@ -78,6 +82,55 @@ suite("UserService", function() {
       }
 
       return Promise.reject("No error was thrown.");
+    });
+  });
+
+  describe("login()", function() {
+    it("should be given an email and a password and return a jwt with the user's id", async function() {
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444"
+      };
+
+      const registeredUser = await UserService.signUp(user);
+
+      const userJwt = await UserService.login({
+        email: user.email,
+        password: user.password
+      });
+
+      expect(jwt.decode(userJwt)).to.have.property("_id", registeredUser._id);
+    });
+
+    it("should throw a UserDoesNotExistError when provided a bad email", async function() {
+      const user: UserLoginDto = {
+        email: "test.user@test.domain.com",
+        password: "123abc"
+      };
+
+      return expect(UserService.login(user)).to.be.rejectedWith(
+        UserDoesNotExistError
+      );
+    });
+
+    it("should throw a WrongPasswordError when provided an incorrect password", async function() {
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444"
+      };
+
+      await UserService.signUp(user);
+
+      return expect(
+        UserService.login({
+          email: user.email,
+          password: "wrong"
+        })
+      ).to.be.rejectedWith(WrongPasswordError);
     });
   });
 });
