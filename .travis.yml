@@ -7,8 +7,9 @@ cache:
 services:
   - mongodb
 env:
-  - COIN_TREND_NOTIFIER_DB_URL=mongodb://localhost:27017/test_database
-  - COIN_TREND_NOTIFIER_JWT_PRIVATE_KEY=travistravistravis
+  global:
+    - COIN_TREND_NOTIFIER_DB_URL=mongodb://localhost:27017/test_database
+    - COIN_TREND_NOTIFIER_JWT_PRIVATE_KEY=travistravistravis
 install:
   - npm install
   - npm install -g codecov
