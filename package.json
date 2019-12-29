@@ -9,7 +9,7 @@
     "test": "mocha",
     "precoverage": "tsc",
     "coverage": "nyc mocha",
-    "postcoverage": "rm -rf out .nyc_output"
+    "postcoverage": "rm -rf dist .nyc_output"
   },
   "repository": {
     "type": "git",
