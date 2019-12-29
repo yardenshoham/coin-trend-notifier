@@ -7,7 +7,7 @@ cache:
 services:
   - mongodb
 env:
-  - DB_URL=mongodb://localhost:27017/test_database
+  - COIN_TREND_NOTIFIER_DB_URL=mongodb://localhost:27017/test_database
 install:
   - npm install
   - npm install -g codecov

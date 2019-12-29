@@ -1,4 +1,4 @@
 {
-  "dbUrl": "DB_URL",
-  "port": "PORT"
+  "dbUrl": "COIN_TREND_NOTIFIER_DB_URL",
+  "port": "COIN_TREND_NOTIFIER_PORT"
 }
