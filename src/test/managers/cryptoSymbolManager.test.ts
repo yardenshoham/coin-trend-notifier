@@ -38,8 +38,8 @@ suite("CryptoSymbolManager", function() {
         cryptoSymbols.map(cryptoSymbol => cryptoSymbolDb.insert(cryptoSymbol))
       );
 
-      // populate called internally
       const cryptoSymbolManager = await cryptoSymbolManagerPromise;
+      await cryptoSymbolManager.populate();
 
       expect(cryptoSymbolManager.cryptoSymbols.size).to.equal(
         baseAssets.length
