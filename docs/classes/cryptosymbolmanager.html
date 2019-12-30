@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UserDoesNotExistError | coin-trend-notifier</title>
+	<title>CryptoSymbolManager | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="userdoesnotexisterror.html">UserDoesNotExistError</a>
+					<a href="cryptosymbolmanager.html">CryptoSymbolManager</a>
 				</li>
 			</ul>
-			<h1>Class UserDoesNotExistError</h1>
+			<h1>Class CryptoSymbolManager</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Thrown when there is an attempt to find a user that has not registered.</p>
+						<p>A singleton class that holds all crypto symbols at run time.</p>
 					</div>
 				</div>
 			</section>
@@ -77,12 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">Error</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">UserDoesNotExistError</span>
-							</li>
-						</ul>
+						<span class="target">CryptoSymbolManager</span>
 					</li>
 				</ul>
 			</section>
@@ -90,111 +85,134 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="userdoesnotexisterror.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="userdoesnotexisterror.html#email" class="tsd-kind-icon">email</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="userdoesnotexisterror.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="userdoesnotexisterror.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="userdoesnotexisterror.html#stack" class="tsd-kind-icon">stack</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="userdoesnotexisterror.html#error" class="tsd-kind-icon">Error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="cryptosymbolmanager.html#_cryptosymbols" class="tsd-kind-icon">_crypto<wbr>Symbols</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported"><a href="cryptosymbolmanager.html#cryptosymbols" class="tsd-kind-icon">crypto<wbr>Symbols</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="cryptosymbolmanager.html#getcryptosymbol" class="tsd-kind-icon">get<wbr>Crypto<wbr>Symbol</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="cryptosymbolmanager.html#populate" class="tsd-kind-icon">populate</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>User<wbr>Does<wbr>Not<wbr>Exist<wbr>Error<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="userdoesnotexisterror.html" class="tsd-signature-type">UserDoesNotExistError</a></li>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+					<a name="_cryptosymbols" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _crypto<wbr>Symbols</h3>
+					<div class="tsd-signature tsd-kind-icon">_crypto<wbr>Symbols<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/managers/cryptoSymbolManager.ts#L13">src/managers/cryptoSymbolManager.ts:13</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Maps a string representing a symbol (e.g. &quot;BTCUSDT&quot;) to the actual crypto symbol object.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
+					<a name="cryptosymbols" class="tsd-anchor"></a>
+					<h3>crypto<wbr>Symbols</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> cryptoSymbols<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/errors/userDoesNotExistError.ts#L8">src/errors/userDoesNotExistError.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/managers/cryptoSymbolManager.ts#L18">src/managers/cryptoSymbolManager.ts:18</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> email: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="userdoesnotexisterror.html" class="tsd-signature-type">UserDoesNotExistError</a></h4>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The a map that maps a string representing a symbol (e.g. &quot;BTCUSDT&quot;) to the actual crypto symbol object.</p>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="email" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> email</h3>
-					<div class="tsd-signature tsd-kind-icon">email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/errors/userDoesNotExistError.ts#L8">src/errors/userDoesNotExistError.ts:8</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The email that is not in the system.</p>
-						</div>
-					</div>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="getcryptosymbol" class="tsd-anchor"></a>
+					<h3>get<wbr>Crypto<wbr>Symbol</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Crypto<wbr>Symbol<span class="tsd-signature-symbol">(</span>baseAssetName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, quoteAssetName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/managers/cryptoSymbolManager.ts#L46">src/managers/cryptoSymbolManager.ts:46</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Given a base asset&#39;s name and a quote asset&#39;s name, returns its corresponding CryptoSymbol object.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p><a href="https://github.com/typestack/class-validator#validation-errors">ValidationError</a>[] If either of the assets is not valid.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>baseAssetName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the base asset.</p>
+									</div>
+								</li>
+								<li>
+									<h5>quoteAssetName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the quote asset.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="message" class="tsd-anchor"></a>
-					<h3>message</h3>
-					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from Error.message</p>
-						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:974</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from Error.name</p>
-						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:973</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-					<a name="stack" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
-					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from Error.stack</p>
-						<p>Overrides Error.stack</p>
-						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:975</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
-					<a name="error" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> Error</h3>
-					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ErrorConstructor</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:984</li>
-						</ul>
-					</aside>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="populate" class="tsd-anchor"></a>
+					<h3>populate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">populate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/managers/cryptoSymbolManager.ts#L25">src/managers/cryptoSymbolManager.ts:25</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Populates the manager from db. Used internally.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -220,42 +238,36 @@
 					<li class=" tsd-kind-class">
 						<a href="cryptosymbolinfo.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Info</a>
 					</li>
-					<li class=" tsd-kind-class tsd-is-not-exported">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-is-not-exported">
 						<a href="cryptosymbolmanager.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Manager</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+								<a href="cryptosymbolmanager.html#_cryptosymbols" class="tsd-kind-icon">_crypto<wbr>Symbols</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
+								<a href="cryptosymbolmanager.html#cryptosymbols" class="tsd-kind-icon">crypto<wbr>Symbols</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="cryptosymbolmanager.html#getcryptosymbol" class="tsd-kind-icon">get<wbr>Crypto<wbr>Symbol</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="cryptosymbolmanager.html#populate" class="tsd-kind-icon">populate</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="user.html" class="tsd-kind-icon">User</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="useralreadyexistserror.html" class="tsd-kind-icon">User<wbr>Already<wbr>Exists<wbr>Error</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class">
+					<li class=" tsd-kind-class">
 						<a href="userdoesnotexisterror.html" class="tsd-kind-icon">User<wbr>Does<wbr>Not<wbr>Exist<wbr>Error</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="userdoesnotexisterror.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="userdoesnotexisterror.html#email" class="tsd-kind-icon">email</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="userdoesnotexisterror.html#message" class="tsd-kind-icon">message</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="userdoesnotexisterror.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="userdoesnotexisterror.html#stack" class="tsd-kind-icon">stack</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="userdoesnotexisterror.html#error" class="tsd-kind-icon">Error</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="userservice.html" class="tsd-kind-icon">User<wbr>Service</a>
 					</li>

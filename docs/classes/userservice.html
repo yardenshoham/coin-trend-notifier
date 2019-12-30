@@ -89,6 +89,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="userservice.html#login" class="tsd-kind-icon">login</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="userservice.html#setpreference" class="tsd-kind-icon">set<wbr>Preference</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="userservice.html#signup" class="tsd-kind-icon">sign<wbr>Up</a></li>
 							</ul>
 						</section>
@@ -107,7 +108,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/466cff1/src/services/userService.ts#L67">src/services/userService.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/services/userService.ts#L71">src/services/userService.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -138,6 +139,48 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="setpreference" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> set<wbr>Preference</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Preference<span class="tsd-signature-symbol">(</span>request<span class="tsd-signature-symbol">: </span><a href="../interfaces/setpreferencedto.html" class="tsd-signature-type">SetPreferenceDto</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/services/userService.ts#L98">src/services/userService.ts:98</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets a user&#39;s wanted probability threshold to be notified about a rise/fall of a symbol.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{RangeError} If the probability is not between -1 and 1.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p><a href="userdoesnotexisterror.html">UserDoesNotExistError</a> If the given user&#39;s id is not found.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p><a href="https://github.com/typestack/class-validator#validation-errors">ValidationError</a>[] If either of the assets is not valid.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>request: <a href="../interfaces/setpreferencedto.html" class="tsd-signature-type">SetPreferenceDto</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The request containing the user&#39;s id, the symbol information and the wanted probability threshold.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="signup" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> sign<wbr>Up</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -147,7 +190,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/466cff1/src/services/userService.ts#L26">src/services/userService.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/services/userService.ts#L30">src/services/userService.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -201,6 +244,9 @@
 					<li class=" tsd-kind-class">
 						<a href="cryptosymbolinfo.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Info</a>
 					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="cryptosymbolmanager.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Manager</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="user.html" class="tsd-kind-icon">User</a>
 					</li>
@@ -219,6 +265,9 @@
 								<a href="userservice.html#login" class="tsd-kind-icon">login</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="userservice.html#setpreference" class="tsd-kind-icon">set<wbr>Preference</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="userservice.html#signup" class="tsd-kind-icon">sign<wbr>Up</a>
 							</li>
 						</ul>
@@ -230,6 +279,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/registereduserdto.html" class="tsd-kind-icon">Registered<wbr>User<wbr>Dto</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/setpreferencedto.html" class="tsd-kind-icon">Set<wbr>Preference<wbr>Dto</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/userdto.html" class="tsd-kind-icon">User<wbr>Dto</a>
@@ -257,6 +309,9 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#cryptosymboldbpromise" class="tsd-kind-icon">crypto<wbr>Symbol<wbr>DbPromise</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#cryptosymbolmanagerpromise" class="tsd-kind-icon">crypto<wbr>Symbol<wbr>Manager<wbr>Promise</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="../globals.html#port" class="tsd-kind-icon">port</a>

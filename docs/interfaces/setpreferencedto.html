@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UserDoesNotExistError | coin-trend-notifier</title>
+	<title>SetPreferenceDto | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="userdoesnotexisterror.html">UserDoesNotExistError</a>
+					<a href="setpreferencedto.html">SetPreferenceDto</a>
 				</li>
 			</ul>
-			<h1>Class UserDoesNotExistError</h1>
+			<h1>Interface SetPreferenceDto</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Thrown when there is an attempt to find a user that has not registered.</p>
+						<p>Contains information for a preference addition/update.</p>
 					</div>
 				</div>
 			</section>
@@ -77,12 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">Error</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">UserDoesNotExistError</span>
-							</li>
-						</ul>
+						<span class="target">SetPreferenceDto</span>
 					</li>
 				</ul>
 			</section>
@@ -91,110 +86,78 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="userdoesnotexisterror.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="userdoesnotexisterror.html#email" class="tsd-kind-icon">email</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="userdoesnotexisterror.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="userdoesnotexisterror.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="userdoesnotexisterror.html#stack" class="tsd-kind-icon">stack</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="userdoesnotexisterror.html#error" class="tsd-kind-icon">Error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="setpreferencedto.html#baseassetname" class="tsd-kind-icon">base<wbr>Asset<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="setpreferencedto.html#probability" class="tsd-kind-icon">probability</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="setpreferencedto.html#quoteassetname" class="tsd-kind-icon">quote<wbr>Asset<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="setpreferencedto.html#userid" class="tsd-kind-icon">user<wbr>Id</a></li>
 							</ul>
 						</section>
 					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>User<wbr>Does<wbr>Not<wbr>Exist<wbr>Error<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="userdoesnotexisterror.html" class="tsd-signature-type">UserDoesNotExistError</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/errors/userDoesNotExistError.ts#L8">src/errors/userDoesNotExistError.ts:8</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> email: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="userdoesnotexisterror.html" class="tsd-signature-type">UserDoesNotExistError</a></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="email" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> email</h3>
-					<div class="tsd-signature tsd-kind-icon">email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="baseassetname" class="tsd-anchor"></a>
+					<h3>base<wbr>Asset<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">base<wbr>Asset<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d83db37/src/errors/userDoesNotExistError.ts#L8">src/errors/userDoesNotExistError.ts:8</a></li>
+							<li>Defined in src/interfaces/dtos/setPreferenceDto.ts:13</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The email that is not in the system.</p>
+							<p>The base asset&#39;s name of the preference.</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="message" class="tsd-anchor"></a>
-					<h3>message</h3>
-					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="probability" class="tsd-anchor"></a>
+					<h3>probability</h3>
+					<div class="tsd-signature tsd-kind-icon">probability<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Error.message</p>
 						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:974</li>
+							<li>Defined in src/interfaces/dtos/setPreferenceDto.ts:23</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The threshold for which to notify the user.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="quoteassetname" class="tsd-anchor"></a>
+					<h3>quote<wbr>Asset<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">quote<wbr>Asset<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Error.name</p>
 						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:973</li>
+							<li>Defined in src/interfaces/dtos/setPreferenceDto.ts:18</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The quote asset&#39;s name of the preference.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-					<a name="stack" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
-					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from Error.stack</p>
-						<p>Overrides Error.stack</p>
-						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:975</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
-					<a name="error" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> Error</h3>
-					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ErrorConstructor</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="userid" class="tsd-anchor"></a>
+					<h3>user<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:984</li>
+							<li>Defined in src/interfaces/dtos/setPreferenceDto.ts:8</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The id of the user that wants to set preference.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -209,76 +172,70 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="asset.html" class="tsd-kind-icon">Asset</a>
+						<a href="../classes/asset.html" class="tsd-kind-icon">Asset</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="chance.html" class="tsd-kind-icon">Chance</a>
+						<a href="../classes/chance.html" class="tsd-kind-icon">Chance</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="cryptosymbol.html" class="tsd-kind-icon">Crypto<wbr>Symbol</a>
+						<a href="../classes/cryptosymbol.html" class="tsd-kind-icon">Crypto<wbr>Symbol</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="cryptosymbolinfo.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Info</a>
+						<a href="../classes/cryptosymbolinfo.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-not-exported">
-						<a href="cryptosymbolmanager.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Manager</a>
+						<a href="../classes/cryptosymbolmanager.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Manager</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="user.html" class="tsd-kind-icon">User</a>
+						<a href="../classes/user.html" class="tsd-kind-icon">User</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="useralreadyexistserror.html" class="tsd-kind-icon">User<wbr>Already<wbr>Exists<wbr>Error</a>
+						<a href="../classes/useralreadyexistserror.html" class="tsd-kind-icon">User<wbr>Already<wbr>Exists<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/userdoesnotexisterror.html" class="tsd-kind-icon">User<wbr>Does<wbr>Not<wbr>Exist<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/userservice.html" class="tsd-kind-icon">User<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/wrongpassworderror.html" class="tsd-kind-icon">Wrong<wbr>Password<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="registereduserdto.html" class="tsd-kind-icon">Registered<wbr>User<wbr>Dto</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="userdoesnotexisterror.html" class="tsd-kind-icon">User<wbr>Does<wbr>Not<wbr>Exist<wbr>Error</a>
+					<li class="current tsd-kind-interface">
+						<a href="setpreferencedto.html" class="tsd-kind-icon">Set<wbr>Preference<wbr>Dto</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="userdoesnotexisterror.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="setpreferencedto.html#baseassetname" class="tsd-kind-icon">base<wbr>Asset<wbr>Name</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="userdoesnotexisterror.html#email" class="tsd-kind-icon">email</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="setpreferencedto.html#probability" class="tsd-kind-icon">probability</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="userdoesnotexisterror.html#message" class="tsd-kind-icon">message</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="setpreferencedto.html#quoteassetname" class="tsd-kind-icon">quote<wbr>Asset<wbr>Name</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="userdoesnotexisterror.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="userdoesnotexisterror.html#stack" class="tsd-kind-icon">stack</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="userdoesnotexisterror.html#error" class="tsd-kind-icon">Error</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="setpreferencedto.html#userid" class="tsd-kind-icon">user<wbr>Id</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="userservice.html" class="tsd-kind-icon">User<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="wrongpassworderror.html" class="tsd-kind-icon">Wrong<wbr>Password<wbr>Error</a>
+					<li class=" tsd-kind-interface">
+						<a href="userdto.html" class="tsd-kind-icon">User<wbr>Dto</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/registereduserdto.html" class="tsd-kind-icon">Registered<wbr>User<wbr>Dto</a>
+						<a href="userdtoin.html" class="tsd-kind-icon">User<wbr>Dto<wbr>In</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/setpreferencedto.html" class="tsd-kind-icon">Set<wbr>Preference<wbr>Dto</a>
+						<a href="userjwtpayload.html" class="tsd-kind-icon">User<wbr>Jwt<wbr>Payload</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/userdto.html" class="tsd-kind-icon">User<wbr>Dto</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/userdtoin.html" class="tsd-kind-icon">User<wbr>Dto<wbr>In</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/userjwtpayload.html" class="tsd-kind-icon">User<wbr>Jwt<wbr>Payload</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/userlogindto.html" class="tsd-kind-icon">User<wbr>Login<wbr>Dto</a>
+						<a href="userlogindto.html" class="tsd-kind-icon">User<wbr>Login<wbr>Dto</a>
 					</li>
 					<li class=" tsd-kind-event">
 						<a href="../globals.html#symbolevent" class="tsd-kind-icon">Symbol<wbr>Event</a>
