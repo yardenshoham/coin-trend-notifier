@@ -6,7 +6,7 @@ import {
   cryptoSymbolDbPromise
 } from "./../../models/cryptoSymbol";
 import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
-import cryptoSymbolManager from "./../../managers/cryptoSymbolManager";
+import cryptoSymbolManagerPromise from "./../../managers/cryptoSymbolManager";
 import chaiAsPromised from "chai-as-promised";
 chai.use(chaiAsPromised);
 
@@ -38,7 +38,8 @@ suite("CryptoSymbolManager", function() {
         cryptoSymbols.map(cryptoSymbol => cryptoSymbolDb.insert(cryptoSymbol))
       );
 
-      await cryptoSymbolManager.populate();
+      // populate called internally
+      const cryptoSymbolManager = await cryptoSymbolManagerPromise;
 
       expect(cryptoSymbolManager.cryptoSymbols.size).to.equal(
         baseAssets.length
@@ -65,7 +66,7 @@ suite("CryptoSymbolManager", function() {
       const baseAssetName = "ABC";
       const quoteAssetName = "DEF";
 
-      await cryptoSymbolManager.populate();
+      const cryptoSymbolManager = await cryptoSymbolManagerPromise;
       const cryptoSymbol = await cryptoSymbolManager.getCryptoSymbol(
         baseAssetName,
         quoteAssetName
@@ -108,7 +109,7 @@ suite("CryptoSymbolManager", function() {
         new CryptoSymbol(new CryptoSymbolInfo(baseAsset, quoteAsset))
       );
 
-      await cryptoSymbolManager.populate();
+      const cryptoSymbolManager = await cryptoSymbolManagerPromise;
       const cryptoSymbol = await cryptoSymbolManager.getCryptoSymbol(
         baseAssetName,
         quoteAssetName

@@ -20,7 +20,7 @@ class CryptoSymbolManager {
   }
 
   /**
-   * Populates the manager from db. Should be called at the start of the application.
+   * Populates the manager from db. Used internally.
    */
   public async populate() {
     this._cryptoSymbols = new Map<string, CryptoSymbol>();
@@ -84,5 +84,9 @@ class CryptoSymbolManager {
   }
 }
 
-const cryptoSymbolManager = new CryptoSymbolManager();
-export default cryptoSymbolManager;
+const cryptoSymbolManagerPromise = (async function() {
+  const cryptoSymbolManager = new CryptoSymbolManager();
+  await cryptoSymbolManager.populate();
+  return cryptoSymbolManager;
+})();
+export default cryptoSymbolManagerPromise;
