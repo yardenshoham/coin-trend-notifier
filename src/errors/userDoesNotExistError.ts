@@ -8,8 +8,9 @@ export default class UserDoesNotExistError extends Error {
   public readonly email?: string;
 
   constructor(email?: string) {
+    super();
     if (email) {
-      super(`The email ${email} is not registered.`);
+      this.message = `The email ${email} is not registered.`;
       this.email = email;
     }
     Object.setPrototypeOf(this, UserDoesNotExistError.prototype);
