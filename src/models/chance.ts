@@ -117,9 +117,10 @@ export class Chance extends EventEmitter {
   }
 
   /**
-   * Start automatically decreasing the probability. Must be called after [[constructor]].
+   * Zero the probability and start automatically decreasing the probability. Must be called after [[constructor]].
    */
   public start() {
+    this._probability = 0;
     this.decayPeriod = this._decayPeriod;
   }
 }
