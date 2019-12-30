@@ -40,7 +40,7 @@ export class CryptoSymbolInfo {
   @IsDefined()
   @Min(-1, { each: true })
   @Max(1, { each: true })
-  public preferences: Map<ObjectId, number>;
+  public preferences: Map<string, number>;
 
   /**
    * Constructs a new crypto symbol object.
@@ -51,14 +51,14 @@ export class CryptoSymbolInfo {
   constructor(
     baseAsset: Asset,
     quoteAsset: Asset,
-    preferences?: Map<ObjectId, number>
+    preferences?: Map<string, number>
   ) {
     this.baseAsset = baseAsset;
     this.quoteAsset = quoteAsset;
     if (preferences) {
       this.preferences = preferences;
     } else {
-      this.preferences = new Map<ObjectId, number>();
+      this.preferences = new Map<string, number>();
     }
   }
 

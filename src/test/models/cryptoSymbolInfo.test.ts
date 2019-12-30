@@ -20,8 +20,8 @@ suite("CryptoSymbolInfo", function(): void {
 
     it("should be optionally given preferences and assign them", function(): void {
       const preferences = new Map([
-        [new ObjectId(), 0.4],
-        [new ObjectId(), -0.6]
+        [new ObjectId().toHexString(), 0.4],
+        [new ObjectId().toHexString(), -0.6]
       ]);
 
       const cryptoSymbolInfo = new CryptoSymbolInfo(
