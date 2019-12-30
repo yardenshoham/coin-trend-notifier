@@ -1,5 +1,5 @@
 import { suite, describe, it } from "mocha";
-import { expect } from "chai";
+import chai, { expect } from "chai";
 import { Asset, assetDbPromise } from "../../models/asset";
 import {
   CryptoSymbol,
@@ -7,6 +7,8 @@ import {
 } from "./../../models/cryptoSymbol";
 import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
 import cryptoSymbolManager from "./../../managers/cryptoSymbolManager";
+import chaiAsPromised from "chai-as-promised";
+chai.use(chaiAsPromised);
 
 suite("CryptoSymbolManager", function() {
   describe("populate()", function() {
@@ -54,6 +56,74 @@ suite("CryptoSymbolManager", function() {
       }
 
       await cryptoSymbolDb.c.deleteMany({});
+      return assetDb.c.deleteMany({});
+    });
+  });
+
+  describe("getCryptoSymbol()", function() {
+    it("should return a crypto symbol given its corresponding base and quote asset when the assets do not exist and save the assets", async function() {
+      const baseAssetName = "ABC";
+      const quoteAssetName = "DEF";
+
+      await cryptoSymbolManager.populate();
+      const cryptoSymbol = await cryptoSymbolManager.getCryptoSymbol(
+        baseAssetName,
+        quoteAssetName
+      );
+
+      expect(cryptoSymbol.cryptoSymbolInfo.baseAsset).to.have.property(
+        "name",
+        baseAssetName
+      );
+      expect(cryptoSymbol.cryptoSymbolInfo.quoteAsset).to.have.property(
+        "name",
+        quoteAssetName
+      );
+
+      const assetDb = await assetDbPromise;
+
+      await Promise.all([
+        expect(assetDb.findOne({ name: baseAssetName })).to.be.fulfilled,
+        expect(assetDb.findOne({ name: quoteAssetName })).to.be.fulfilled
+      ]);
+
+      (await cryptoSymbolDbPromise).c.deleteMany({});
+      return assetDb.c.deleteMany({});
+    });
+
+    it("should return a crypto symbol given its corresponding base and quote asset when the crypto symbol exists", async function() {
+      const baseAssetName = "ABC";
+      const quoteAssetName = "DEF";
+
+      const assetDb = await assetDbPromise;
+      const baseAsset = new Asset(baseAssetName);
+      const quoteAsset = new Asset(quoteAssetName);
+      await Promise.all([
+        assetDb.insert(baseAsset),
+        assetDb.insert(quoteAsset)
+      ]);
+
+      const cryptoSymbolDb = await cryptoSymbolDbPromise;
+      await cryptoSymbolDb.insert(
+        new CryptoSymbol(new CryptoSymbolInfo(baseAsset, quoteAsset))
+      );
+
+      await cryptoSymbolManager.populate();
+      const cryptoSymbol = await cryptoSymbolManager.getCryptoSymbol(
+        baseAssetName,
+        quoteAssetName
+      );
+
+      expect(cryptoSymbol.cryptoSymbolInfo.baseAsset).to.have.property(
+        "name",
+        baseAssetName
+      );
+      expect(cryptoSymbol.cryptoSymbolInfo.quoteAsset).to.have.property(
+        "name",
+        quoteAssetName
+      );
+
+      (await cryptoSymbolDbPromise).c.deleteMany({});
       return assetDb.c.deleteMany({});
     });
   });
