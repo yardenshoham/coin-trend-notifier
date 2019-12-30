@@ -5,11 +5,13 @@ export default class UserDoesNotExistError extends Error {
   /**
    * The email that is not in the system.
    */
-  public readonly email: string;
+  public readonly email?: string;
 
-  constructor(email: string) {
-    super(`The email ${email} is not registered.`);
-    this.email = email;
+  constructor(email?: string) {
+    if (email) {
+      super(`The email ${email} is not registered.`);
+      this.email = email;
+    }
     Object.setPrototypeOf(this, UserDoesNotExistError.prototype);
   }
 }
