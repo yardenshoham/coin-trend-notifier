@@ -2,7 +2,8 @@
   "require": [
     "ts-node/register",
     "source-map-support/register",
-    "dotenv/config"
+    "dotenv/config",
+    "reflect-metadata"
   ],
   "ui": "tdd",
   "spec": "src/test/**/*.test.ts",
