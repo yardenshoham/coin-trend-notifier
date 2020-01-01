@@ -10,6 +10,6 @@ import config from "config";
  */
 const port = config.has("port") ? config.get("port") : 3000;
 
-app.listen(port, () => {
+export default app.listen(port, () => {
   console.log(`App started on port: ${port}`);
 });

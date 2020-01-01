@@ -5,6 +5,7 @@
   "main": "./index.ts",
   "scripts": {
     "start": "ts-node ./src/index.ts",
+    "watch": "ts-node-dev src/index.ts",
     "doc": "typedoc src --exclude src/test --mode file",
     "test": "mocha",
     "precoverage": "tsc",
@@ -25,7 +26,6 @@
   },
   "homepage": "https://github.com/YardenShoham/coin-trend-notifier#readme",
   "dependencies": {
-    "@types/body-parser": "^1.17.1",
     "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
     "class-transformer": "^0.2.3",
@@ -33,7 +33,6 @@
     "config": "^3.2.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "http-status-code": "^2.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "mongodb": "^3.4.1",
@@ -44,6 +43,7 @@
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^0.1.3",
     "@types/bcrypt": "^3.0.0",
+    "@types/body-parser": "^1.17.1",
     "@types/chai": "^4.2.6",
     "@types/chai-as-promised": "^7.1.2",
     "@types/config": "0.0.36",
@@ -54,13 +54,17 @@
     "@types/mocha": "^5.2.7",
     "@types/mongoose": "^5.5.34",
     "@types/node": "^12.12.14",
+    "@types/supertest": "^2.0.8",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
+    "http-status-codes": "^1.4.0",
     "lolex": "^5.1.1",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
     "source-map-support": "^0.5.16",
+    "supertest": "^4.0.2",
     "ts-node": "^8.5.4",
+    "ts-node-dev": "^1.0.0-pre.44",
     "typedoc": "^0.15.3",
     "typescript": "^3.7.3"
   }
