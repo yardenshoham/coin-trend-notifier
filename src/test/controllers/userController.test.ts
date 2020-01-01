@@ -5,7 +5,10 @@ import request from "supertest";
 import UserDtoIn from "./../../interfaces/dtos/userDtoIn";
 import { expect } from "chai";
 import { ObjectId } from "mongodb";
-import { OK, UNPROCESSABLE_ENTITY } from "http-status-codes";
+import { OK, UNPROCESSABLE_ENTITY, UNAUTHORIZED } from "http-status-codes";
+import jwt from "jsonwebtoken";
+import config from "config";
+import UserLoginDto from "./../../interfaces/dtos/userLoginDto";
 
 const route = "/api/users";
 suite(`${route} (UserController)`, function() {
@@ -86,6 +89,77 @@ suite(`${route} (UserController)`, function() {
 
       const userDb = await userDbPromise;
       expect(await userDb.count({})).to.equal(0);
+    });
+  });
+
+  describe("POST /login (login())", function() {
+    it("should return the jwt for the user and a 200 OK status", async function() {
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444"
+      };
+
+      // sign up
+      let response = await request(server)
+        .post(route)
+        .send(user);
+
+      const id = response.body._id;
+
+      const userLogin: UserLoginDto = {
+        email: user.email,
+        password: user.password
+      };
+
+      response = await request(server)
+        .post(`${route}/login`)
+        .send(userLogin);
+
+      expect(response.status).to.equal(OK);
+      expect(response.body).to.have.property("jwt");
+      expect(
+        jwt.verify(response.body.jwt, config.get("jwtPrivateKey"))
+      ).to.have.property("_id", id);
+    });
+
+    it("should return an error message and a 401 Unauthorized status when given a bad email or password", async function() {
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444"
+      };
+
+      // sign up
+      await request(server)
+        .post(route)
+        .send(user);
+
+      let userLogin: UserLoginDto = {
+        email: "bad email",
+        password: user.password
+      };
+
+      let response = await request(server)
+        .post(`${route}/login`)
+        .send(userLogin);
+
+      expect(response.status).to.equal(UNAUTHORIZED);
+      expect(response.body).to.have.property("error");
+
+      userLogin = {
+        email: user.email,
+        password: "bad password"
+      };
+
+      response = await request(server)
+        .post(`${route}/login`)
+        .send(userLogin);
+
+      expect(response.status).to.equal(UNAUTHORIZED);
+      expect(response.body).to.have.property("error");
     });
   });
 });

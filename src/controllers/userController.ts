@@ -3,8 +3,9 @@ import UserDtoIn from "../interfaces/dtos/userDtoIn";
 import UserService from "./../services/userService";
 import { Response } from "express";
 import UserAlreadyExistsError from "./../errors/userAlreadyExistsError";
-import { UNPROCESSABLE_ENTITY } from "http-status-codes";
+import { UNPROCESSABLE_ENTITY, UNAUTHORIZED } from "http-status-codes";
 import { ValidationError } from "class-validator";
+import UserLoginDto from "../interfaces/dtos/userLoginDto";
 
 /**
  * Controller for users.
@@ -35,6 +36,27 @@ export default class UserController {
         errorToReturn = { errors: error };
       }
       return response.status(UNPROCESSABLE_ENTITY).send(errorToReturn);
+    }
+  }
+
+  /**
+   * Logins a user to the system.
+   * @param userCredentials The credentials (email and password) of the user that wants to login.
+   * @returns One of the following:
+   *  - A { jwt: string } object containing the [json web token](https://en.wikipedia.org/wiki/JSON_Web_Token) with the payload [[UserJwtPayload]], used for authentication of all requests. Status: OK.
+   *  - A { error: string } object if the user is not registered or an incorrect password was provided. Status: UNAUTHORIZED.
+   */
+  @Post("/login")
+  public async login(
+    @Body() userCredentials: UserLoginDto,
+    @Res() response: Response
+  ): Promise<Response> {
+    try {
+      return response.send({ jwt: await UserService.login(userCredentials) });
+    } catch (error) {
+      return response
+        .status(UNAUTHORIZED)
+        .send({ error: "Invalid email or password." });
     }
   }
 }

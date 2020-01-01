@@ -88,6 +88,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="usercontroller.html#login" class="tsd-kind-icon">login</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="usercontroller.html#signup" class="tsd-kind-icon">sign<wbr>Up</a></li>
 							</ul>
 						</section>
@@ -96,6 +97,45 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="login" class="tsd-anchor"></a>
+					<h3>login</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">login<span class="tsd-signature-symbol">(</span>userCredentials<span class="tsd-signature-symbol">: </span><a href="../interfaces/userlogindto.html" class="tsd-signature-type">UserLoginDto</a>, response<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/f3c9c6b/src/controllers/userController.ts#L50">src/controllers/userController.ts:50</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Logins a user to the system.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>userCredentials: <a href="../interfaces/userlogindto.html" class="tsd-signature-type">UserLoginDto</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The credentials (email and password) of the user that wants to login.</p>
+									</div>
+								</li>
+								<li>
+									<h5>response: <span class="tsd-signature-type">Response</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>One of the following:</p>
+							<ul>
+								<li>A { jwt: string } object containing the <a href="https://en.wikipedia.org/wiki/JSON_Web_Token">json web token</a> with the payload <a href="../interfaces/userjwtpayload.html">UserJwtPayload</a>, used for authentication of all requests. Status: OK.</li>
+								<li>A { error: string } object if the user is not registered or an incorrect password was provided. Status: UNAUTHORIZED.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="signup" class="tsd-anchor"></a>
 					<h3>sign<wbr>Up</h3>
@@ -106,7 +146,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/2ddcfc4/src/controllers/userController.ts#L23">src/controllers/userController.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/f3c9c6b/src/controllers/userController.ts#L24">src/controllers/userController.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -118,6 +158,9 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>userProperties: <a href="../interfaces/userdtoin.html" class="tsd-signature-type">UserDtoIn</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The request body.</p>
+									</div>
 								</li>
 								<li>
 									<h5>response: <span class="tsd-signature-type">Response</span></h5>
@@ -174,6 +217,9 @@
 					<li class="current tsd-kind-class">
 						<a href="usercontroller.html" class="tsd-kind-icon">User<wbr>Controller</a>
 						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="usercontroller.html#login" class="tsd-kind-icon">login</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="usercontroller.html#signup" class="tsd-kind-icon">sign<wbr>Up</a>
 							</li>
