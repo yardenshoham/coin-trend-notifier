@@ -23,10 +23,10 @@ export default class UserController {
   @Post()
   public async signUp(
     @Body() userProperties: UserDtoIn,
-    @Res() response: Response
+    @Res() res: Response
   ): Promise<Response> {
     try {
-      return response.send(await UserService.signUp(userProperties));
+      return res.send(await UserService.signUp(userProperties));
     } catch (error) {
       let errorToReturn: { error: string } | { errors: ValidationError[] };
       if (error instanceof UserAlreadyExistsError) {
@@ -35,7 +35,7 @@ export default class UserController {
         // ValidationErrors
         errorToReturn = { errors: error };
       }
-      return response.status(UNPROCESSABLE_ENTITY).send(errorToReturn);
+      return res.status(UNPROCESSABLE_ENTITY).send(errorToReturn);
     }
   }
 
@@ -49,12 +49,12 @@ export default class UserController {
   @Post("/login")
   public async login(
     @Body() userCredentials: UserLoginDto,
-    @Res() response: Response
+    @Res() res: Response
   ): Promise<Response> {
     try {
-      return response.send({ jwt: await UserService.login(userCredentials) });
+      return res.send({ jwt: await UserService.login(userCredentials) });
     } catch (error) {
-      return response
+      return res
         .status(UNAUTHORIZED)
         .send({ error: "Invalid email or password." });
     }
