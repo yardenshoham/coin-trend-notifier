@@ -1,7 +1,6 @@
 import { suite, describe, it } from "mocha";
 import { userDbPromise } from "../../models/user";
 import UserJwtPayload from "./../../interfaces/userJwtPayload";
-import SetPreferenceDto from "./../../interfaces/dtos/setPreferenceDto";
 import cryptoSymbolManagerPromise from "./../../managers/cryptoSymbolManager";
 import { assetDbPromise } from "../../models/asset";
 import { cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
@@ -42,14 +41,13 @@ suite("PreferenceService", function() {
       const probability = -0.1;
       const baseAssetName = "ABC";
       const quoteAssetName = "DEF";
-      const request: SetPreferenceDto = {
-        userId,
-        probability,
-        baseAssetName,
-        quoteAssetName
-      };
 
-      await PreferenceService.setPreference(request);
+      await PreferenceService.setPreference(
+        userId,
+        baseAssetName,
+        quoteAssetName,
+        probability
+      );
 
       const cryptoSymbol = await (
         await cryptoSymbolManagerPromise
@@ -64,51 +62,57 @@ suite("PreferenceService", function() {
     });
 
     it("should throw a UserDoesNotExistError when provided a bad id", async function() {
-      let request: SetPreferenceDto = {
-        userId: "I don't exist",
-        baseAssetName: "ABC",
-        quoteAssetName: "DEF",
-        probability: 0.1
-      };
+      let userId = "I don't exist";
+      let baseAssetName = "ABC";
+      let quoteAssetName = "DEF";
+      let probability = 0.1;
 
-      await expect(PreferenceService.setPreference(request)).to.be.rejectedWith(
-        UserDoesNotExistError
-      );
+      await expect(
+        PreferenceService.setPreference(
+          userId,
+          baseAssetName,
+          quoteAssetName,
+          probability
+        )
+      ).to.be.rejectedWith(UserDoesNotExistError);
 
       // valid id but empty db
-      request = {
-        userId: "5d5072c1d19ed00f84e4c35d",
-        baseAssetName: "ABC",
-        quoteAssetName: "DEF",
-        probability: 0.1
-      };
+      userId = "5d5072c1d19ed00f84e4c35d";
 
       return expect(
-        PreferenceService.setPreference(request)
+        PreferenceService.setPreference(
+          userId,
+          baseAssetName,
+          quoteAssetName,
+          probability
+        )
       ).to.be.rejectedWith(UserDoesNotExistError);
     });
 
     it("should throw a RangeError given a probability that's not between -1 and 1", async function() {
-      let request: SetPreferenceDto = {
-        userId: "5d5072c1d19ed00f84e4c35d",
-        baseAssetName: "ABC",
-        quoteAssetName: "DEF",
-        probability: 2
-      };
+      let userId = "5d5072c1d19ed00f84e4c35d";
+      let baseAssetName = "ABC";
+      let quoteAssetName = "DEF";
+      let probability = 2;
 
-      await expect(PreferenceService.setPreference(request)).to.be.rejectedWith(
-        RangeError
-      );
+      await expect(
+        PreferenceService.setPreference(
+          userId,
+          baseAssetName,
+          quoteAssetName,
+          probability
+        )
+      ).to.be.rejectedWith(RangeError);
 
-      request = {
-        userId: "5d5072c1d19ed00f84e4c35d",
-        baseAssetName: "ABC",
-        quoteAssetName: "DEF",
-        probability: -2
-      };
+      probability = -2;
 
       return expect(
-        PreferenceService.setPreference(request)
+        PreferenceService.setPreference(
+          userId,
+          baseAssetName,
+          quoteAssetName,
+          probability
+        )
       ).to.be.rejectedWith(RangeError);
     });
   });
