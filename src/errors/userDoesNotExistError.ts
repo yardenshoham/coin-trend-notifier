@@ -8,7 +8,7 @@ export default class UserDoesNotExistError extends Error {
   public readonly email?: string;
 
   constructor(email?: string) {
-    super();
+    super("The user hasn't registered.");
     if (email) {
       this.message = `The email ${email} is not registered.`;
       this.email = email;
