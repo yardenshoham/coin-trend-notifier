@@ -123,4 +123,14 @@ export class Chance extends EventEmitter {
     this._probability = 0;
     this.decayPeriod = this._decayPeriod;
   }
+
+  /**
+   * Opposite of [[start]]. Stops all work on this chance object, used for testing only.
+   */
+  public stop() {
+    this.removeAllListeners();
+    if (this._decayPeriodClearCode) {
+      clearInterval(this._decayPeriodClearCode);
+    }
+  }
 }

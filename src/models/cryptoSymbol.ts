@@ -77,6 +77,13 @@ export class CryptoSymbol extends EventEmitter {
       }
     );
   }
+
+  /**
+   * Kill event handling, used for testing only.
+   */
+  public stop() {
+    this.chance.stop();
+  }
 }
 
 /**

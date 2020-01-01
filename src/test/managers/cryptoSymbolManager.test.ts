@@ -88,7 +88,10 @@ suite("CryptoSymbolManager", function() {
         expect(assetDb.findOne({ name: quoteAssetName })).to.be.fulfilled
       ]);
 
-      (await cryptoSymbolDbPromise).c.deleteMany({});
+      const cryptoSymbolDb = await cryptoSymbolDbPromise;
+      expect(await cryptoSymbolDb.count()).to.equal(1);
+
+      await cryptoSymbolDb.c.deleteMany({});
       return assetDb.c.deleteMany({});
     });
 
@@ -105,15 +108,26 @@ suite("CryptoSymbolManager", function() {
       ]);
 
       const cryptoSymbolDb = await cryptoSymbolDbPromise;
+
+      expect(await cryptoSymbolDb.count()).to.equal(0);
+
       await cryptoSymbolDb.insert(
         new CryptoSymbol(new CryptoSymbolInfo(baseAsset, quoteAsset))
       );
 
+      expect(await cryptoSymbolDb.count()).to.equal(1);
+
       const cryptoSymbolManager = await cryptoSymbolManagerPromise;
+
+      // let the manager know of external db changes
+      await cryptoSymbolManager.populate();
+
       const cryptoSymbol = await cryptoSymbolManager.getCryptoSymbol(
         baseAssetName,
         quoteAssetName
       );
+
+      expect(await cryptoSymbolDb.count()).to.equal(1);
 
       expect(cryptoSymbol.cryptoSymbolInfo.baseAsset).to.have.property(
         "name",

@@ -23,6 +23,13 @@ class CryptoSymbolManager {
    * Populates the manager from db. Used internally.
    */
   public async populate() {
+    // remove previous entries
+    if (this._cryptoSymbols) {
+      for (const [, cryptoSymbol] of this._cryptoSymbols.entries()) {
+        cryptoSymbol.stop();
+      }
+    }
+
     this._cryptoSymbols = new Map<string, CryptoSymbol>();
     const cryptoSymbolDb = await cryptoSymbolDbPromise;
 

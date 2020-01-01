@@ -42,6 +42,8 @@ suite("PreferenceService", function() {
       const baseAssetName = "ABC";
       const quoteAssetName = "DEF";
 
+      const cryptoSymbolManager = await cryptoSymbolManagerPromise;
+      await cryptoSymbolManager.populate();
       await PreferenceService.setPreference(
         userId,
         baseAssetName,
@@ -49,9 +51,10 @@ suite("PreferenceService", function() {
         probability
       );
 
-      const cryptoSymbol = await (
-        await cryptoSymbolManagerPromise
-      ).getCryptoSymbol(baseAssetName, quoteAssetName);
+      const cryptoSymbol = await cryptoSymbolManager.getCryptoSymbol(
+        baseAssetName,
+        quoteAssetName
+      );
 
       expect(cryptoSymbol.cryptoSymbolInfo.preferences.get(userId)).to.equal(
         probability
