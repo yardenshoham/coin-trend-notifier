@@ -14,6 +14,10 @@ export default class UserController {
   /**
    * Registers a user the system.
    * @param userDetails The request body.
+   * @returns One of the following:
+   *  - A [[RegisteredUser]] object if registration went well. Status: OK.
+   *  - A { error: string } object if the user already exists. Status: UNPROCESSABLE_ENTITY.
+   *  - A [ValidationError](https://github.com/typestack/class-validator#validation-errors)[] if one or more properties were not valid. Status: UNPROCESSABLE_ENTITY.
    */
   @Post()
   public async signUp(

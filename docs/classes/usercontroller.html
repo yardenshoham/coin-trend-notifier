@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UserDto | coin-trend-notifier</title>
+	<title>UserController | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="userdto.html">UserDto</a>
+					<a href="usercontroller.html">UserController</a>
 				</li>
 			</ul>
-			<h1>Interface UserDto</h1>
+			<h1>Class UserController</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A general user data transfer object. Should be extended, not used on its own.</p>
+						<p>Controller for users.</p>
 					</div>
 				</div>
 			</section>
@@ -77,15 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">UserDto</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="userdtoin.html" class="tsd-signature-type">UserDtoIn</a>
-							</li>
-							<li>
-								<a href="registereduserdto.html" class="tsd-signature-type">RegisteredUserDto</a>
-							</li>
-						</ul>
+						<span class="target">UserController</span>
 					</li>
 				</ul>
 			</section>
@@ -94,62 +86,52 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#email" class="tsd-kind-icon">email</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#phonenumber" class="tsd-kind-icon">phone<wbr>Number</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#username" class="tsd-kind-icon">username</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="usercontroller.html#signup" class="tsd-kind-icon">sign<wbr>Up</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="email" class="tsd-anchor"></a>
-					<h3>email</h3>
-					<div class="tsd-signature tsd-kind-icon">email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/2ddcfc4/src/interfaces/dtos/userDto.ts#L8">src/interfaces/dtos/userDto.ts:8</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The user&#39;s email address.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="phonenumber" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> phone<wbr>Number</h3>
-					<div class="tsd-signature tsd-kind-icon">phone<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/2ddcfc4/src/interfaces/dtos/userDto.ts#L18">src/interfaces/dtos/userDto.ts:18</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The user&#39;s phone number. Includes international prefix (e.g. +41, +972).</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="username" class="tsd-anchor"></a>
-					<h3>username</h3>
-					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/2ddcfc4/src/interfaces/dtos/userDto.ts#L13">src/interfaces/dtos/userDto.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The user&#39;s username.</p>
-						</div>
-					</div>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="signup" class="tsd-anchor"></a>
+					<h3>sign<wbr>Up</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">sign<wbr>Up<span class="tsd-signature-symbol">(</span>userProperties<span class="tsd-signature-symbol">: </span><a href="../interfaces/userdtoin.html" class="tsd-signature-type">UserDtoIn</a>, response<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/2ddcfc4/src/controllers/userController.ts#L23">src/controllers/userController.ts:23</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Registers a user the system.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>userProperties: <a href="../interfaces/userdtoin.html" class="tsd-signature-type">UserDtoIn</a></h5>
+								</li>
+								<li>
+									<h5>response: <span class="tsd-signature-type">Response</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>One of the following:</p>
+							<ul>
+								<li>A [[RegisteredUser]] object if registration went well. Status: OK.</li>
+								<li>A { error: string } object if the user already exists. Status: UNPROCESSABLE_ENTITY.</li>
+								<li>A <a href="https://github.com/typestack/class-validator#validation-errors">ValidationError</a>[] if one or more properties were not valid. Status: UNPROCESSABLE_ENTITY.</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -164,73 +146,67 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="../classes/asset.html" class="tsd-kind-icon">Asset</a>
+						<a href="asset.html" class="tsd-kind-icon">Asset</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="../classes/chance.html" class="tsd-kind-icon">Chance</a>
+						<a href="chance.html" class="tsd-kind-icon">Chance</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="../classes/cryptosymbol.html" class="tsd-kind-icon">Crypto<wbr>Symbol</a>
+						<a href="cryptosymbol.html" class="tsd-kind-icon">Crypto<wbr>Symbol</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="../classes/cryptosymbolinfo.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Info</a>
+						<a href="cryptosymbolinfo.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-not-exported">
-						<a href="../classes/cryptosymbolmanager.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Manager</a>
+						<a href="cryptosymbolmanager.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Manager</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="../classes/preferenceservice.html" class="tsd-kind-icon">Preference<wbr>Service</a>
+						<a href="preferenceservice.html" class="tsd-kind-icon">Preference<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="../classes/user.html" class="tsd-kind-icon">User</a>
+						<a href="user.html" class="tsd-kind-icon">User</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="../classes/useralreadyexistserror.html" class="tsd-kind-icon">User<wbr>Already<wbr>Exists<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/usercontroller.html" class="tsd-kind-icon">User<wbr>Controller</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/userdoesnotexisterror.html" class="tsd-kind-icon">User<wbr>Does<wbr>Not<wbr>Exist<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/userservice.html" class="tsd-kind-icon">User<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/wrongpassworderror.html" class="tsd-kind-icon">Wrong<wbr>Password<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="registereduserdto.html" class="tsd-kind-icon">Registered<wbr>User<wbr>Dto</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="setpreferencedto.html" class="tsd-kind-icon">Set<wbr>Preference<wbr>Dto</a>
+						<a href="useralreadyexistserror.html" class="tsd-kind-icon">User<wbr>Already<wbr>Exists<wbr>Error</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="userdto.html" class="tsd-kind-icon">User<wbr>Dto</a>
+					<li class="current tsd-kind-class">
+						<a href="usercontroller.html" class="tsd-kind-icon">User<wbr>Controller</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userdto.html#email" class="tsd-kind-icon">email</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userdto.html#phonenumber" class="tsd-kind-icon">phone<wbr>Number</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userdto.html#username" class="tsd-kind-icon">username</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="usercontroller.html#signup" class="tsd-kind-icon">sign<wbr>Up</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface">
-						<a href="userdtoin.html" class="tsd-kind-icon">User<wbr>Dto<wbr>In</a>
+					<li class=" tsd-kind-class">
+						<a href="userdoesnotexisterror.html" class="tsd-kind-icon">User<wbr>Does<wbr>Not<wbr>Exist<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="userservice.html" class="tsd-kind-icon">User<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="wrongpassworderror.html" class="tsd-kind-icon">Wrong<wbr>Password<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="userjwtpayload.html" class="tsd-kind-icon">User<wbr>Jwt<wbr>Payload</a>
+						<a href="../interfaces/registereduserdto.html" class="tsd-kind-icon">Registered<wbr>User<wbr>Dto</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="userlogindto.html" class="tsd-kind-icon">User<wbr>Login<wbr>Dto</a>
+						<a href="../interfaces/setpreferencedto.html" class="tsd-kind-icon">Set<wbr>Preference<wbr>Dto</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/userdto.html" class="tsd-kind-icon">User<wbr>Dto</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/userdtoin.html" class="tsd-kind-icon">User<wbr>Dto<wbr>In</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/userjwtpayload.html" class="tsd-kind-icon">User<wbr>Jwt<wbr>Payload</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/userlogindto.html" class="tsd-kind-icon">User<wbr>Login<wbr>Dto</a>
 					</li>
 					<li class=" tsd-kind-event">
 						<a href="../globals.html#symbolevent" class="tsd-kind-icon">Symbol<wbr>Event</a>
