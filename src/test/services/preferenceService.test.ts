@@ -51,6 +51,9 @@ suite("PreferenceService", function() {
         probability
       );
 
+      const cryptoSymbolDb = await cryptoSymbolDbPromise;
+      expect(await cryptoSymbolDb.count()).to.equal(1);
+
       const cryptoSymbol = await cryptoSymbolManager.getCryptoSymbol(
         baseAssetName,
         quoteAssetName
@@ -60,7 +63,7 @@ suite("PreferenceService", function() {
         probability
       );
 
-      await (await cryptoSymbolDbPromise).c.deleteMany({});
+      await cryptoSymbolDb.c.deleteMany({});
       return (await assetDbPromise).c.deleteMany({});
     });
 
