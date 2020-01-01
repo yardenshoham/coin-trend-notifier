@@ -1,12 +1,7 @@
 /**
- * Contains information for a preference addition/update.
+ * A data transfer object that contains information for a preference addition/update.
  */
 export default interface SetPreferenceDto {
-  /**
-   * The id of the user that wants to set preference.
-   */
-  userId: string;
-
   /**
    * The base asset's name of the preference.
    */

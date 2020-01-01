@@ -5,7 +5,7 @@
   "main": "./index.ts",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "watch": "ts-node-dev src/index.ts",
+    "watch": "ts-node-dev --no-notify src/index.ts",
     "doc": "typedoc src --exclude src/test --mode file",
     "test": "mocha",
     "precoverage": "tsc",
