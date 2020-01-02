@@ -85,7 +85,7 @@ class CryptoSymbolManager {
     );
     cryptoSymbol.start();
 
-    (await cryptoSymbolDbPromise).insert(cryptoSymbol);
+    await (await cryptoSymbolDbPromise).insert(cryptoSymbol);
     this._cryptoSymbols.set(assetString, cryptoSymbol);
     return cryptoSymbol;
   }
