@@ -5,7 +5,6 @@
   "main": "./index.ts",
   "scripts": {
     "build": "tsc",
-    "postinstall": "npm run build",
     "start": "node dist/index.js",
     "start:dev": "ts-node ./src/index.ts",
     "watch": "ts-node-dev --no-notify src/index.ts",
