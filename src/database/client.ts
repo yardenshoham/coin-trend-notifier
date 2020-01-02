@@ -8,3 +8,7 @@ export const clientPromise = MongoClient.connect(config.get("dbUrl"), {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+
+clientPromise.then(() => {
+  console.log("Connected to database.");
+});
