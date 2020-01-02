@@ -28,8 +28,7 @@ app.use(
       ].join(" ");
     },
     {
-      skip: req =>
-        req.headers["user-agent"].match(/node-superagent/).length != 0
+      skip: req => req.headers["user-agent"].includes("node-superagent")
     }
   )
 );
