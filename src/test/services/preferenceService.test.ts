@@ -15,8 +15,9 @@ chai.use(chaiAsPromised);
 
 suite("PreferenceService", function() {
   this.afterEach(async function() {
-    const userDb = await userDbPromise;
-    return userDb.c.deleteMany({});
+    await (await userDbPromise).c.deleteMany({});
+    await (await cryptoSymbolDbPromise).c.deleteMany({});
+    return (await assetDbPromise).c.deleteMany({});
   });
 
   describe("setPreference()", function() {
@@ -62,9 +63,6 @@ suite("PreferenceService", function() {
       expect(cryptoSymbol.cryptoSymbolInfo.preferences.get(userId)).to.equal(
         probability
       );
-
-      await cryptoSymbolDb.c.deleteMany({});
-      return (await assetDbPromise).c.deleteMany({});
     });
 
     it("should throw a UserDoesNotExistError when provided a bad id", async function() {
@@ -120,6 +118,118 @@ suite("PreferenceService", function() {
           probability
         )
       ).to.be.rejectedWith(RangeError);
+    });
+  });
+
+  describe("deletePreference()", function() {
+    it("should delete a preference when one was added", async function() {
+      const cryptoSymbolManager = await cryptoSymbolManagerPromise;
+      await cryptoSymbolManager.populate();
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444"
+      };
+
+      const registeredUser = await UserService.signUp(user);
+
+      const userJwt = await UserService.login({
+        email: registeredUser.email,
+        password: user.password
+      });
+
+      const payload: UserJwtPayload = jwt.decode(userJwt) as any;
+
+      const userId: string = payload._id;
+      const probability = -0.1;
+      const baseAssetName = "ABC";
+      const quoteAssetName = "DEF";
+
+      await PreferenceService.setPreference(
+        userId,
+        baseAssetName,
+        quoteAssetName,
+        probability
+      );
+
+      const cryptoSymbolDb = await cryptoSymbolDbPromise;
+      expect(await cryptoSymbolDb.count()).to.equal(1);
+
+      await PreferenceService.deletePreference(
+        userId,
+        baseAssetName,
+        quoteAssetName
+      );
+
+      const cryptoSymbol = await cryptoSymbolManager.getCryptoSymbol(
+        baseAssetName,
+        quoteAssetName
+      );
+
+      expect(cryptoSymbol.cryptoSymbolInfo.preferences.has(userId)).to.be.false;
+    });
+
+    it("should delete a preference when one was not added (do nothing)", async function() {
+      const cryptoSymbolManager = await cryptoSymbolManagerPromise;
+      await cryptoSymbolManager.populate();
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444"
+      };
+
+      const registeredUser = await UserService.signUp(user);
+
+      const userJwt = await UserService.login({
+        email: registeredUser.email,
+        password: user.password
+      });
+
+      const payload: UserJwtPayload = jwt.decode(userJwt) as any;
+
+      const userId: string = payload._id;
+      const baseAssetName = "ABC";
+      const quoteAssetName = "DEF";
+
+      await PreferenceService.deletePreference(
+        userId,
+        baseAssetName,
+        quoteAssetName
+      );
+
+      const cryptoSymbol = await cryptoSymbolManager.getCryptoSymbol(
+        baseAssetName,
+        quoteAssetName
+      );
+
+      expect(cryptoSymbol.cryptoSymbolInfo.preferences.has(userId)).to.be.false;
+    });
+
+    it("should throw a UserDoesNotExistError when provided a bad user id", async function() {
+      let userId = "I don't exist";
+      let baseAssetName = "ABC";
+      let quoteAssetName = "DEF";
+
+      await expect(
+        PreferenceService.deletePreference(
+          userId,
+          baseAssetName,
+          quoteAssetName
+        )
+      ).to.be.rejectedWith(UserDoesNotExistError);
+
+      // valid id but empty db
+      userId = "5d5072c1d19ed00f84e4c35d";
+
+      return expect(
+        PreferenceService.deletePreference(
+          userId,
+          baseAssetName,
+          quoteAssetName
+        )
+      ).to.be.rejectedWith(UserDoesNotExistError);
     });
   });
 });
