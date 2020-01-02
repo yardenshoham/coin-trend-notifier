@@ -60,25 +60,10 @@ class CryptoSymbolManager {
     }
 
     // crypto symbol not found, we'll need to create it
-    const assetDb = await assetDbPromise;
-    let baseAsset: Asset;
-    let quoteAsset: Asset;
-    [baseAsset, quoteAsset] = await Promise.all([
-      assetDb.findOne({ name: baseAssetName }),
-      assetDb.findOne({ name: quoteAssetName })
+    const [baseAsset, quoteAsset] = await Promise.all([
+      this.findOrCreateAsset(baseAssetName),
+      this.findOrCreateAsset(quoteAssetName)
     ]);
-
-    if (!baseAsset) {
-      baseAsset = new Asset(baseAssetName);
-      await validateOrReject(baseAsset);
-      await assetDb.insert(baseAsset);
-    }
-
-    if (!quoteAsset) {
-      quoteAsset = new Asset(quoteAssetName);
-      await validateOrReject(quoteAsset);
-      await assetDb.insert(quoteAsset);
-    }
 
     const cryptoSymbol = new CryptoSymbol(
       new CryptoSymbolInfo(baseAsset, quoteAsset)
@@ -88,6 +73,17 @@ class CryptoSymbolManager {
     await (await cryptoSymbolDbPromise).insert(cryptoSymbol);
     this._cryptoSymbols.set(assetString, cryptoSymbol);
     return cryptoSymbol;
+  }
+
+  private async findOrCreateAsset(assetName: string): Promise<Asset> {
+    const assetDb = await assetDbPromise;
+    let asset = await assetDb.findOne({ name: assetName });
+    if (!asset) {
+      asset = new Asset(assetName);
+      await validateOrReject(asset);
+      await assetDb.insert(asset);
+    }
+    return asset;
   }
 }
 
