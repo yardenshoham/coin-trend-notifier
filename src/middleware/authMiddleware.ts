@@ -22,28 +22,40 @@ export default class AuthMiddleware implements ExpressMiddlewareInterface {
    * @param next The Express next function.
    */
   use(req: AuthorizedRequest, res: Response, next?: NextFunction) {
-    if (req.headers.authorization) {
-      const parts = req.headers.authorization.split(" ");
-      if (parts.length === 2 && parts[0] === "Bearer") {
-        try {
-          req.jwtPayload = jwt.verify(
-            parts[1],
-            config.get("jwtPrivateKey")
-          ) as UserJwtPayload;
-          next();
-        } catch (error) {
-          return res.status(BAD_REQUEST).send({ error: "Invalid token." });
-        }
-      } else {
-        return res.status(BAD_REQUEST).send({
-          error:
-            'Authorization header not complying with "Authorization Bearer <token>".'
-        });
-      }
-    } else {
-      return res
-        .status(UNAUTHORIZED)
-        .send({ error: "Access denied. No token provided." });
+    if (!req.headers.authorization) {
+      return this.failure(
+        res,
+        UNAUTHORIZED,
+        "Access denied. No token provided."
+      );
     }
+
+    const parts = req.headers.authorization.split(" ");
+
+    if (!(parts.length === 2 && parts[0] === "Bearer")) {
+      return this.failure(
+        res,
+        BAD_REQUEST,
+        'Authorization header not complying with "Authorization Bearer <token>".'
+      );
+    }
+
+    try {
+      this.success(req, parts[1], next);
+    } catch (error) {
+      return this.failure(res, BAD_REQUEST, "Invalid token.");
+    }
+  }
+
+  private success(req: AuthorizedRequest, userJwt: string, next: NextFunction) {
+    req.jwtPayload = jwt.verify(
+      userJwt,
+      config.get("jwtPrivateKey")
+    ) as UserJwtPayload;
+    next();
+  }
+
+  private failure(res: Response, status: number, message: string) {
+    return res.status(status).send({ error: message });
   }
 }
