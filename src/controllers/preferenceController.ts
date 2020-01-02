@@ -6,7 +6,8 @@ import {
   Req,
   UseBefore,
   Delete,
-  QueryParams
+  QueryParams,
+  Get
 } from "routing-controllers";
 import { Response } from "express";
 import { UNPROCESSABLE_ENTITY, NO_CONTENT } from "http-status-codes";
@@ -85,6 +86,28 @@ export default class PreferenceController {
         preferenceRequest.quoteAssetName
       );
       return res.status(NO_CONTENT).send();
+    } catch (error) {
+      return res.status(UNPROCESSABLE_ENTITY).send({ error: error.message });
+    }
+  }
+
+  /**
+   * Retrieves all of the given user's preferences.
+   * @param req The Express request + jwt payload.
+   * @param res The Express response.
+   * @returns One of the following:
+   *  - A [[SetPreferenceDto]][] if everything went well. Status: OK.
+   *  - A { error: string } object if the user does not exist. Status: UNPROCESSABLE_ENTITY.
+   */
+  @Get()
+  public async getPreferences(
+    @Req() req: AuthorizedRequest,
+    @Res() res: Response
+  ) {
+    try {
+      return res.send(
+        await PreferenceService.getPreferences(req.jwtPayload._id)
+      );
     } catch (error) {
       return res.status(UNPROCESSABLE_ENTITY).send({ error: error.message });
     }

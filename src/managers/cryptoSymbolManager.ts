@@ -37,8 +37,7 @@ class CryptoSymbolManager {
       await cryptoSymbol.cryptoSymbolInfo.populate();
       cryptoSymbol.start();
       this._cryptoSymbols.set(
-        cryptoSymbol.cryptoSymbolInfo.baseAsset.name +
-          cryptoSymbol.cryptoSymbolInfo.quoteAsset.name,
+        `${cryptoSymbol.cryptoSymbolInfo.baseAsset.name} ${cryptoSymbol.cryptoSymbolInfo.quoteAsset.name}`,
         cryptoSymbol
       );
     }
@@ -54,7 +53,7 @@ class CryptoSymbolManager {
     baseAssetName: string,
     quoteAssetName: string
   ): Promise<CryptoSymbol> {
-    const assetString = baseAssetName + quoteAssetName;
+    const assetString = `${baseAssetName} ${quoteAssetName}`;
     if (this._cryptoSymbols.has(assetString)) {
       return this._cryptoSymbols.get(assetString);
     }

@@ -232,4 +232,81 @@ suite("PreferenceService", function() {
       ).to.be.rejectedWith(UserDoesNotExistError);
     });
   });
+
+  describe("getPreferences()", function() {
+    it("should return all preferences of a given user", async function() {
+      const cryptoSymbolManager = await cryptoSymbolManagerPromise;
+      await cryptoSymbolManager.populate();
+      const user: UserDtoIn = {
+        email: "abc@def.com",
+        username: "atestuser",
+        password: "atestpassword"
+      };
+
+      // signup
+      const { _id } = await UserService.signUp(user);
+
+      // login
+      await UserService.login({
+        email: user.email,
+        password: user.password
+      });
+
+      // add preferences
+      const preferences = [
+        {
+          baseAssetName: "BTC",
+          quoteAssetName: "USDT",
+          probability: 0.6
+        },
+        {
+          baseAssetName: "ABC",
+          quoteAssetName: "DEF",
+          probability: -0.1
+        },
+        {
+          baseAssetName: "QWER",
+          quoteAssetName: "TYUI",
+          probability: 0.4
+        }
+      ];
+
+      await Promise.all(
+        preferences.map(preference => {
+          return PreferenceService.setPreference(
+            _id,
+            preference.baseAssetName,
+            preference.quoteAssetName,
+            preference.probability
+          );
+        })
+      );
+
+      const returnedPreferences = await PreferenceService.getPreferences(_id);
+
+      expect(returnedPreferences).to.have.property(
+        "length",
+        preferences.length
+      );
+
+      for (const p of returnedPreferences) {
+        expect(preferences).to.deep.include(p);
+      }
+    });
+
+    it("should throw a UserDoesNotExistError if given a bad user id", async function() {
+      let userId = "I don't exist";
+
+      await expect(PreferenceService.getPreferences(userId)).to.be.rejectedWith(
+        UserDoesNotExistError
+      );
+
+      // valid id but empty db
+      userId = "5d5072c1d19ed00f84e4c35d";
+
+      return expect(
+        PreferenceService.getPreferences(userId)
+      ).to.be.rejectedWith(UserDoesNotExistError);
+    });
+  });
 });

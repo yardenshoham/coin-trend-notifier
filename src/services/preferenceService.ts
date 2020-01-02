@@ -3,6 +3,7 @@ import cryptoSymbolManagerPromise from "./../managers/cryptoSymbolManager";
 import { cryptoSymbolDbPromise } from "../models/cryptoSymbol";
 import UserDoesNotExistError from "../errors/userDoesNotExistError";
 import { userDbPromise } from "../models/user";
+import SetPreferenceDto from "./../interfaces/dtos/setPreferenceDto";
 
 /**
  * A service to perform various preference related methods.
@@ -76,7 +77,7 @@ export default class PreferenceService {
     }
 
     const cryptoSymbolManager = await cryptoSymbolManagerPromise;
-    const assetString = baseAssetName + quoteAssetName;
+    const assetString = `${baseAssetName} ${quoteAssetName}`;
     if (cryptoSymbolManager.cryptoSymbols.has(assetString)) {
       const cryptoSymbol = cryptoSymbolManager.cryptoSymbols.get(assetString);
       if (cryptoSymbol.cryptoSymbolInfo.preferences.has(userId)) {
@@ -84,5 +85,43 @@ export default class PreferenceService {
         await (await cryptoSymbolDbPromise).save(cryptoSymbol);
       }
     }
+  }
+
+  /**
+   * Retrieves all of the given user's preferences.
+   * @param userId The user's ObjectId's hex string.
+   * @throws [[UserDoesNotExistError]] If the given user's id is not found.
+   */
+  public static async getPreferences(
+    userId: string
+  ): Promise<SetPreferenceDto[]> {
+    // make sure user exists
+    let objectId: ObjectId;
+    try {
+      objectId = ObjectId.createFromHexString(userId);
+    } catch {
+      throw new UserDoesNotExistError();
+    }
+
+    const user = await (await userDbPromise).findById(objectId);
+    if (!user) {
+      throw new UserDoesNotExistError();
+    }
+
+    let result: SetPreferenceDto[] = [];
+
+    const cryptoSymbolManager = await cryptoSymbolManagerPromise;
+    for (const [, cryptoSymbol] of cryptoSymbolManager.cryptoSymbols) {
+      if (cryptoSymbol.cryptoSymbolInfo.preferences.has(userId)) {
+        const preference: SetPreferenceDto = {
+          baseAssetName: cryptoSymbol.cryptoSymbolInfo.baseAsset.name,
+          quoteAssetName: cryptoSymbol.cryptoSymbolInfo.quoteAsset.name,
+          probability: cryptoSymbol.cryptoSymbolInfo.preferences.get(userId)
+        };
+        result.push(preference);
+      }
+    }
+
+    return result;
   }
 }
