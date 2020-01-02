@@ -45,9 +45,9 @@ suite("AuthMiddleware", function() {
       expect(response.statusType).to.equal(2);
 
       // cleanup
-      (await cryptoSymbolDbPromise).c.deleteMany({});
-      (await assetDbPromise).c.deleteMany({});
-      (await userDbPromise).c.deleteMany({});
+      await (await cryptoSymbolDbPromise).c.deleteMany({});
+      await (await assetDbPromise).c.deleteMany({});
+      await (await userDbPromise).c.deleteMany({});
     });
 
     it("should return UNAUTHORIZED if Authorization header was not provided", async function() {
