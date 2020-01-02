@@ -28,7 +28,7 @@ export default class PreferenceController {
    * @param res The Express response.
    * @returns One of the following:
    *  - Nothing if everything went well. Status: NO_CONTENT.
-   *  - A { error: string } object if the user does not exist. Status: UNPROCESSABLE_ENTITY.
+   *  - A { error: string } object if the user does not exist or the probability is not between -1 and 1. Status: UNPROCESSABLE_ENTITY.
    *  - A [ValidationError](https://github.com/typestack/class-validator#validation-errors)[] if one or more properties were not valid. Status: UNPROCESSABLE_ENTITY.
    */
   @Post()
