@@ -7,13 +7,13 @@ import {
   UseBefore
 } from "routing-controllers";
 import { Response } from "express";
-import UserAlreadyExistsError from "./../errors/userAlreadyExistsError";
 import { UNPROCESSABLE_ENTITY, NO_CONTENT } from "http-status-codes";
 import { ValidationError } from "class-validator";
 import AuthorizedRequest from "./../interfaces/authorizedRequest";
 import SetPreferenceDto from "./../interfaces/dtos/setPreferenceDto";
 import PreferenceService from "../services/preferenceService";
 import AuthMiddleware from "./../middleware/authMiddleware";
+import UserDoesNotExistError from "../errors/userDoesNotExistError";
 
 /**
  * Controller for preferences.
@@ -29,7 +29,7 @@ export default class PreferenceController {
    * @returns One of the following:
    *  - Nothing if everything went well. Status: NO_CONTENT.
    *  - A { error: string } object if the user does not exist or the probability is not between -1 and 1. Status: UNPROCESSABLE_ENTITY.
-   *  - A [ValidationError](https://github.com/typestack/class-validator#validation-errors)[] if one or more properties were not valid. Status: UNPROCESSABLE_ENTITY.
+   *  - A [ValidationError](https://github.com/typestack/class-validator#validation-errors)[] if one or more assets were not valid (must be uppercase). Status: UNPROCESSABLE_ENTITY.
    */
   @Post()
   public async setPreference(
@@ -48,7 +48,7 @@ export default class PreferenceController {
     } catch (error) {
       let errorToReturn: { error: string } | { errors: ValidationError[] };
       if (
-        error instanceof UserAlreadyExistsError ||
+        error instanceof UserDoesNotExistError ||
         error instanceof RangeError
       ) {
         errorToReturn = { error: error.message };

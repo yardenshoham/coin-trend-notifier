@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CryptoSymbolManager | coin-trend-notifier</title>
+	<title>PreferenceController | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="cryptosymbolmanager.html">CryptoSymbolManager</a>
+					<a href="preferencecontroller.html">PreferenceController</a>
 				</li>
 			</ul>
-			<h1>Class CryptoSymbolManager</h1>
+			<h1>Class PreferenceController</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A singleton class that holds all crypto symbols at run time.</p>
+						<p>Controller for preferences.</p>
 					</div>
 				</div>
 			</section>
@@ -77,7 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CryptoSymbolManager</span>
+						<span class="target">PreferenceController</span>
 					</li>
 				</ul>
 			</section>
@@ -85,132 +85,63 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected tsd-is-not-exported">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="cryptosymbolmanager.html#_cryptosymbols" class="tsd-kind-icon">_crypto<wbr>Symbols</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Accessors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported"><a href="cryptosymbolmanager.html#cryptosymbols" class="tsd-kind-icon">crypto<wbr>Symbols</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="cryptosymbolmanager.html#getcryptosymbol" class="tsd-kind-icon">get<wbr>Crypto<wbr>Symbol</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="cryptosymbolmanager.html#populate" class="tsd-kind-icon">populate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="preferencecontroller.html#setpreference" class="tsd-kind-icon">set<wbr>Preference</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected tsd-is-not-exported">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-					<a name="_cryptosymbols" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _crypto<wbr>Symbols</h3>
-					<div class="tsd-signature tsd-kind-icon">_crypto<wbr>Symbols<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/8a53f42/src/managers/cryptoSymbolManager.ts#L13">src/managers/cryptoSymbolManager.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Maps a string representing a symbol (e.g. &quot;BTCUSDT&quot;) to the actual crypto symbol object.</p>
-						</div>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
-					<a name="cryptosymbols" class="tsd-anchor"></a>
-					<h3>crypto<wbr>Symbols</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> cryptoSymbols<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/8a53f42/src/managers/cryptoSymbolManager.ts#L18">src/managers/cryptoSymbolManager.ts:18</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The a map that maps a string representing a symbol (e.g. &quot;BTCUSDT&quot;) to the actual crypto symbol object.</p>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<a name="getcryptosymbol" class="tsd-anchor"></a>
-					<h3>get<wbr>Crypto<wbr>Symbol</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Crypto<wbr>Symbol<span class="tsd-signature-symbol">(</span>baseAssetName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, quoteAssetName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setpreference" class="tsd-anchor"></a>
+					<h3>set<wbr>Preference</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Preference<span class="tsd-signature-symbol">(</span>preferenceRequest<span class="tsd-signature-symbol">: </span><a href="../interfaces/setpreferencedto.html" class="tsd-signature-type">SetPreferenceDto</a>, req<span class="tsd-signature-symbol">: </span><a href="../interfaces/authorizedrequest.html" class="tsd-signature-type">AuthorizedRequest</a>, res<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/8a53f42/src/managers/cryptoSymbolManager.ts#L53">src/managers/cryptoSymbolManager.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/8a53f42/src/controllers/preferenceController.ts#L35">src/controllers/preferenceController.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Given a base asset&#39;s name and a quote asset&#39;s name, returns its corresponding CryptoSymbol object.</p>
+									<p>Sets a user&#39;s wanted probability threshold to be notified about a rise/fall of a symbol.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p><a href="https://github.com/typestack/class-validator#validation-errors">ValidationError</a>[] If either of the assets is not valid.</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>baseAssetName: <span class="tsd-signature-type">string</span></h5>
+									<h5>preferenceRequest: <a href="../interfaces/setpreferencedto.html" class="tsd-signature-type">SetPreferenceDto</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The name of the base asset.</p>
+										<p>The object containing the symbol information and wanted probability.</p>
 									</div>
 								</li>
 								<li>
-									<h5>quoteAssetName: <span class="tsd-signature-type">string</span></h5>
+									<h5>req: <a href="../interfaces/authorizedrequest.html" class="tsd-signature-type">AuthorizedRequest</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The name of the quote asset.</p>
+										<p>The Express request + jwt payload.</p>
+									</div>
+								</li>
+								<li>
+									<h5>res: <span class="tsd-signature-type">Response</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The Express response.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<a name="populate" class="tsd-anchor"></a>
-					<h3>populate</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">populate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/8a53f42/src/managers/cryptoSymbolManager.ts#L25">src/managers/cryptoSymbolManager.ts:25</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Populates the manager from db. Used internally.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>One of the following:</p>
+							<ul>
+								<li>Nothing if everything went well. Status: NO_CONTENT.</li>
+								<li>A { error: string } object if the user does not exist or the probability is not between -1 and 1. Status: UNPROCESSABLE_ENTITY.</li>
+								<li>A <a href="https://github.com/typestack/class-validator#validation-errors">ValidationError</a>[] if one or more assets were not valid (must be uppercase). Status: UNPROCESSABLE_ENTITY.</li>
+							</ul>
 						</li>
 					</ul>
 				</section>
@@ -241,30 +172,21 @@
 					<li class=" tsd-kind-class">
 						<a href="cryptosymbolinfo.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Info</a>
 					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="cryptosymbolmanager.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Manager</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-is-not-exported">
-						<a href="cryptosymbolmanager.html" class="tsd-kind-icon">Crypto<wbr>Symbol<wbr>Manager</a>
+					<li class="current tsd-kind-class">
+						<a href="preferencecontroller.html" class="tsd-kind-icon">Preference<wbr>Controller</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-								<a href="cryptosymbolmanager.html#_cryptosymbols" class="tsd-kind-icon">_crypto<wbr>Symbols</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
-								<a href="cryptosymbolmanager.html#cryptosymbols" class="tsd-kind-icon">crypto<wbr>Symbols</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-								<a href="cryptosymbolmanager.html#getcryptosymbol" class="tsd-kind-icon">get<wbr>Crypto<wbr>Symbol</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-								<a href="cryptosymbolmanager.html#populate" class="tsd-kind-icon">populate</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="preferencecontroller.html#setpreference" class="tsd-kind-icon">set<wbr>Preference</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="preferencecontroller.html" class="tsd-kind-icon">Preference<wbr>Controller</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="preferenceservice.html" class="tsd-kind-icon">Preference<wbr>Service</a>
 					</li>
