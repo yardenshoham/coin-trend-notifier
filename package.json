@@ -4,7 +4,9 @@
   "description": "📈 Get notified when cryptocurrency trends are identified",
   "main": "./index.ts",
   "scripts": {
-    "start": "ts-node ./src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:dev": "ts-node ./src/index.ts",
     "watch": "ts-node-dev --no-notify src/index.ts",
     "doc": "typedoc src --exclude src/test --mode file",
     "test": "mocha",
