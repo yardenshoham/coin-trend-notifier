@@ -18,3 +18,7 @@ notifications:
 script:
   - npm run coverage
   - codecov -f coverage/*.json
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: coin-trend-notifier-api
