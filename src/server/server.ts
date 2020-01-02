@@ -10,7 +10,6 @@ import chalk from "chalk";
 /**
  * The express app that'll represent the api server.
  */
-
 const app = express();
 
 app.use(helmet());
