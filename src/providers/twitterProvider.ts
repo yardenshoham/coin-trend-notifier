@@ -34,7 +34,8 @@ class TwitterProvider implements Provider {
 
     // open follow stream
     const stream = this.twit.stream("statuses/filter", {
-      follow: (response.data as any).ids
+      follow: (response.data as any).ids,
+      tweet_mode: "extended"
     });
 
     stream.on("tweet", (tweet: Twit.Twitter.Status) => {
