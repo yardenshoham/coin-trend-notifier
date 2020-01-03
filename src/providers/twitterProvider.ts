@@ -38,27 +38,28 @@ class TwitterProvider implements Provider {
     });
 
     stream.on("tweet", (tweet: Twit.Twitter.Status) => {
-      if (this.fromCreator(tweet)) {
-        this.analyzeTweet(tweet);
+      if (this.isValid(tweet)) {
+        this.analyze(tweet);
       }
     });
   }
 
-  private analyzeTweet(tweet: Twit.Twitter.Status) {
+  private analyze(tweet: Twit.Twitter.Status) {
     throw new Error("Method not implemented." + tweet);
   }
 
   /**
-   * Checks if the tweet is a new tweet. Taken from: https://github.com/tweepy/tweepy/issues/981#issuecomment-393817367.
+   * Checks if the tweet is a new tweet and its language is english. Taken from: https://github.com/tweepy/tweepy/issues/981#issuecomment-393817367.
    * @param tweet The tweet to check.
-   * @returns true if it is an original tweet, false if it is a retweet/quote/reply...
+   * @returns true if it is an original tweet in english, false if it is a retweet/quote/reply...
    */
-  private fromCreator(tweet: Twit.Twitter.Status): boolean {
+  private isValid(tweet: Twit.Twitter.Status): boolean {
     if (
       tweet.retweeted_status ||
       tweet.in_reply_to_status_id ||
       tweet.in_reply_to_screen_name ||
-      tweet.in_reply_to_user_id
+      tweet.in_reply_to_user_id ||
+      (tweet.lang && tweet.lang != "en")
     ) {
       return false;
     }
