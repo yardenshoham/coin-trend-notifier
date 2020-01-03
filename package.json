@@ -8,7 +8,7 @@
     "start": "node dist/index.js",
     "start:dev": "ts-node ./src/index.ts",
     "watch": "ts-node-dev --no-notify src/index.ts",
-    "doc": "typedoc src --exclude src/test --mode file --out docs/internal",
+    "doc": "typedoc src --exclude src/test --mode file --out docs",
     "test": "mocha",
     "precoverage": "tsc",
     "coverage": "nyc mocha",
