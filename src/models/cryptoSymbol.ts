@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 import { Chance } from "./chance";
 import { CryptoSymbolInfo } from "./cryptoSymbolInfo";
 import config from "config";
-import { SymbolEvent } from "./symbolEvent";
+import { SymbolEvent, symbolEventDbPromise } from "./symbolEvent";
 import { id, Repository, nested } from "mongodb-typescript";
 import { ObjectId } from "mongodb";
 import { clientPromise } from "../database/client";
@@ -69,11 +69,10 @@ export class CryptoSymbol extends EventEmitter {
     // catch the event, add info to it then fire the complete event
     this.chance.on(
       config.get("chanceEventName"),
-      (probability: number): void => {
-        this.emit(
-          config.get("cryptoSymbolEventName"),
-          new SymbolEvent(probability, this.cryptoSymbolInfo)
-        );
+      async (probability: number) => {
+        const event = new SymbolEvent(probability, this.cryptoSymbolInfo);
+        this.emit(config.get("cryptoSymbolEventName"), event);
+        await (await symbolEventDbPromise).insert(event);
       }
     );
   }

@@ -4,11 +4,14 @@ import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
 import { Asset } from "../../models/asset";
 import { Chance } from "../../models/chance";
 import config from "config";
-import { SymbolEvent } from "../../models/symbolEvent";
+import { SymbolEvent, symbolEventDbPromise } from "../../models/symbolEvent";
 import { expect } from "chai";
 
 suite("CryptoSymbol", function(): void {
   describe("event handling", function(): void {
+    this.afterAll(async function() {
+      return (await symbolEventDbPromise).c.deleteMany({});
+    });
     it("should fire a SymbolEvent when Chance fires an event", function(done: Mocha.Done): void {
       const chance = new Chance();
       const cryptoSymbol = new CryptoSymbol(
