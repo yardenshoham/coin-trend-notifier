@@ -6,6 +6,7 @@ import compression from "compression";
 import express from "express";
 import morgan from "morgan";
 import chalk from "chalk";
+import { Response } from "express";
 
 /**
  * The express app that'll represent the api server.
@@ -34,6 +35,10 @@ app.use(
     }
   )
 );
+
+app.get("/", (_, res: Response) => {
+  return res.status(200).send("🔥 Coin Trend Notifier API is Live! 🔥");
+});
 
 useExpressServer(app, {
   routePrefix: "/api",
