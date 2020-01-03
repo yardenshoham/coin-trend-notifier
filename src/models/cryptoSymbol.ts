@@ -71,6 +71,7 @@ export class CryptoSymbol extends EventEmitter {
       config.get("chanceEventName"),
       async (probability: number) => {
         const event = new SymbolEvent(probability, this.cryptoSymbolInfo);
+        event.firedAt = Date.now();
         this.emit(config.get("cryptoSymbolEventName"), event);
         await (await symbolEventDbPromise).insert(event);
       }
