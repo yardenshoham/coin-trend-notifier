@@ -14,9 +14,11 @@ const app = express();
 
 app.use(helmet());
 app.use(compression());
+
 app.use(
   morgan(
-    function(tokens, req, res) {
+    /* istanbul ignore next */
+    (tokens, req, res) => {
       return [
         chalk.hex("#34ace0").bold(tokens.method(req, res)),
         chalk.hex("#ff5252").bold(tokens.url(req, res)),
