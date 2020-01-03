@@ -47,7 +47,8 @@
     "mongodb-typescript": "^2.1.0",
     "morgan": "^1.9.1",
     "reflect-metadata": "^0.1.13",
-    "routing-controllers": "^0.8.0"
+    "routing-controllers": "^0.8.0",
+    "twit": "^2.2.11"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^0.1.3",
@@ -67,6 +68,7 @@
     "@types/morgan": "^1.7.37",
     "@types/node": "^12.12.14",
     "@types/supertest": "^2.0.8",
+    "@types/twit": "^2.2.23",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "http-status-codes": "^1.4.0",
