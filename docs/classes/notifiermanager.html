@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UserService | coin-trend-notifier</title>
+	<title>NotifierManager | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="userservice.html">UserService</a>
+					<a href="notifiermanager.html">NotifierManager</a>
 				</li>
 			</ul>
-			<h1>Class UserService</h1>
+			<h1>Class NotifierManager</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A service to perform various user related methods.</p>
+						<p>The central place for all your notifier needs.</p>
 					</div>
 				</div>
 			</section>
@@ -77,103 +77,147 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">UserService</span>
+						<span class="target">NotifierManager</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/notifier.html" class="tsd-signature-type">Notifier</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported"><a href="notifiermanager.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="notifiermanager.html#notifiers" class="tsd-kind-icon">notifiers</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="userservice.html#login" class="tsd-kind-icon">login</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="userservice.html#signup" class="tsd-kind-icon">sign<wbr>Up</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="notifiermanager.html#notify" class="tsd-kind-icon">notify</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="notifiermanager.html#register" class="tsd-kind-icon">register</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="login" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> login</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">login<span class="tsd-signature-symbol">(</span>userCredentials<span class="tsd-signature-symbol">: </span><a href="../interfaces/userlogindto.html" class="tsd-signature-type">UserLoginDto</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Notifier<wbr>Manager<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="notifiermanager.html" class="tsd-signature-type">NotifierManager</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/7288f18/src/services/userService.ts#L67">src/services/userService.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/7288f18/src/managers/notifierManager.ts#L11">src/managers/notifierManager.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Given an email and a password, signs in/logins the user.</p>
+									<p>Constructs the <a href="notifiermanager.html">NotifierManager</a>.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p><a href="userdoesnotexisterror.html">UserDoesNotExistError</a> If the provided email wasn&#39;t found in the system.</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p><a href="wrongpassworderror.html">WrongPasswordError</a> If the provided password does not match the user&#39;s password.</p>
-									</dd>
-								</dl>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>userCredentials: <a href="../interfaces/userlogindto.html" class="tsd-signature-type">UserLoginDto</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The credentials (email and password) of the user that wants to login.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The <a href="https://en.wikipedia.org/wiki/JSON_Web_Token">json web token</a> with the payload <a href="../interfaces/userjwtpayload.html">UserJwtPayload</a>.</p>
+							<h4 class="tsd-returns-title">Returns <a href="notifiermanager.html" class="tsd-signature-type">NotifierManager</a></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="signup" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> sign<wbr>Up</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">sign<wbr>Up<span class="tsd-signature-symbol">(</span>userProperties<span class="tsd-signature-symbol">: </span><a href="../interfaces/userdtoin.html" class="tsd-signature-type">UserDtoIn</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/registereduserdto.html" class="tsd-signature-type">RegisteredUserDto</a><span class="tsd-signature-symbol">&gt;</span></li>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
+					<a name="notifiers" class="tsd-anchor"></a>
+					<h3>notifiers</h3>
+					<div class="tsd-signature tsd-kind-icon">notifiers<span class="tsd-signature-symbol">:</span> <a href="../interfaces/notifier.html" class="tsd-signature-type">Notifier</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/7288f18/src/managers/notifierManager.ts#L11">src/managers/notifierManager.ts:11</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>All notifiers currently running.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="notify" class="tsd-anchor"></a>
+					<h3>notify</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">notify<span class="tsd-signature-symbol">(</span>symbolEvent<span class="tsd-signature-symbol">: </span><a href="../globals.html#symbolevent" class="tsd-signature-type">SymbolEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/notifier.html">Notifier</a>.<a href="../interfaces/notifier.html#notify">notify</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/7288f18/src/managers/notifierManager.ts#L35">src/managers/notifierManager.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Activates all notifiers.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>symbolEvent: <a href="../globals.html#symbolevent" class="tsd-signature-type">SymbolEvent</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event to notify about.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="register" class="tsd-anchor"></a>
+					<h3>register</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">register<span class="tsd-signature-symbol">(</span>notifier<span class="tsd-signature-symbol">: </span><a href="../interfaces/notifier.html" class="tsd-signature-type">Notifier</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/7288f18/src/services/userService.ts#L26">src/services/userService.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/7288f18/src/managers/notifierManager.ts#L24">src/managers/notifierManager.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Sign up a given user to the system.</p>
+									<p>Adds a new notifier to <a href="notifiermanager.html#notifiers">notifiers</a> and starts it.</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p><a href="useralreadyexistserror.html">UserAlreadyExistsError</a> If the provided email is already in the system.</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p><a href="https://github.com/typestack/class-validator#validation-errors">ValidationError</a>[] If one or more properties were not valid.</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>userProperties: <a href="../interfaces/userdtoin.html" class="tsd-signature-type">UserDtoIn</a></h5>
+									<h5>notifier: <a href="../interfaces/notifier.html" class="tsd-signature-type">Notifier</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The properties of the user to add/sign up.</p>
+										<p>The new notifier to be registered.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/registereduserdto.html" class="tsd-signature-type">RegisteredUserDto</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The registered user.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -213,9 +257,27 @@
 					<li class=" tsd-kind-class">
 						<a href="emailer.html" class="tsd-kind-icon">Emailer</a>
 					</li>
-					<li class=" tsd-kind-class tsd-is-not-exported">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-is-not-exported">
 						<a href="notifiermanager.html" class="tsd-kind-icon">Notifier<wbr>Manager</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
+								<a href="notifiermanager.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
+								<a href="notifiermanager.html#notifiers" class="tsd-kind-icon">notifiers</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="notifiermanager.html#notify" class="tsd-kind-icon">notify</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="notifiermanager.html#register" class="tsd-kind-icon">register</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="preferencecontroller.html" class="tsd-kind-icon">Preference<wbr>Controller</a>
 					</li>
@@ -240,21 +302,9 @@
 					<li class=" tsd-kind-class">
 						<a href="userdoesnotexisterror.html" class="tsd-kind-icon">User<wbr>Does<wbr>Not<wbr>Exist<wbr>Error</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class">
+					<li class=" tsd-kind-class">
 						<a href="userservice.html" class="tsd-kind-icon">User<wbr>Service</a>
-						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="userservice.html#login" class="tsd-kind-icon">login</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="userservice.html#signup" class="tsd-kind-icon">sign<wbr>Up</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="wrongpassworderror.html" class="tsd-kind-icon">Wrong<wbr>Password<wbr>Error</a>
 					</li>
