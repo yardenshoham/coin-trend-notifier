@@ -55,16 +55,14 @@ class TwitterProvider implements Provider {
    * @returns true if it is an original tweet in english, false if it is a retweet/quote/reply...
    */
   private isValid(tweet: Twit.Twitter.Status): boolean {
-    if (
-      tweet.retweeted_status ||
-      tweet.in_reply_to_status_id ||
-      tweet.in_reply_to_screen_name ||
-      tweet.in_reply_to_user_id ||
-      (tweet.lang && tweet.lang != "en")
-    ) {
-      return false;
-    }
-    return true;
+    const notValidConditions = [
+      tweet.retweeted_status,
+      tweet.in_reply_to_status_id,
+      tweet.in_reply_to_screen_name,
+      tweet.in_reply_to_user_id,
+      tweet.lang && tweet.lang != "en"
+    ];
+    return !notValidConditions.some(condition => condition);
   }
 
   /**
