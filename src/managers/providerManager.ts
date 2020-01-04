@@ -18,7 +18,7 @@ class ProviderManager {
 
   /**
    * Adds a new provider to [[providers]] and starts it.
-   * @param provider The new provided to be started.
+   * @param provider The new provider to be started.
    */
   public register(provider: Provider) {
     this.providers.push(provider);
