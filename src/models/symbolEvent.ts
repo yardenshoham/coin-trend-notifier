@@ -60,7 +60,7 @@ export class SymbolEvent {
       .preferences) {
       if (
         Math.sign(wantedProbability) == sign &&
-        Math.abs(wantedProbability) >= abs
+        Math.abs(wantedProbability) <= abs
       ) {
         result.push(userId);
       }
