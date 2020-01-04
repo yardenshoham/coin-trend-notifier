@@ -93,6 +93,7 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/authorizedrequest.html" class="tsd-kind-icon">Authorized<wbr>Request</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/notifier.html" class="tsd-kind-icon">Notifier</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/preferencedto.html" class="tsd-kind-icon">Preference<wbr>Dto</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/provider.html" class="tsd-kind-icon">Provider</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/registereduserdto.html" class="tsd-kind-icon">Registered<wbr>User<wbr>Dto</a></li>
@@ -134,7 +135,7 @@
 					<div class="tsd-signature tsd-kind-icon">Symbol<wbr>Event<span class="tsd-signature-symbol">:</span> </div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/symbolEvent.ts#L13">src/models/symbolEvent.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/symbolEvent.ts#L13">src/models/symbolEvent.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -153,7 +154,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/symbolEvent.ts#L39">src/models/symbolEvent.ts:39</a></li>
+										<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/symbolEvent.ts#L39">src/models/symbolEvent.ts:39</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -190,7 +191,7 @@
 						<div class="tsd-signature tsd-kind-icon">_id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ObjectId</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/symbolEvent.ts#L18">src/models/symbolEvent.ts:18</a></li>
+								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/symbolEvent.ts#L18">src/models/symbolEvent.ts:18</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -205,7 +206,7 @@
 						<div class="tsd-signature tsd-kind-icon">crypto<wbr>Symbol<wbr>Info<span class="tsd-signature-symbol">:</span> <a href="classes/cryptosymbolinfo.html" class="tsd-signature-type">CryptoSymbolInfo</a></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/symbolEvent.ts#L33">src/models/symbolEvent.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/symbolEvent.ts#L33">src/models/symbolEvent.ts:33</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -220,7 +221,7 @@
 						<div class="tsd-signature tsd-kind-icon">fired<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/symbolEvent.ts#L39">src/models/symbolEvent.ts:39</a></li>
+								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/symbolEvent.ts#L39">src/models/symbolEvent.ts:39</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -235,7 +236,7 @@
 						<div class="tsd-signature tsd-kind-icon">probability<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/symbolEvent.ts#L26">src/models/symbolEvent.ts:26</a></li>
+								<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/symbolEvent.ts#L26">src/models/symbolEvent.ts:26</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -243,6 +244,26 @@
 								<p>The probability threshold that was passed and caused this event to be fired.</p>
 							</div>
 						</div>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-event">
+						<a name="symbolevent.getsubscribers" class="tsd-anchor"></a>
+						<h3>get<wbr>Subscribers</h3>
+						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-event">
+							<li class="tsd-signature tsd-kind-icon">get<wbr>Subscribers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/symbolEvent.ts#L55">src/models/symbolEvent.ts:55</a></li>
+									</ul>
+								</aside>
+								<div class="tsd-comment tsd-typography">
+								</div>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+								<p>an array of user id&#39;s that want to be notified about this event.</p>
+							</li>
+						</ul>
 					</section>
 				</section>
 			</section>
@@ -254,7 +275,7 @@
 					<div class="tsd-signature tsd-kind-icon">app<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Express</span><span class="tsd-signature-symbol"> =&nbsp;express()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/server/server.ts#L13">src/server/server.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/server/server.ts#L15">src/server/server.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -269,7 +290,7 @@
 					<div class="tsd-signature tsd-kind-icon">asset<wbr>DbPromise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Repository</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/asset.html" class="tsd-signature-type">Asset</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;(async function() {return new Repository&lt;Asset&gt;(Asset, await clientPromise, &quot;assets&quot;);})()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/asset.ts#L38">src/models/asset.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/asset.ts#L38">src/models/asset.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -284,7 +305,7 @@
 					<div class="tsd-signature tsd-kind-icon">client<wbr>Promise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">MongoClient</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;MongoClient.connect(config.get(&quot;dbUrl&quot;), {useNewUrlParser: true,useUnifiedTopology: true})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/database/client.ts#L7">src/database/client.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/database/client.ts#L7">src/database/client.ts:7</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -299,7 +320,7 @@
 					<div class="tsd-signature tsd-kind-icon">crypto<wbr>Symbol<wbr>DbPromise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Repository</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/cryptosymbol.html" class="tsd-signature-type">CryptoSymbol</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;(async function() {return new Repository&lt;CryptoSymbol&gt;(CryptoSymbol,await clientPromise,&quot;cryptoSymbols&quot;);})()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/cryptoSymbol.ts#L92">src/models/cryptoSymbol.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/cryptoSymbol.ts#L92">src/models/cryptoSymbol.ts:92</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -314,7 +335,7 @@
 					<div class="tsd-signature tsd-kind-icon">crypto<wbr>Symbol<wbr>Manager<wbr>Promise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/cryptosymbolmanager.html" class="tsd-signature-type">CryptoSymbolManager</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;(async function() {const cryptoSymbolManager &#x3D; new CryptoSymbolManager();await cryptoSymbolManager.populate();return cryptoSymbolManager;})()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/managers/cryptoSymbolManager.ts#L89">src/managers/cryptoSymbolManager.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/managers/cryptoSymbolManager.ts#L89">src/managers/cryptoSymbolManager.ts:89</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -324,7 +345,7 @@
 					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol"> =&nbsp;config.has(&quot;port&quot;) ? config.get(&quot;port&quot;) : 3000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/index.ts#L11">src/index.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/index.ts#L11">src/index.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -344,7 +365,7 @@
 					<div class="tsd-signature tsd-kind-icon">provider<wbr>Manager<span class="tsd-signature-symbol">:</span> <a href="classes/providermanager.html" class="tsd-signature-type">ProviderManager</a><span class="tsd-signature-symbol"> =&nbsp;new ProviderManager()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/managers/providerManager.ts#L32">src/managers/providerManager.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/managers/providerManager.ts#L32">src/managers/providerManager.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -359,7 +380,7 @@
 					<div class="tsd-signature tsd-kind-icon">symbol<wbr>Event<wbr>DbPromise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Repository</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#symbolevent" class="tsd-signature-type">SymbolEvent</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;(async function() {return new Repository&lt;SymbolEvent&gt;(SymbolEvent,await clientPromise,&quot;symbolEvents&quot;);})()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/symbolEvent.ts#L56">src/models/symbolEvent.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/symbolEvent.ts#L75">src/models/symbolEvent.ts:75</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -374,7 +395,7 @@
 					<div class="tsd-signature tsd-kind-icon">user<wbr>DbPromise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Repository</span><span class="tsd-signature-symbol">&lt;</span><a href="classes/user.html" class="tsd-signature-type">User</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;(async function() {return new Repository&lt;User&gt;(User, await clientPromise, &quot;users&quot;);})()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02b460/src/models/user.ts#L93">src/models/user.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/models/user.ts#L93">src/models/user.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -448,6 +469,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/authorizedrequest.html" class="tsd-kind-icon">Authorized<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/notifier.html" class="tsd-kind-icon">Notifier</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/preferencedto.html" class="tsd-kind-icon">Preference<wbr>Dto</a>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PreferenceDto | coin-trend-notifier</title>
+	<title>Notifier | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="preferencedto.html">PreferenceDto</a>
+					<a href="notifier.html">Notifier</a>
 				</li>
 			</ul>
-			<h1>Interface PreferenceDto</h1>
+			<h1>Interface Notifier</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A data transfer object that contains information for a general preference request preference addition/update.</p>
+						<p>An object with the ability to notify users of <a href="../globals.html#symbolevent">SymbolEvent</a>s through various channels.</p>
 					</div>
 				</div>
 			</section>
@@ -77,12 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PreferenceDto</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="setpreferencedto.html" class="tsd-signature-type">SetPreferenceDto</a>
-							</li>
-						</ul>
+						<span class="target">Notifier</span>
 					</li>
 				</ul>
 			</section>
@@ -91,46 +86,75 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="preferencedto.html#baseassetname" class="tsd-kind-icon">base<wbr>Asset<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="preferencedto.html#quoteassetname" class="tsd-kind-icon">quote<wbr>Asset<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="notifier.html#notify" class="tsd-kind-icon">notify</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="notifier.html#start" class="tsd-kind-icon">start</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="baseassetname" class="tsd-anchor"></a>
-					<h3>base<wbr>Asset<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">base<wbr>Asset<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/interfaces/dtos/preferenceDto.ts#L8">src/interfaces/dtos/preferenceDto.ts:8</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The base asset&#39;s name of the preference.</p>
-						</div>
-					</div>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="notify" class="tsd-anchor"></a>
+					<h3>notify</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">notify<span class="tsd-signature-symbol">(</span>symbolEvent<span class="tsd-signature-symbol">: </span><a href="../globals.html#symbolevent" class="tsd-signature-type">SymbolEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/interfaces/notifier.ts:15</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Given a symbol event, notifies all its followers of the event.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>symbolEvent: <a href="../globals.html#symbolevent" class="tsd-signature-type">SymbolEvent</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event to notify about.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span>
+							</h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="quoteassetname" class="tsd-anchor"></a>
-					<h3>quote<wbr>Asset<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">quote<wbr>Asset<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/c02342c/src/interfaces/dtos/preferenceDto.ts#L13">src/interfaces/dtos/preferenceDto.ts:13</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The quote asset&#39;s name of the preference.</p>
-						</div>
-					</div>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="start" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> start</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/interfaces/notifier.ts:9</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Initializes this notifier.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span>
+							</h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -198,24 +222,24 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="authorizedrequest.html" class="tsd-kind-icon">Authorized<wbr>Request</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="notifier.html" class="tsd-kind-icon">Notifier</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="preferencedto.html" class="tsd-kind-icon">Preference<wbr>Dto</a>
+						<a href="notifier.html" class="tsd-kind-icon">Notifier</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="preferencedto.html#baseassetname" class="tsd-kind-icon">base<wbr>Asset<wbr>Name</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="notifier.html#notify" class="tsd-kind-icon">notify</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="preferencedto.html#quoteassetname" class="tsd-kind-icon">quote<wbr>Asset<wbr>Name</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="notifier.html#start" class="tsd-kind-icon">start</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface">
+						<a href="preferencedto.html" class="tsd-kind-icon">Preference<wbr>Dto</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="provider.html" class="tsd-kind-icon">Provider</a>
 					</li>
