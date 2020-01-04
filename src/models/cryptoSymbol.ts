@@ -7,6 +7,7 @@ import { id, Repository, nested } from "mongodb-typescript";
 import { ObjectId } from "mongodb";
 import { clientPromise } from "../database/client";
 import { IsDefined } from "class-validator";
+import notifierManager from "./../managers/notifierManager";
 
 /**
  * A class to link a crypto symbol's info to its current chance.
@@ -65,6 +66,9 @@ export class CryptoSymbol extends EventEmitter {
    * Initialize event handling. Should be called every time a [[CryptoSymbol]] is initialized.
    */
   public start() {
+    const cryptoSymbolEventName: string = config.get("cryptoSymbolEventName");
+    this.on(cryptoSymbolEventName, notifierManager.notify);
+
     this.chance.start();
     // catch the event, add info to it then fire the complete event
     this.chance.on(
@@ -73,7 +77,7 @@ export class CryptoSymbol extends EventEmitter {
         const event = new SymbolEvent(probability, this.cryptoSymbolInfo);
         event.firedAt = Date.now();
         await (await symbolEventDbPromise).insert(event);
-        this.emit(config.get("cryptoSymbolEventName"), event);
+        this.emit(cryptoSymbolEventName, event);
       }
     );
   }
