@@ -6,11 +6,11 @@ export default interface Notifier {
   /**
    * Initializes this notifier.
    */
-  start?(): void | Promise<void>;
+  start?();
 
   /**
    * Given a symbol event, notifies all its followers of the event.
    * @param symbolEvent The event to notify about.
    */
-  notify(symbolEvent: SymbolEvent): void | Promise<void>;
+  notify(symbolEvent: SymbolEvent);
 }
