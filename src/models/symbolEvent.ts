@@ -48,6 +48,23 @@ export class SymbolEvent {
     this.probability = probability;
     this.cryptoSymbolInfo = cryptoSymbolInfo;
   }
+
+  /**
+   * @returns an array of user id's that want to be notified about this event.
+   */
+  getSubscribers(): string[] {
+    const result: string[] = [];
+    for (const [userId, wantedProbability] of this.cryptoSymbolInfo
+      .preferences) {
+      if (
+        (wantedProbability > 0 && wantedProbability > this.probability) ||
+        (wantedProbability < 0 && wantedProbability < this.probability)
+      ) {
+        result.push(userId);
+      }
+    }
+    return result;
+  }
 }
 
 /**
