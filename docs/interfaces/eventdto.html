@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UserAlreadyExistsError | coin-trend-notifier</title>
+	<title>EventDto | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="useralreadyexistserror.html">UserAlreadyExistsError</a>
+					<a href="eventdto.html">EventDto</a>
 				</li>
 			</ul>
-			<h1>Class UserAlreadyExistsError</h1>
+			<h1>Interface EventDto</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Thrown when there is an attempt to sign up a user with an existing email address.</p>
+						<p>A data transfer object for sending a <a href="../globals.html#symbolevent">SymbolEvent</a>.</p>
 					</div>
 				</div>
 			</section>
@@ -77,12 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">Error</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">UserAlreadyExistsError</span>
-							</li>
-						</ul>
+						<span class="target">EventDto</span>
 					</li>
 				</ul>
 			</section>
@@ -91,110 +86,78 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="useralreadyexistserror.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="useralreadyexistserror.html#email" class="tsd-kind-icon">email</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="useralreadyexistserror.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="useralreadyexistserror.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="useralreadyexistserror.html#stack" class="tsd-kind-icon">stack</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="useralreadyexistserror.html#error" class="tsd-kind-icon">Error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdto.html#baseassetname" class="tsd-kind-icon">base<wbr>Asset<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdto.html#firedat" class="tsd-kind-icon">fired<wbr>At</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdto.html#probability" class="tsd-kind-icon">probability</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="eventdto.html#quoteassetname" class="tsd-kind-icon">quote<wbr>Asset<wbr>Name</a></li>
 							</ul>
 						</section>
 					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>User<wbr>Already<wbr>Exists<wbr>Error<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="useralreadyexistserror.html" class="tsd-signature-type">UserAlreadyExistsError</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/4b3eb7b/src/errors/userAlreadyExistsError.ts#L8">src/errors/userAlreadyExistsError.ts:8</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>email: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="useralreadyexistserror.html" class="tsd-signature-type">UserAlreadyExistsError</a></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="email" class="tsd-anchor"></a>
-					<h3>email</h3>
-					<div class="tsd-signature tsd-kind-icon">email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="baseassetname" class="tsd-anchor"></a>
+					<h3>base<wbr>Asset<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">base<wbr>Asset<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/4b3eb7b/src/errors/userAlreadyExistsError.ts#L8">src/errors/userAlreadyExistsError.ts:8</a></li>
+							<li>Defined in src/interfaces/dtos/eventDto.ts:18</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The email that is already in the system.</p>
+							<p>The base asset&#39;s name of the symbol of the event.</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="message" class="tsd-anchor"></a>
-					<h3>message</h3>
-					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="firedat" class="tsd-anchor"></a>
+					<h3>fired<wbr>At</h3>
+					<div class="tsd-signature tsd-kind-icon">fired<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Error.message</p>
 						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:974</li>
+							<li>Defined in src/interfaces/dtos/eventDto.ts:13</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The UTC date marking the time this event was fired.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="probability" class="tsd-anchor"></a>
+					<h3>probability</h3>
+					<div class="tsd-signature tsd-kind-icon">probability<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Error.name</p>
 						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:973</li>
+							<li>Defined in src/interfaces/dtos/eventDto.ts:8</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The probability threshold that was passed and caused this event to be fired.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-					<a name="stack" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
-					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from Error.stack</p>
-						<p>Overrides Error.stack</p>
-						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:975</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
-					<a name="error" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> Error</h3>
-					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ErrorConstructor</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="quoteassetname" class="tsd-anchor"></a>
+					<h3>quote<wbr>Asset<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">quote<wbr>Asset<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:984</li>
+							<li>Defined in src/interfaces/dtos/eventDto.ts:23</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The base asset&#39;s name of the symbol of the event.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -210,26 +173,20 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="useralreadyexistserror.html" class="tsd-kind-icon">User<wbr>Already<wbr>Exists<wbr>Error</a>
+					<li class="current tsd-kind-interface">
+						<a href="eventdto.html" class="tsd-kind-icon">Event<wbr>Dto</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="useralreadyexistserror.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="eventdto.html#baseassetname" class="tsd-kind-icon">base<wbr>Asset<wbr>Name</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="useralreadyexistserror.html#email" class="tsd-kind-icon">email</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="eventdto.html#firedat" class="tsd-kind-icon">fired<wbr>At</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="useralreadyexistserror.html#message" class="tsd-kind-icon">message</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="eventdto.html#probability" class="tsd-kind-icon">probability</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="useralreadyexistserror.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="useralreadyexistserror.html#stack" class="tsd-kind-icon">stack</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="useralreadyexistserror.html#error" class="tsd-kind-icon">Error</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="eventdto.html#quoteassetname" class="tsd-kind-icon">quote<wbr>Asset<wbr>Name</a>
 							</li>
 						</ul>
 					</li>
