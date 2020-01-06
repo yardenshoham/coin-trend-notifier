@@ -13,7 +13,10 @@ export default class EventService {
    * @param userId The id of the interested user.
    * @param amount The amount of events to return. If not provided, all events are returned.
    */
-  public async getEvents(userId: string, amount?: number): Promise<EventDto[]> {
+  public static async getEvents(
+    userId: string,
+    amount?: number
+  ): Promise<EventDto[]> {
     if (amount && amount < 0) {
       throw new RangeError("amount must be a positive integer");
     }
@@ -31,14 +34,14 @@ export default class EventService {
     }
 
     // query db
-    const key = `cryptoSymbolInfo.preferences.${userId}`;
-    const $key = `${key}`;
+    const queryKey = `cryptoSymbolInfo.preferences.${userId}`;
+    const $queryKey = `$${queryKey}`;
 
     let cursor = (await symbolEventDbPromise)
       .find({
         $and: [
           {
-            key: {
+            [queryKey]: {
               $exists: true
             }
           },
@@ -48,20 +51,20 @@ export default class EventService {
                 {
                   $and: [
                     {
-                      $gt: [$key, 0]
+                      $gt: [$queryKey, 0]
                     },
                     {
-                      $lte: [$key, "$probability"]
+                      $lte: [$queryKey, "$probability"]
                     }
                   ]
                 },
                 {
                   $and: [
                     {
-                      $lt: [$key, 0]
+                      $lt: [$queryKey, 0]
                     },
                     {
-                      $gte: [$key, "$probability"]
+                      $gte: [$queryKey, "$probability"]
                     }
                   ]
                 }
@@ -76,7 +79,14 @@ export default class EventService {
       cursor = cursor.limit(amount);
     }
 
-    return (await cursor.toArray()).map((symbolEvent: SymbolEvent) => {
+    const populatedEvents = await Promise.all(
+      (await cursor.toArray()).map(async (symbolEvent: SymbolEvent) => {
+        await symbolEvent.cryptoSymbolInfo.populate();
+        return symbolEvent;
+      })
+    );
+
+    return populatedEvents.map((symbolEvent: SymbolEvent) => {
       const eventDto: EventDto = {
         probability: symbolEvent.probability,
         firedAt: symbolEvent.firedAt,
