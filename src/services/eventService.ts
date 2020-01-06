@@ -3,6 +3,7 @@ import { ObjectId } from "mongodb";
 import UserDoesNotExistError from "../errors/userDoesNotExistError";
 import { userDbPromise } from "../models/user";
 import EventDto from "./../interfaces/dtos/eventDto";
+import { FilterQuery } from "mongodb";
 
 /**
  * A service to perform various symbol event related methods.
@@ -34,45 +35,8 @@ export default class EventService {
     }
 
     // query db
-    const queryKey = `cryptoSymbolInfo.preferences.${userId}`;
-    const $queryKey = `$${queryKey}`;
-
     let cursor = (await symbolEventDbPromise)
-      .find({
-        $and: [
-          {
-            [queryKey]: {
-              $exists: true
-            }
-          },
-          {
-            $expr: {
-              $or: [
-                {
-                  $and: [
-                    {
-                      $gt: [$queryKey, 0]
-                    },
-                    {
-                      $lte: [$queryKey, "$probability"]
-                    }
-                  ]
-                },
-                {
-                  $and: [
-                    {
-                      $lt: [$queryKey, 0]
-                    },
-                    {
-                      $gte: [$queryKey, "$probability"]
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-        ]
-      })
+      .find(this.buildFetchQuery(`cryptoSymbolInfo.preferences.${userId}`))
       .sort("firedAt", -1);
 
     if (amount) {
@@ -95,5 +59,44 @@ export default class EventService {
       };
       return eventDto;
     });
+  }
+
+  private static buildFetchQuery(queryKey: string): FilterQuery<SymbolEvent> {
+    const $queryKey = `$${queryKey}`;
+    return {
+      $and: [
+        {
+          [queryKey]: {
+            $exists: true
+          }
+        },
+        {
+          $expr: {
+            $or: [
+              {
+                $and: [
+                  {
+                    $gt: [$queryKey, 0]
+                  },
+                  {
+                    $lte: [$queryKey, "$probability"]
+                  }
+                ]
+              },
+              {
+                $and: [
+                  {
+                    $lt: [$queryKey, 0]
+                  },
+                  {
+                    $gte: [$queryKey, "$probability"]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    };
   }
 }
