@@ -1,9 +1,7 @@
-import { ObjectId } from "mongodb";
 import cryptoSymbolManagerPromise from "./../managers/cryptoSymbolManager";
 import { cryptoSymbolDbPromise } from "../models/cryptoSymbol";
-import UserDoesNotExistError from "../errors/userDoesNotExistError";
-import { userDbPromise } from "../models/user";
 import SetPreferenceDto from "./../interfaces/dtos/setPreferenceDto";
+import UserService from "./userService";
 
 /**
  * A service to perform various preference related methods.
@@ -30,17 +28,7 @@ export default class PreferenceService {
     }
 
     // make sure user exists
-    let objectId: ObjectId;
-    try {
-      objectId = ObjectId.createFromHexString(userId);
-    } catch {
-      throw new UserDoesNotExistError();
-    }
-
-    const user = await (await userDbPromise).findById(objectId);
-    if (!user) {
-      throw new UserDoesNotExistError();
-    }
+    await UserService.getById(userId);
 
     const cryptoSymbol = await (
       await cryptoSymbolManagerPromise
@@ -64,17 +52,7 @@ export default class PreferenceService {
     quoteAssetName: string
   ) {
     // make sure user exists
-    let objectId: ObjectId;
-    try {
-      objectId = ObjectId.createFromHexString(userId);
-    } catch {
-      throw new UserDoesNotExistError();
-    }
-
-    const user = await (await userDbPromise).findById(objectId);
-    if (!user) {
-      throw new UserDoesNotExistError();
-    }
+    await UserService.getById(userId);
 
     const cryptoSymbolManager = await cryptoSymbolManagerPromise;
     const assetString = `${baseAssetName} ${quoteAssetName}`;
@@ -96,17 +74,7 @@ export default class PreferenceService {
     userId: string
   ): Promise<SetPreferenceDto[]> {
     // make sure user exists
-    let objectId: ObjectId;
-    try {
-      objectId = ObjectId.createFromHexString(userId);
-    } catch {
-      throw new UserDoesNotExistError();
-    }
-
-    const user = await (await userDbPromise).findById(objectId);
-    if (!user) {
-      throw new UserDoesNotExistError();
-    }
+    await UserService.getById(userId);
 
     let result: SetPreferenceDto[] = [];
 

@@ -11,6 +11,7 @@ import UserLoginDto from "../interfaces/dtos/userLoginDto";
 import WrongPasswordError from "./../errors/wrongPasswordError";
 import UserJwtPayload from "./../interfaces/userJwtPayload";
 import config from "config";
+import { ObjectId } from "mongodb";
 
 /**
  * A service to perform various user related methods.
@@ -82,5 +83,25 @@ export default class UserService {
     // create and return jwt
     const payload: UserJwtPayload = { _id: user._id.toHexString() };
     return jwt.sign(payload, config.get("jwtPrivateKey"));
+  }
+
+  /**
+   * Given a user's id, either returns the associated user, or throws a [[UserDoesNotExistError]].
+   * @param id The user's id string.
+   * @throws [[UserDoesNotExistError]] If the provided id wasn't found in the system.
+   * @returns The user object.
+   */
+  public static async getById(id: string): Promise<User> {
+    let objectId: ObjectId;
+    try {
+      objectId = ObjectId.createFromHexString(id);
+    } catch {
+      throw new UserDoesNotExistError();
+    }
+    const user = await (await userDbPromise).findById(objectId);
+    if (!user) {
+      throw new UserDoesNotExistError();
+    }
+    return user;
   }
 }

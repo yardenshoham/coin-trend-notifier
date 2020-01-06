@@ -1,9 +1,7 @@
 import { SymbolEvent, symbolEventDbPromise } from "../models/symbolEvent";
-import { ObjectId } from "mongodb";
-import UserDoesNotExistError from "../errors/userDoesNotExistError";
-import { userDbPromise } from "../models/user";
 import EventDto from "./../interfaces/dtos/eventDto";
 import { FilterQuery } from "mongodb";
+import UserService from "./userService";
 
 /**
  * A service to perform various symbol event related methods.
@@ -23,16 +21,7 @@ export default class EventService {
     }
 
     // make sure user exists
-    let objectId: ObjectId;
-    try {
-      objectId = ObjectId.createFromHexString(userId);
-    } catch {
-      throw new UserDoesNotExistError();
-    }
-    const user = await (await userDbPromise).findById(objectId);
-    if (!user) {
-      throw new UserDoesNotExistError();
-    }
+    await UserService.getById(userId);
 
     // query db
     let cursor = (await symbolEventDbPromise)
@@ -63,40 +52,8 @@ export default class EventService {
 
   private static buildFetchQuery(queryKey: string): FilterQuery<SymbolEvent> {
     const $queryKey = `$${queryKey}`;
-    return {
-      $and: [
-        {
-          [queryKey]: {
-            $exists: true
-          }
-        },
-        {
-          $expr: {
-            $or: [
-              {
-                $and: [
-                  {
-                    $gt: [$queryKey, 0]
-                  },
-                  {
-                    $lte: [$queryKey, "$probability"]
-                  }
-                ]
-              },
-              {
-                $and: [
-                  {
-                    $lt: [$queryKey, 0]
-                  },
-                  {
-                    $gte: [$queryKey, "$probability"]
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    };
+
+    // prettier-ignore
+    return {$and:[{[queryKey]:{$exists:true}},{$expr:{$or:[{$and:[{$gt:[$queryKey,0]},{$lte:[$queryKey,"$probability"]}]},{$and:[{$lt:[$queryKey,0]},{$gte:[$queryKey,"$probability"]}]}]}}]};
   }
 }
