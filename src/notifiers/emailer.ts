@@ -73,7 +73,13 @@ class Emailer implements Notifier {
       ObjectId.createFromHexString(userId)
     );
 
-    if (!user) return;
+    if (
+      !user ||
+      (user.notifiedAt &&
+        user.alertLimit &&
+        user.notifiedAt + user.alertLimit > Date.now() * 1000)
+    )
+      return;
 
     return this.email.send({
       template,

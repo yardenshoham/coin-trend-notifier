@@ -43,6 +43,16 @@ export class User {
   private _password: string;
 
   /**
+   * The amount of seconds from the last time the user was notified to avoid notifying them. If 0 then the user has no limit.
+   */
+  public alertLimit: number;
+
+  /**
+   * The last time the user was notified. UTC date.
+   */
+  public notifiedAt?: number;
+
+  /**
    * The user's phone number. Includes international prefix (e.g. +41, +972).
    */
   @IsOptional()
@@ -60,11 +70,13 @@ export class User {
     email: string,
     username: string,
     password: string,
-    phoneNumber?: string
+    phoneNumber?: string,
+    alertLimit: number = 0
   ) {
     this.email = email;
     this.username = username;
     this.password = password;
+    this.alertLimit = alertLimit;
     if (phoneNumber) {
       this.phoneNumber = phoneNumber;
     }
