@@ -3,6 +3,11 @@
  */
 export default interface EventDto {
   /**
+   * The id of the event.
+   */
+  _id: string;
+
+  /**
    * The probability threshold that was passed and caused this event to be fired.
    */
   probability: number;

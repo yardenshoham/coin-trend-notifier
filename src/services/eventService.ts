@@ -41,6 +41,7 @@ export default class EventService {
 
     return populatedEvents.map((symbolEvent: SymbolEvent) => {
       const eventDto: EventDto = {
+        _id: symbolEvent._id.toHexString(),
         probability: symbolEvent.probability,
         firedAt: symbolEvent.firedAt,
         baseAssetName: symbolEvent.cryptoSymbolInfo.baseAsset.name,
