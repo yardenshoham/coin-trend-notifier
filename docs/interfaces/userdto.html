@@ -96,7 +96,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#alertlimit" class="tsd-kind-icon">alert<wbr>Limit</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#email" class="tsd-kind-icon">email</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#notifiedat" class="tsd-kind-icon">notified<wbr>At</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#phonenumber" class="tsd-kind-icon">phone<wbr>Number</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userdto.html#username" class="tsd-kind-icon">username</a></li>
 							</ul>
@@ -107,12 +109,27 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="alertlimit" class="tsd-anchor"></a>
+					<h3>alert<wbr>Limit</h3>
+					<div class="tsd-signature tsd-kind-icon">alert<wbr>Limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/6868c7e/src/interfaces/dtos/userDto.ts#L23">src/interfaces/dtos/userDto.ts:23</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The amount of seconds from the last time the user was notified to avoid notifying them. If 0 then the user has no limit.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="email" class="tsd-anchor"></a>
 					<h3>email</h3>
 					<div class="tsd-signature tsd-kind-icon">email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/4b3eb7b/src/interfaces/dtos/userDto.ts#L8">src/interfaces/dtos/userDto.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/6868c7e/src/interfaces/dtos/userDto.ts#L8">src/interfaces/dtos/userDto.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -122,12 +139,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="notifiedat" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> notified<wbr>At</h3>
+					<div class="tsd-signature tsd-kind-icon">notified<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/6868c7e/src/interfaces/dtos/userDto.ts#L28">src/interfaces/dtos/userDto.ts:28</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The last time the user was notified. UTC date.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="phonenumber" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> phone<wbr>Number</h3>
 					<div class="tsd-signature tsd-kind-icon">phone<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/4b3eb7b/src/interfaces/dtos/userDto.ts#L18">src/interfaces/dtos/userDto.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/6868c7e/src/interfaces/dtos/userDto.ts#L18">src/interfaces/dtos/userDto.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -142,7 +174,7 @@
 					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/4b3eb7b/src/interfaces/dtos/userDto.ts#L13">src/interfaces/dtos/userDto.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/6868c7e/src/interfaces/dtos/userDto.ts#L13">src/interfaces/dtos/userDto.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -169,7 +201,13 @@
 						<a href="userdto.html" class="tsd-kind-icon">User<wbr>Dto</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="userdto.html#alertlimit" class="tsd-kind-icon">alert<wbr>Limit</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="userdto.html#email" class="tsd-kind-icon">email</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="userdto.html#notifiedat" class="tsd-kind-icon">notified<wbr>At</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="userdto.html#phonenumber" class="tsd-kind-icon">phone<wbr>Number</a>
