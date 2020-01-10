@@ -15,7 +15,8 @@ suite("AuthMiddleware", function() {
       const user: UserDtoIn = {
         email: "abc@def.com",
         username: "atestuser",
-        password: "atestpassword"
+        password: "atestpassword",
+        alertLimit: 0
       };
 
       // signup

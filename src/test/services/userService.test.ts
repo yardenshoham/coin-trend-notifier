@@ -28,7 +28,8 @@ suite("UserService", function() {
         email,
         username,
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       await UserService.signUp(user);
@@ -46,14 +47,16 @@ suite("UserService", function() {
         email,
         username: "Test_User",
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       const user2: UserDtoIn = {
         email,
         username: "Another-Test-User",
         password: "123456",
-        phoneNumber: "+972-52111111"
+        phoneNumber: "+972-52111111",
+        alertLimit: 0
       };
 
       await UserService.signUp(user1);
@@ -68,7 +71,8 @@ suite("UserService", function() {
         email: "I'm not an email",
         username: "I'm way too long to be a username, much too long",
         password: "123abc",
-        phoneNumber: "Not a phone number"
+        phoneNumber: "Not a phone number",
+        alertLimit: -8888
       };
 
       try {
@@ -91,7 +95,8 @@ suite("UserService", function() {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       const registeredUser = await UserService.signUp(user);
@@ -120,7 +125,8 @@ suite("UserService", function() {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       await UserService.signUp(user);

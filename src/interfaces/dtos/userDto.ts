@@ -16,4 +16,14 @@ export default interface UserDto {
    * The user's phone number. Includes international prefix (e.g. +41, +972).
    */
   phoneNumber?: string;
+
+  /**
+   * The amount of seconds from the last time the user was notified to avoid notifying them. If 0 then the user has no limit.
+   */
+  alertLimit: number;
+
+  /**
+   * The last time the user was notified. UTC date.
+   */
+  notifiedAt?: number;
 }

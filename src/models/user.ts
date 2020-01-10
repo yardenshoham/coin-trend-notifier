@@ -6,7 +6,8 @@ import {
   Matches,
   IsOptional,
   IsPhoneNumber,
-  IsDefined
+  IsDefined,
+  Min
 } from "class-validator";
 
 /**
@@ -45,6 +46,8 @@ export class User {
   /**
    * The amount of seconds from the last time the user was notified to avoid notifying them. If 0 then the user has no limit.
    */
+  @IsDefined()
+  @Min(0)
   public alertLimit: number;
 
   /**

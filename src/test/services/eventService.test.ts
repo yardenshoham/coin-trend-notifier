@@ -31,7 +31,8 @@ suite("EventService", function() {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       const registeredUser = await UserService.signUp(user);
@@ -74,7 +75,8 @@ suite("EventService", function() {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       const registeredUser = await UserService.signUp(user);

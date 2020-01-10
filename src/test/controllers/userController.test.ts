@@ -26,7 +26,8 @@ suite(`${route} (UserController)`, function() {
         email,
         username,
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       const response = await request(server)
@@ -53,7 +54,8 @@ suite(`${route} (UserController)`, function() {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       await request(server)
@@ -76,7 +78,8 @@ suite(`${route} (UserController)`, function() {
         email: "Not a valid email",
         username: "Not a valid username",
         password: "123abc",
-        phoneNumber: "Not a valid phone number"
+        phoneNumber: "Not a valid phone number",
+        alertLimit: -100
       };
 
       const response = await request(server)
@@ -98,7 +101,8 @@ suite(`${route} (UserController)`, function() {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       // sign up
@@ -129,7 +133,8 @@ suite(`${route} (UserController)`, function() {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
-        phoneNumber: "+972-524444444"
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
       };
 
       // sign up

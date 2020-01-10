@@ -35,17 +35,20 @@ suite("SymbolEvent", function(): void {
         {
           email: "abcd@gmail.com",
           username: "AB_CD",
-          password: "12345"
+          password: "12345",
+          alertLimit: 0
         },
         {
           email: "qwert@gmail.com",
           username: "hey",
-          password: "qwertyuiop"
+          password: "qwertyuiop",
+          alertLimit: 8888
         },
         {
           email: "aaaa@gmail.com",
           username: "AaaaaD",
-          password: "TEST"
+          password: "TEST",
+          alertLimit: 14598533
         }
       ];
 
