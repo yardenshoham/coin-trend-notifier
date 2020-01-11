@@ -14,7 +14,7 @@ export default class EventService {
    */
   public static async getEvents(
     userId: string,
-    amount?: number
+    amount: number = 0
   ): Promise<EventDto[]> {
     if (amount && amount < 0) {
       throw new RangeError("amount must be a positive integer");
@@ -26,11 +26,8 @@ export default class EventService {
     // query db
     let cursor = (await symbolEventDbPromise)
       .find(this.buildFetchQuery(`cryptoSymbolInfo.preferences.${userId}`))
-      .sort("firedAt", -1);
-
-    if (amount) {
-      cursor = cursor.limit(amount);
-    }
+      .sort("firedAt", -1)
+      .limit(amount);
 
     const populatedEvents = await Promise.all(
       (await cursor.toArray()).map(async (symbolEvent: SymbolEvent) => {
