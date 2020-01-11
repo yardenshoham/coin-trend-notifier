@@ -47,6 +47,7 @@ app.get("/", (_, res: Response) => {
 });
 
 useExpressServer(app, {
+  development: false,
   routePrefix: "/api",
   controllers: [UserController, PreferenceController, EventController]
 });

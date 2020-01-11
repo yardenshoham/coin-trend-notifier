@@ -1,13 +1,30 @@
-import { JsonController, Post, Body, Res } from "routing-controllers";
+import {
+  JsonController,
+  Post,
+  Body,
+  Res,
+  Put,
+  Req,
+  HttpCode,
+  UseBefore
+} from "routing-controllers";
 import UserDtoIn from "../dtos/userDtoIn";
 import UserService from "./../services/userService";
 import { Response } from "express";
 import UserAlreadyExistsError from "./../errors/userAlreadyExistsError";
-import { UNPROCESSABLE_ENTITY, UNAUTHORIZED, OK } from "http-status-codes";
+import {
+  UNPROCESSABLE_ENTITY,
+  UNAUTHORIZED,
+  OK,
+  NO_CONTENT
+} from "http-status-codes";
 import { ValidationError } from "class-validator";
 import UserLoginDto from "../dtos/userLoginDto";
 import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 import RegisteredUserDto from "../dtos/registeredUserDto";
+import ChangePasswordDto from "./../dtos/changePasswordDto";
+import AuthorizedRequest from "./../interfaces/authorizedRequest";
+import AuthMiddleware from "./../middleware/authMiddleware";
 
 /**
  * Controller for users.
@@ -193,6 +210,106 @@ export default class UserController {
       return res
         .status(UNAUTHORIZED)
         .send({ error: "Invalid email or password." });
+    }
+  }
+
+  /**
+   * Changes a user's password.
+   * @param passwords The user's old and new password.
+   * @param req The Express request + jwt payload.
+   * @param res The Express response.
+   */
+  @OpenAPI({
+    description: "Change a user's password.",
+    requestBody: {
+      content: {
+        "application/json": {
+          example: {
+            oldPassword: "12345678",
+            newPassword: "123456789"
+          }
+        }
+      }
+    },
+    responses: {
+      "400": {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                name: {
+                  type: "string"
+                },
+                message: {
+                  type: "string"
+                },
+                errors: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      target: {
+                        type: ChangePasswordDto
+                      },
+                      property: {
+                        type: "string"
+                      },
+                      value: {
+                        type: "any"
+                      },
+                      constraints: {
+                        type: "object"
+                      },
+                      children: {
+                        type: "array"
+                      }
+                    },
+                    required: ["property", "value"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        description: "Validation Error."
+      },
+      "422": {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string"
+                }
+              },
+              required: ["error"]
+            }
+          }
+        },
+        description:
+          "An error occurred. Either the user does not exist or password was not correct/invalid."
+      }
+    }
+  })
+  @HttpCode(NO_CONTENT)
+  @UseBefore(AuthMiddleware)
+  @Put("/password")
+  public async changePassword(
+    @Body({ required: true }) passwords: ChangePasswordDto,
+    @Req() req: AuthorizedRequest,
+    @Res() res: Response
+  ): Promise<Response> {
+    try {
+      await UserService.changePassword(
+        req.jwtPayload._id,
+        passwords.oldPassword,
+        passwords.newPassword
+      );
+      return res.status(NO_CONTENT).send();
+    } catch (error) {
+      return res.status(UNPROCESSABLE_ENTITY).send({ error: error.message });
     }
   }
 }
