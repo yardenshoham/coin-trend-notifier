@@ -8,6 +8,7 @@ import morgan from "morgan";
 import chalk from "chalk";
 import { Response } from "express";
 import { OK } from "http-status-codes";
+import EventController from "./../controllers/eventController";
 
 /**
  * The express app that'll represent the api server.
@@ -43,7 +44,7 @@ app.get("/", (_, res: Response) => {
 
 useExpressServer(app, {
   routePrefix: "/api",
-  controllers: [UserController, PreferenceController]
+  controllers: [UserController, PreferenceController, EventController]
 });
 
 export default app;
