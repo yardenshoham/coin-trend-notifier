@@ -2,9 +2,9 @@ import { suite, describe, it } from "mocha";
 import server from "./../../index";
 import request from "supertest";
 import { expect } from "chai";
-import { OK, BAD_REQUEST } from "http-status-codes";
+import { OK, BAD_REQUEST, NOT_FOUND } from "http-status-codes";
 import { cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
-import { assetDbPromise } from "../../models/asset";
+import { assetDbPromise, Asset } from "../../models/asset";
 import { userDbPromise } from "../../models/user";
 import cryptoSymbolManagerPromise from "./../../managers/cryptoSymbolManager";
 import jwt from "jsonwebtoken";
@@ -14,7 +14,8 @@ import UserService from "../../services/userService";
 import UserJwtPayload from "../../interfaces/userJwtPayload";
 import PreferenceService from "../../services/preferenceService";
 import EventDto from "./../../interfaces/dtos/eventDto";
-import { symbolEventDbPromise } from "../../models/symbolEvent";
+import { symbolEventDbPromise, SymbolEvent } from "../../models/symbolEvent";
+import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
 
 const route = "/api/events";
 suite(`${route} (EventController)`, function() {
@@ -162,6 +163,51 @@ suite(`${route} (EventController)`, function() {
 
       // cleanup
       await (await userDbPromise).c.deleteMany({});
+    });
+  });
+
+  describe("GET /:id (getById())", function() {
+    it("should return an EventDto given its id and a status of 200 OK", async function() {
+      const btc = new Asset("BTC");
+      const usdt = new Asset("USDT");
+      const assetDb = await assetDbPromise;
+      await assetDb.insert(btc);
+      await assetDb.insert(usdt);
+
+      const event = new SymbolEvent(0.8, new CryptoSymbolInfo(btc, usdt));
+      const symbolEventDb = await symbolEventDbPromise;
+
+      await symbolEventDb.insert(event);
+
+      const response = await request(server).get(
+        `${route}/${event._id.toHexString()}`
+      );
+
+      expect(response.status).to.equal(OK);
+
+      const retrieved = response.body;
+
+      expect(retrieved).to.have.property("_id", event._id.toHexString());
+      expect(retrieved).to.have.property(
+        "baseAssetName",
+        event.cryptoSymbolInfo.baseAsset.name
+      );
+      expect(retrieved).to.have.property(
+        "quoteAssetName",
+        event.cryptoSymbolInfo.quoteAsset.name
+      );
+      expect(retrieved).to.have.property("probability", event.probability);
+
+      await symbolEventDb.c.deleteMany({});
+      await assetDb.c.deleteMany({});
+    });
+
+    it("should return a status of 404 Not Found when provided a bad id", async function() {
+      let response = await request(server).get(`${route}/uhuhhhgtggghh`);
+      expect(response.status).to.equal(NOT_FOUND);
+
+      response = await request(server).get(`${route}/5e196cd3bb5f685ca029e93d`);
+      expect(response.status).to.equal(NOT_FOUND);
     });
   });
 });
