@@ -13,6 +13,9 @@ import { assetDbPromise } from "../../models/asset";
 import { cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
 import { symbolEventDbPromise } from "../../models/symbolEvent";
 import lolex from "lolex";
+import { SymbolEvent } from "./../../models/symbolEvent";
+import { CryptoSymbolInfo } from "./../../models/cryptoSymbolInfo";
+import { Asset } from "./../../models/asset";
 chai.use(chaiAsPromised);
 
 suite("EventService", function() {
@@ -120,6 +123,47 @@ suite("EventService", function() {
       expect(
         EventService.getEvents("0000000092a2141f3cb7a66a", -1)
       ).to.be.rejectedWith(RangeError);
+    });
+  });
+
+  describe("findEventById()", function() {
+    it("should retrieve an EventDto given its id", async function() {
+      const btc = new Asset("BTC");
+      const usdt = new Asset("USDT");
+      const assetDb = await assetDbPromise;
+      await assetDb.insert(btc);
+      await assetDb.insert(usdt);
+
+      const event = new SymbolEvent(0.8, new CryptoSymbolInfo(btc, usdt));
+      const symbolEventDb = await symbolEventDbPromise;
+
+      await symbolEventDb.insert(event);
+
+      const retrieved = await EventService.findEventById(
+        event._id.toHexString()
+      );
+
+      expect(retrieved).to.have.property("_id", event._id.toHexString());
+      expect(retrieved).to.have.property(
+        "baseAssetName",
+        event.cryptoSymbolInfo.baseAsset.name
+      );
+      expect(retrieved).to.have.property(
+        "quoteAssetName",
+        event.cryptoSymbolInfo.quoteAsset.name
+      );
+      expect(retrieved).to.have.property("probability", event.probability);
+      expect(retrieved).to.have.property("firedAt", event.firedAt);
+
+      await symbolEventDb.c.deleteMany({});
+      await assetDb.c.deleteMany({});
+    });
+
+    it("should throw an error if the given id is invalid", async function() {
+      await expect(EventService.findEventById("uhuhhhgtggghh")).to.be.rejected;
+      return expect(
+        EventService.findEventById("5e196cd3bb5f685ca029e93d")
+      ).to.be.rejected;
     });
   });
 });

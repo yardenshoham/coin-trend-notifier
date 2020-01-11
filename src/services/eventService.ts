@@ -1,6 +1,6 @@
 import { SymbolEvent, symbolEventDbPromise } from "../models/symbolEvent";
 import EventDto from "./../interfaces/dtos/eventDto";
-import { FilterQuery } from "mongodb";
+import { FilterQuery, ObjectId } from "mongodb";
 import UserService from "./userService";
 
 /**
@@ -56,5 +56,30 @@ export default class EventService {
 
     // prettier-ignore
     return {$and:[{[queryKey]:{$exists:true}},{$expr:{$or:[{$and:[{$gt:[$queryKey,0]},{$lte:[$queryKey,"$probability"]}]},{$and:[{$lt:[$queryKey,0]},{$gte:[$queryKey,"$probability"]}]}]}}]};
+  }
+
+  /**
+   * Retrieves an event.
+   * @param eventId The id of the event to retrieve.
+   */
+  public static async findEventById(eventId: string): Promise<EventDto> {
+    try {
+      const event = await (await symbolEventDbPromise).findById(
+        ObjectId.createFromHexString(eventId)
+      );
+      if (!event) {
+        throw new Error();
+      }
+      await event.cryptoSymbolInfo.populate();
+      return {
+        _id: eventId,
+        baseAssetName: event.cryptoSymbolInfo.baseAsset.name,
+        quoteAssetName: event.cryptoSymbolInfo.quoteAsset.name,
+        firedAt: event.firedAt,
+        probability: event.probability
+      };
+    } catch (error) {
+      throw new Error("Event not found.");
+    }
   }
 }
