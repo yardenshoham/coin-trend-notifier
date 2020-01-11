@@ -24,6 +24,9 @@ import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 /**
  * Controller for preferences.
  */
+@OpenAPI({
+  security: [{ bearerAuth: [] }]
+})
 @UseBefore(AuthMiddleware)
 @JsonController("/preferences")
 export default class PreferenceController {

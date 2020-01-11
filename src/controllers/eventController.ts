@@ -28,6 +28,7 @@ export default class EventController {
    * @returns an array of [[EventDto]] if everything went well (status 200), an error if given an invalid user or a negative amount (status 400).
    */
   @OpenAPI({
+    security: [{ bearerAuth: [] }],
     description:
       "Retrieve a specified amount of the most recent events of a given user.",
     parameters: [
