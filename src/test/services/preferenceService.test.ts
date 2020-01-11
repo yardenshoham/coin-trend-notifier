@@ -1,10 +1,10 @@
 import { suite, describe, it } from "mocha";
 import { userDbPromise } from "../../models/user";
-import UserJwtPayload from "./../../interfaces/userJwtPayload";
+import UserJwtPayload from "../../interfaces/userJwtPayload";
 import cryptoSymbolManagerPromise from "./../../managers/cryptoSymbolManager";
 import { assetDbPromise } from "../../models/asset";
 import { cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
-import UserDtoIn from "../../interfaces/dtos/userDtoIn";
+import UserDtoIn from "../../dtos/userDtoIn";
 import UserService from "../../services/userService";
 import PreferenceService from "./../../services/preferenceService";
 import chai, { expect } from "chai";

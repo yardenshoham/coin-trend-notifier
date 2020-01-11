@@ -1,6 +1,6 @@
 import cryptoSymbolManagerPromise from "./../managers/cryptoSymbolManager";
 import { cryptoSymbolDbPromise } from "../models/cryptoSymbol";
-import SetPreferenceDto from "./../interfaces/dtos/setPreferenceDto";
+import SetPreferenceDto from "../dtos/setPreferenceDto";
 import UserService from "./userService";
 
 /**

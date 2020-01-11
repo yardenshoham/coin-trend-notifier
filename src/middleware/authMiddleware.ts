@@ -1,6 +1,6 @@
 import { ExpressMiddlewareInterface } from "routing-controllers";
 import { Response, NextFunction } from "express";
-import UserJwtPayload from "./../interfaces/userJwtPayload";
+import UserJwtPayload from "../interfaces/userJwtPayload";
 import AuthorizedRequest from "../interfaces/authorizedRequest";
 import jwt from "jsonwebtoken";
 import config from "config";

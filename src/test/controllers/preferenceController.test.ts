@@ -2,14 +2,14 @@ import { suite, describe, it } from "mocha";
 import server from "./../../index";
 import request from "supertest";
 import { expect } from "chai";
-import UserDtoIn from "../../interfaces/dtos/userDtoIn";
+import UserDtoIn from "../../dtos/userDtoIn";
 import { NO_CONTENT, UNPROCESSABLE_ENTITY, OK } from "http-status-codes";
 import { cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
 import { assetDbPromise } from "../../models/asset";
 import { userDbPromise } from "../../models/user";
 import cryptoSymbolManagerPromise from "./../../managers/cryptoSymbolManager";
 import jwt from "jsonwebtoken";
-import UserJwtPayload from "./../../interfaces/userJwtPayload";
+import UserJwtPayload from "../../interfaces/userJwtPayload";
 
 const route = "/api/preferences";
 suite(`${route} (PreferenceController)`, function() {

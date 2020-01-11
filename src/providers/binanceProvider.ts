@@ -1,4 +1,4 @@
-import Provider from "./../interfaces/provider";
+import Provider from "../interfaces/provider";
 class BinanceProvider implements Provider {
   start() {
     throw new Error("Method not implemented.");

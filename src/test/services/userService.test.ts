@@ -1,6 +1,6 @@
 import { suite, describe, it } from "mocha";
 import chai, { expect } from "chai";
-import UserDtoIn from "../../interfaces/dtos/userDtoIn";
+import UserDtoIn from "../../dtos/userDtoIn";
 import UserService from "./../../services/userService";
 import { userDbPromise } from "../../models/user";
 import chaiAsPromised from "chai-as-promised";
@@ -8,7 +8,7 @@ import UserAlreadyExistsError from "./../../errors/userAlreadyExistsError";
 import { ValidationError } from "class-validator";
 import jwt from "jsonwebtoken";
 import UserDoesNotExistError from "./../../errors/userDoesNotExistError";
-import UserLoginDto from "./../../interfaces/dtos/userLoginDto";
+import UserLoginDto from "../../dtos/userLoginDto";
 import WrongPasswordError from "../../errors/wrongPasswordError";
 
 chai.use(chaiAsPromised);

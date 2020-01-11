@@ -9,9 +9,11 @@ import {
 } from "routing-controllers";
 import { Response } from "express";
 import { BAD_REQUEST, NOT_FOUND } from "http-status-codes";
-import AuthorizedRequest from "./../interfaces/authorizedRequest";
+import AuthorizedRequest from "../interfaces/authorizedRequest";
 import AuthMiddleware from "./../middleware/authMiddleware";
 import EventService from "../services/eventService";
+import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
+import EventDto from "../dtos/eventDto";
 
 /**
  * Controller for events.
@@ -25,12 +27,43 @@ export default class EventController {
    * @param res The Express response.
    * @returns an array of [[EventDto]] if everything went well (status 200), an error if given an invalid user or a negative amount (status 400).
    */
+  @OpenAPI({
+    description:
+      "Retrieve a specified amount of the most recent events of a given user.",
+    parameters: [
+      {
+        in: "query",
+        name: "amount",
+        description:
+          "A positive number representing the limit of events to return."
+      }
+    ],
+    responses: {
+      [BAD_REQUEST]: {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string"
+                }
+              },
+              required: ["error"]
+            }
+          }
+        },
+        description: "An error occurred. Invalid user or a negative amount."
+      }
+    }
+  })
+  @ResponseSchema(EventDto, { isArray: true })
   @UseBefore(AuthMiddleware)
   @Get()
   public async getEvents(
     @Req() req: AuthorizedRequest,
     @Res() res: Response,
-    @QueryParam("amount") amount?: number
+    @QueryParam("amount", { validate: false }) amount?: number
   ): Promise<Response> {
     try {
       return res.send(await EventService.getEvents(req.jwtPayload._id, amount));
@@ -45,6 +78,28 @@ export default class EventController {
    * @param res The Express response.
    * @returns an [[EventDto]] if everything went well (status 200), an error if the id is invalid (status 404).
    */
+  @OpenAPI({
+    description: "Retrieve a specific event given its id.",
+    responses: {
+      [NOT_FOUND]: {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string"
+                }
+              },
+              required: ["error"]
+            }
+          }
+        },
+        description: "An error occurred. The id is invalid."
+      }
+    }
+  })
+  @ResponseSchema(EventDto)
   @Get("/:id")
   public async getById(
     @Param("id") id: string,

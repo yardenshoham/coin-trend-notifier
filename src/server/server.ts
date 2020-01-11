@@ -1,4 +1,5 @@
-import { useExpressServer } from "routing-controllers";
+import { useExpressServer, getMetadataArgsStorage } from "routing-controllers";
+import { routingControllersToSpec } from "routing-controllers-openapi";
 import UserController from "./../controllers/userController";
 import PreferenceController from "../controllers/preferenceController";
 import helmet from "helmet";
@@ -9,6 +10,9 @@ import chalk from "chalk";
 import { Response } from "express";
 import { OK } from "http-status-codes";
 import EventController from "./../controllers/eventController";
+import fs from "fs-extra";
+import { validationMetadatasToSchemas } from "class-validator-jsonschema";
+import { getFromContainer, MetadataStorage } from "class-validator";
 
 /**
  * The express app that'll represent the api server.
@@ -46,5 +50,37 @@ useExpressServer(app, {
   routePrefix: "/api",
   controllers: [UserController, PreferenceController, EventController]
 });
+
+// parse class-validator classes into JSON Schema
+const metadatas = (getFromContainer(MetadataStorage) as any)
+  .validationMetadatas;
+const schemas = validationMetadatasToSchemas(metadatas, {
+  refPointerPrefix: "#/components/schemas/"
+});
+
+// parse routing-controllers classes into OpenAPI spec
+const storage = getMetadataArgsStorage();
+const spec = routingControllersToSpec(
+  storage,
+  {},
+  {
+    servers: [{ url: "https://coin-trend-notifier-api.herokuapp.com/api" }],
+    components: {
+      schemas,
+      securitySchemes: {
+        basicAuth: {
+          scheme: "Bearer",
+          type: "http"
+        }
+      }
+    },
+    info: {
+      title: "Coin Trend Notifier API",
+      version: "1.0.0"
+    }
+  }
+);
+
+fs.outputFile("docs/api/spec.json", JSON.stringify(spec));
 
 export default app;

@@ -1,4 +1,4 @@
-import Provider from "./../interfaces/provider";
+import Provider from "../interfaces/provider";
 import Twit from "twit";
 import config from "config";
 

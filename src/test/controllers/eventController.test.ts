@@ -9,11 +9,11 @@ import { userDbPromise } from "../../models/user";
 import cryptoSymbolManagerPromise from "./../../managers/cryptoSymbolManager";
 import jwt from "jsonwebtoken";
 import lolex from "lolex";
-import UserDtoIn from "../../interfaces/dtos/userDtoIn";
+import UserDtoIn from "../../dtos/userDtoIn";
 import UserService from "../../services/userService";
 import UserJwtPayload from "../../interfaces/userJwtPayload";
 import PreferenceService from "../../services/preferenceService";
-import EventDto from "./../../interfaces/dtos/eventDto";
+import EventDto from "../../dtos/eventDto";
 import { symbolEventDbPromise, SymbolEvent } from "../../models/symbolEvent";
 import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
 

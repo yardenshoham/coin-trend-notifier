@@ -1,4 +1,4 @@
-import Provider from "./../interfaces/provider";
+import Provider from "../interfaces/provider";
 
 /**
  * The central place for all your provider needs.

@@ -1,4 +1,4 @@
-import Notifier from "./../interfaces/notifier";
+import Notifier from "../interfaces/notifier";
 import nodemailer from "nodemailer";
 import Email from "email-templates";
 import config from "config";

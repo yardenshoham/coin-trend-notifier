@@ -7,17 +7,19 @@ import {
   UseBefore,
   Delete,
   QueryParams,
-  Get
+  Get,
+  HttpCode
 } from "routing-controllers";
 import { Response } from "express";
 import { UNPROCESSABLE_ENTITY, NO_CONTENT } from "http-status-codes";
 import { ValidationError } from "class-validator";
-import AuthorizedRequest from "./../interfaces/authorizedRequest";
-import SetPreferenceDto from "./../interfaces/dtos/setPreferenceDto";
+import AuthorizedRequest from "../interfaces/authorizedRequest";
+import SetPreferenceDto from "../dtos/setPreferenceDto";
 import PreferenceService from "../services/preferenceService";
 import AuthMiddleware from "./../middleware/authMiddleware";
 import UserDoesNotExistError from "../errors/userDoesNotExistError";
-import PreferenceDto from "../interfaces/dtos/preferenceDto";
+import PreferenceDto from "../dtos/preferenceDto";
+import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 
 /**
  * Controller for preferences.
@@ -35,9 +37,77 @@ export default class PreferenceController {
    *  - A { error: string } object if the user does not exist or the probability is not between -1 and 1. Status: UNPROCESSABLE_ENTITY.
    *  - A [ValidationError](https://github.com/typestack/class-validator#validation-errors)[] if one or more assets were not valid (must be uppercase). Status: UNPROCESSABLE_ENTITY.
    */
+  @OpenAPI({
+    description:
+      "Set a user's wanted probability threshold to be notified about a rise/fall of a symbol.",
+    requestBody: {
+      content: {
+        "application/json": {
+          example: {
+            baseAssetName: "ETH",
+            quoteAssetName: "USDT",
+            probability: 0.7
+          }
+        }
+      }
+    },
+    responses: {
+      "422": {
+        content: {
+          "application/json": {
+            schema: {
+              oneOf: [
+                {
+                  type: "object",
+                  properties: {
+                    error: {
+                      type: "string"
+                    }
+                  },
+                  required: ["error"]
+                },
+                {
+                  type: "object",
+                  properties: {
+                    errors: {
+                      type: "array",
+                      items: {
+                        type: "object",
+                        properties: {
+                          property: {
+                            type: "string"
+                          },
+                          value: {
+                            type: "any"
+                          },
+                          constraints: {
+                            type: "object"
+                          },
+                          children: {
+                            type: "object"
+                          }
+                        },
+                        required: ["property", "value"]
+                      }
+                    }
+                  },
+                  required: ["errors"]
+                }
+              ]
+            }
+          }
+        },
+        description:
+          "An error occurred. Either the user already exists, the probability is not between -1 and 1 or one or more properties were not valid."
+      },
+      [NO_CONTENT]: {}
+    }
+  })
+  @HttpCode(NO_CONTENT)
   @Post()
   public async setPreference(
-    @Body() preferenceRequest: SetPreferenceDto,
+    @Body({ validate: false, required: true })
+    preferenceRequest: SetPreferenceDto,
     @Req() req: AuthorizedRequest,
     @Res() res: Response
   ): Promise<Response> {
@@ -73,9 +143,33 @@ export default class PreferenceController {
    *  - Nothing if everything went well. Status: NO_CONTENT.
    *  - A { error: string } object if the user does not exist. Status: UNPROCESSABLE_ENTITY.
    */
+  @OpenAPI({
+    description:
+      "Remove a user's wanted probability threshold to be notified about a rise/fall of a symbol.",
+    responses: {
+      "422": {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string"
+                }
+              },
+              required: ["error"]
+            }
+          }
+        },
+        description: "An error occurred. The user does not exist."
+      }
+    }
+  })
+  @HttpCode(NO_CONTENT)
   @Delete()
   public async deletePreference(
-    @QueryParams() preferenceRequest: PreferenceDto,
+    @QueryParams({ validate: false, required: true })
+    preferenceRequest: PreferenceDto,
     @Req() req: AuthorizedRequest,
     @Res() res: Response
   ): Promise<Response> {
@@ -99,6 +193,28 @@ export default class PreferenceController {
    *  - A [[SetPreferenceDto]][] if everything went well. Status: OK.
    *  - A { error: string } object if the user does not exist. Status: UNPROCESSABLE_ENTITY.
    */
+  @OpenAPI({
+    description: "Retrieve all of the given user's preferences.",
+    responses: {
+      "422": {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string"
+                }
+              },
+              required: ["error"]
+            }
+          }
+        },
+        description: "An error occurred. The user does not exist."
+      }
+    }
+  })
+  @ResponseSchema(SetPreferenceDto, { isArray: true })
   @Get()
   public async getPreferences(
     @Req() req: AuthorizedRequest,

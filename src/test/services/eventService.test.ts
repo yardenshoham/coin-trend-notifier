@@ -1,10 +1,10 @@
 import { suite, describe, it } from "mocha";
 import chai, { expect } from "chai";
 import chaiAsPromised from "chai-as-promised";
-import UserDtoIn from "../../interfaces/dtos/userDtoIn";
+import UserDtoIn from "../../dtos/userDtoIn";
 import UserService from "../../services/userService";
 import jwt from "jsonwebtoken";
-import UserJwtPayload from "./../../interfaces/userJwtPayload";
+import UserJwtPayload from "../../interfaces/userJwtPayload";
 import PreferenceService from "./../../services/preferenceService";
 import cryptoSymbolManagerPromise from "./../../managers/cryptoSymbolManager";
 import EventService from "./../../services/eventService";

@@ -1,15 +1,15 @@
 import { User, userDbPromise } from "../models/user";
-import UserDtoIn from "../interfaces/dtos/userDtoIn";
-import RegisteredUserDto from "../interfaces/dtos/registeredUserDto";
+import UserDtoIn from "../dtos/userDtoIn";
+import RegisteredUserDto from "../dtos/registeredUserDto";
 import UserAlreadyExistsError from "../errors/userAlreadyExistsError";
 import bcrypt from "bcrypt";
 import { validateOrReject } from "class-validator";
 import _ from "lodash";
 import jwt from "jsonwebtoken";
 import UserDoesNotExistError from "./../errors/userDoesNotExistError";
-import UserLoginDto from "../interfaces/dtos/userLoginDto";
+import UserLoginDto from "../dtos/userLoginDto";
 import WrongPasswordError from "./../errors/wrongPasswordError";
-import UserJwtPayload from "./../interfaces/userJwtPayload";
+import UserJwtPayload from "../interfaces/userJwtPayload";
 import config from "config";
 import { ObjectId } from "mongodb";
 

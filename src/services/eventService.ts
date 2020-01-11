@@ -1,5 +1,5 @@
 import { SymbolEvent, symbolEventDbPromise } from "../models/symbolEvent";
-import EventDto from "./../interfaces/dtos/eventDto";
+import EventDto from "../dtos/eventDto";
 import { FilterQuery, ObjectId } from "mongodb";
 import UserService from "./userService";
 

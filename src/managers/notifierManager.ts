@@ -1,4 +1,4 @@
-import Notifier from "./../interfaces/notifier";
+import Notifier from "../interfaces/notifier";
 import { SymbolEvent } from "./../models/symbolEvent";
 
 /**

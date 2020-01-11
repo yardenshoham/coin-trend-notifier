@@ -1,4 +1,5 @@
-import { SymbolEvent } from "./../models/symbolEvent";
+import { SymbolEvent } from "../models/symbolEvent";
+
 /**
  * An object with the ability to notify users of [[SymbolEvent]]s through various channels.
  */

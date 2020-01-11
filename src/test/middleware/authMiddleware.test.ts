@@ -5,7 +5,7 @@ import { userDbPromise } from "./../../models/user";
 import request from "supertest";
 import { assetDbPromise } from "../../models/asset";
 import { cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
-import UserDtoIn from "./../../interfaces/dtos/userDtoIn";
+import UserDtoIn from "../../dtos/userDtoIn";
 import { UNAUTHORIZED, BAD_REQUEST } from "http-status-codes";
 
 const testRoute = "/api/preferences";

@@ -2,13 +2,13 @@ import { suite, describe, it } from "mocha";
 import server from "./../../index";
 import { userDbPromise } from "../../models/user";
 import request from "supertest";
-import UserDtoIn from "./../../interfaces/dtos/userDtoIn";
+import UserDtoIn from "../../dtos/userDtoIn";
 import { expect } from "chai";
 import { ObjectId } from "mongodb";
 import { OK, UNPROCESSABLE_ENTITY, UNAUTHORIZED } from "http-status-codes";
 import jwt from "jsonwebtoken";
 import config from "config";
-import UserLoginDto from "./../../interfaces/dtos/userLoginDto";
+import UserLoginDto from "../../dtos/userLoginDto";
 
 const route = "/api/users";
 suite(`${route} (UserController)`, function() {
