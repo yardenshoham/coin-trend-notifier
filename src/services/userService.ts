@@ -43,7 +43,8 @@ export default class UserService {
       userProperties.email,
       userProperties.username,
       hashedPassword,
-      userProperties.phoneNumber
+      userProperties.phoneNumber,
+      userProperties.alertLimit
     );
 
     // validate user
@@ -103,5 +104,27 @@ export default class UserService {
       throw new UserDoesNotExistError();
     }
     return user;
+  }
+
+  /**
+   * Given an id, old password and new password, changes the password of user that has this [[id]].
+   * @param id The hex string of the user's id.
+   * @param oldPassword The user's current password.
+   * @param newPassword The user's new password.
+   */
+  public static async changePassword(
+    id: string,
+    oldPassword: string,
+    newPassword: string
+  ) {
+    const user = await this.getById(id);
+
+    if (!(await bcrypt.compare(oldPassword, user.password))) {
+      throw new WrongPasswordError();
+    }
+
+    user.password = await bcrypt.hash(newPassword, 10);
+
+    return (await userDbPromise).update(user);
   }
 }

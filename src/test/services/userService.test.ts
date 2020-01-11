@@ -10,6 +10,7 @@ import jwt from "jsonwebtoken";
 import UserDoesNotExistError from "./../../errors/userDoesNotExistError";
 import UserLoginDto from "../../dtos/userLoginDto";
 import WrongPasswordError from "../../errors/wrongPasswordError";
+import bcrypt from "bcrypt";
 
 chai.use(chaiAsPromised);
 
@@ -81,7 +82,7 @@ suite("UserService", function() {
         for (const error of errors) {
           expect(error).to.be.instanceOf(ValidationError);
         }
-        expect(errors).to.have.property("length", 3);
+        expect(errors).to.have.property("length", 4);
         return;
       }
 
@@ -136,6 +137,59 @@ suite("UserService", function() {
           email: user.email,
           password: "wrong"
         })
+      ).to.be.rejectedWith(WrongPasswordError);
+    });
+  });
+
+  describe("changePassword()", function() {
+    it("should change a user's password", async function() {
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
+      };
+
+      await UserService.signUp(user);
+
+      const userDb = await userDbPromise;
+      const { _id } = await userDb.findOne({ email: user.email });
+
+      const newPassword = "new_pa$$word";
+      await UserService.changePassword(
+        _id.toHexString(),
+        user.password,
+        newPassword
+      );
+
+      const userFromDb = await userDb.findOne({ email: user.email });
+
+      expect(await bcrypt.compare(newPassword, userFromDb.password)).to.be.true;
+    });
+
+    it("should throw a WrongPasswordError when given an incorrect old password", async function() {
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
+      };
+
+      await UserService.signUp(user);
+
+      const userDb = await userDbPromise;
+      const { _id } = await userDb.findOne({ email: user.email });
+
+      const newPassword = "new_pa$$word";
+
+      return expect(
+        UserService.changePassword(
+          _id.toHexString(),
+          "oops i'm not the password",
+          newPassword
+        )
       ).to.be.rejectedWith(WrongPasswordError);
     });
   });

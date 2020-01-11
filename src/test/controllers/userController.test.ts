@@ -88,7 +88,7 @@ suite(`${route} (UserController)`, function() {
 
       expect(response.status).to.equal(UNPROCESSABLE_ENTITY);
       expect(response.body).to.have.property("errors");
-      expect(response.body.errors.length).to.equal(3);
+      expect(response.body.errors.length).to.equal(4);
 
       const userDb = await userDbPromise;
       expect(await userDb.count({})).to.equal(0);
