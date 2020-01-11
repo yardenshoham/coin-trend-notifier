@@ -81,6 +81,6 @@ const spec = routingControllersToSpec(
   }
 );
 
-fs.outputFile("docs/api/spec.json", JSON.stringify(spec));
+fs.outputFile("docs/spec.json", JSON.stringify(spec));
 
 export default app;
