@@ -11,6 +11,7 @@ import UserDoesNotExistError from "./../../errors/userDoesNotExistError";
 import UserLoginDto from "../../dtos/userLoginDto";
 import WrongPasswordError from "../../errors/wrongPasswordError";
 import bcrypt from "bcrypt";
+import UserUpdateDto from "../../dtos/userUpdateDto";
 
 chai.use(chaiAsPromised);
 
@@ -191,6 +192,71 @@ suite("UserService", function() {
           newPassword
         )
       ).to.be.rejectedWith(WrongPasswordError);
+    });
+  });
+
+  describe("updateUser()", function() {
+    it("should update a user with their new properties", async function() {
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
+      };
+
+      await UserService.signUp(user);
+
+      const userDb = await userDbPromise;
+      const { _id } = await userDb.findOne({ email: user.email });
+
+      const update: UserUpdateDto = {
+        email: "brandnewemail@gmail.com",
+        username: "Cool_Test_User",
+        alertLimit: 3600
+      };
+
+      await UserService.updateUser(_id.toHexString(), update);
+
+      const userFromDb = await userDb.findById(_id);
+      expect(userFromDb.email).to.equal(update.email);
+      expect(userFromDb.username).to.equal(update.username);
+      expect(userFromDb.alertLimit).to.equal(update.alertLimit);
+      expect(userFromDb.phoneNumber).to.equal(user.phoneNumber);
+    });
+
+    it("should throw a UserAlreadyExistsError when given a new email that's already taken", async function() {
+      const user1: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
+      };
+
+      await UserService.signUp(user1);
+
+      const userDb = await userDbPromise;
+      const { _id } = await userDb.findOne({ email: user1.email });
+
+      const user2: UserDtoIn = {
+        email: "test.user.2@test.domain.com",
+        username: "my_username",
+        password: "123abcd",
+        alertLimit: 0
+      };
+
+      await UserService.signUp(user2);
+
+      const update: UserUpdateDto = {
+        email: user2.email,
+        username: "Cool_Test_User",
+        alertLimit: 3600
+      };
+
+      return expect(
+        UserService.updateUser(_id.toHexString(), update)
+      ).to.be.rejectedWith(UserAlreadyExistsError);
     });
   });
 });

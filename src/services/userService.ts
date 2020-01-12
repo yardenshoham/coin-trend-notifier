@@ -12,6 +12,7 @@ import WrongPasswordError from "./../errors/wrongPasswordError";
 import UserJwtPayload from "../interfaces/userJwtPayload";
 import config from "config";
 import { ObjectId } from "mongodb";
+import UserUpdateDto from "../dtos/userUpdateDto";
 
 /**
  * A service to perform various user related methods.
@@ -126,5 +127,38 @@ export default class UserService {
     user.password = await bcrypt.hash(newPassword, 10);
 
     return (await userDbPromise).update(user);
+  }
+
+  /**
+   * Updates a user's properties.
+   * @param userId The id of the user to update.
+   * @param userUpdateProperties The new properties of the user.
+   * @throws [[UserDoesNotExistError]] If the given user id is invalid.
+   * @throws [[UserAlreadyExistsError]] If the given user email is taken.
+   */
+  public static async updateUser(
+    userId: string,
+    userUpdateProperties: UserUpdateDto
+  ) {
+    const userDb = await userDbPromise;
+    const user = await this.getById(userId);
+
+    if (user.email != userUpdateProperties.email) {
+      const found = await userDb.findOne({ email: userUpdateProperties.email });
+
+      // if the email is already taken
+      if (found) {
+        throw new UserAlreadyExistsError(userUpdateProperties.email);
+      }
+    }
+
+    // update
+    for (const key in userUpdateProperties) {
+      if (userUpdateProperties.hasOwnProperty(key)) {
+        const element = userUpdateProperties[key];
+        if (element != undefined && element != null) user[key] = element;
+      }
+    }
+    return userDb.update(user);
   }
 }

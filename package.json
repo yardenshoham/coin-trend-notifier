@@ -11,8 +11,7 @@
     "doc": "typedoc src --exclude src/test --mode file --out docs/generated",
     "test": "mocha",
     "precoverage": "tsc",
-    "coverage": "nyc mocha",
-    "postcoverage": "rm -rf dist .nyc_output"
+    "coverage": "nyc mocha"
   },
   "engines": {
     "node": "12.13.0"
