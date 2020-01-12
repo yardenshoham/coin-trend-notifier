@@ -5,3 +5,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/58ac5ef833d68f074bc2/maintainability)](https://codeclimate.com/github/yardenshoham/coin-trend-notifier/maintainability)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=coin-trend-notifier-api)](https://coin-trend-notifier-api.herokuapp.com/)
