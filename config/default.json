@@ -1,5 +1,6 @@
 {
   "percentileAmount": 10,
   "cryptoSymbolEventName": "cryptoSymbolEvent",
-  "chanceEventName": "chanceEvent"
+  "chanceEventName": "chanceEvent",
+  "binancePeriodicTaskInterval": 14400000
 }

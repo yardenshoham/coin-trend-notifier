@@ -31,6 +31,7 @@
   "homepage": "https://github.com/YardenShoham/coin-trend-notifier#readme",
   "dependencies": {
     "bcrypt": "^3.0.7",
+    "binance-api-node": "^0.9.12",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
     "class-transformer": "^0.2.3",
