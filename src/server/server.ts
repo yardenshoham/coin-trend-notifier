@@ -37,7 +37,7 @@ app.use(
       ].join(" ");
     },
     {
-      skip: req => req.headers["user-agent"].includes("node-superagent")
+      skip: req => req.headers["user-agent"]?.includes("node-superagent")
     }
   )
 );
