@@ -139,7 +139,7 @@ export default class UserService {
   public static async updateUser(
     userId: string,
     userUpdateProperties: UserUpdateDto
-  ) {
+  ): Promise<RegisteredUserDto> {
     const userDb = await userDbPromise;
     const user = await this.getById(userId);
 
@@ -159,6 +159,10 @@ export default class UserService {
         if (element != undefined && element != null) user[key] = element;
       }
     }
-    return userDb.update(user);
+    await userDb.update(user);
+
+    const dto = _.omit(user, "_password");
+    ((dto as unknown) as RegisteredUserDto)._id = dto._id.toHexString();
+    return (dto as unknown) as RegisteredUserDto;
   }
 }

@@ -6,7 +6,8 @@ import {
   Put,
   Req,
   HttpCode,
-  UseBefore
+  UseBefore,
+  Patch
 } from "routing-controllers";
 import UserDtoIn from "../dtos/userDtoIn";
 import UserService from "./../services/userService";
@@ -16,7 +17,8 @@ import {
   UNPROCESSABLE_ENTITY,
   UNAUTHORIZED,
   OK,
-  NO_CONTENT
+  NO_CONTENT,
+  CONFLICT
 } from "http-status-codes";
 import { ValidationError } from "class-validator";
 import UserLoginDto from "../dtos/userLoginDto";
@@ -25,6 +27,7 @@ import RegisteredUserDto from "../dtos/registeredUserDto";
 import ChangePasswordDto from "./../dtos/changePasswordDto";
 import AuthorizedRequest from "./../interfaces/authorizedRequest";
 import AuthMiddleware from "./../middleware/authMiddleware";
+import UserUpdateDto from "./../dtos/userUpdateDto";
 
 /**
  * Controller for users.
@@ -48,7 +51,8 @@ export default class UserController {
             email: "test.me@gmail.com",
             password: "12345678",
             username: "test_user",
-            phoneNumber: "+972-523546888"
+            phoneNumber: "+972-523546888",
+            alertLimit: 0
           }
         }
       }
@@ -220,6 +224,7 @@ export default class UserController {
    * @param res The Express response.
    */
   @OpenAPI({
+    security: [{ bearerAuth: [] }],
     description: "Change a user's password.",
     requestBody: {
       content: {
@@ -295,7 +300,7 @@ export default class UserController {
   })
   @HttpCode(NO_CONTENT)
   @UseBefore(AuthMiddleware)
-  @Put("/password")
+  @Patch("/password")
   public async changePassword(
     @Body({ required: true }) passwords: ChangePasswordDto,
     @Req() req: AuthorizedRequest,
@@ -310,6 +315,119 @@ export default class UserController {
       return res.status(NO_CONTENT).send();
     } catch (error) {
       return res.status(UNPROCESSABLE_ENTITY).send({ error: error.message });
+    }
+  }
+
+  /**
+   * Updates a user's properties.
+   * @param updateProperties The new user properties.
+   * @param req The Express request + jwt payload.
+   * @param res The Express response.
+   * @returns the updated user (status 200) or, if an error occurred a { error: string } object (status 409).
+   */
+  @OpenAPI({
+    security: [{ bearerAuth: [] }],
+    description: "Update a user's properties.",
+    requestBody: {
+      content: {
+        "application/json": {
+          example: {
+            email: "test.me@gmail.com",
+            username: "test_user",
+            phoneNumber: "+972-523546888",
+            alertLimit: 604800
+          }
+        }
+      }
+    },
+    responses: {
+      "400": {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                name: {
+                  type: "string"
+                },
+                message: {
+                  type: "string"
+                },
+                errors: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      target: {
+                        type: UserUpdateDto
+                      },
+                      property: {
+                        type: "string"
+                      },
+                      value: {
+                        type: "any"
+                      },
+                      constraints: {
+                        type: "object"
+                      },
+                      children: {
+                        type: "array"
+                      }
+                    },
+                    required: ["property", "value"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        description: "Validation Error."
+      },
+      "409": {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string"
+                }
+              },
+              required: ["error"]
+            }
+          }
+        },
+        description:
+          "Either the user does not exist or the given email was taken."
+      },
+      [OK]: {
+        content: {
+          "application/json": {
+            example: {
+              _id: "5e19bb04bed2e852c07554e4",
+              email: "test.me@gmail.com",
+              username: "test_user",
+              phoneNumber: "+972-523546888",
+              alertLimit: 604800
+            }
+          }
+        }
+      }
+    }
+  })
+  @UseBefore(AuthMiddleware)
+  @Put()
+  public async updateUser(
+    @Body({ required: true }) updateProperties: UserUpdateDto,
+    @Req() req: AuthorizedRequest,
+    @Res() res: Response
+  ) {
+    try {
+      return res.send(
+        await UserService.updateUser(req.jwtPayload._id, updateProperties)
+      );
+    } catch (error) {
+      return res.status(CONFLICT).send({ error: error.message });
     }
   }
 }

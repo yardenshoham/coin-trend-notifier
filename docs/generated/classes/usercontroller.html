@@ -91,6 +91,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="usercontroller.html#changepassword" class="tsd-kind-icon">change<wbr>Password</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="usercontroller.html#login" class="tsd-kind-icon">login</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="usercontroller.html#signup" class="tsd-kind-icon">sign<wbr>Up</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="usercontroller.html#updateuser" class="tsd-kind-icon">update<wbr>User</a></li>
 							</ul>
 						</section>
 					</div>
@@ -108,7 +109,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5437632/src/controllers/userController.ts#L299">src/controllers/userController.ts:299</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/efdb226/src/controllers/userController.ts#L304">src/controllers/userController.ts:304</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -151,7 +152,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5437632/src/controllers/userController.ts#L203">src/controllers/userController.ts:203</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/efdb226/src/controllers/userController.ts#L207">src/controllers/userController.ts:207</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -190,7 +191,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/5437632/src/controllers/userController.ts#L124">src/controllers/userController.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/efdb226/src/controllers/userController.ts#L128">src/controllers/userController.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -220,6 +221,50 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="updateuser" class="tsd-anchor"></a>
+					<h3>update<wbr>User</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>User<span class="tsd-signature-symbol">(</span>updateProperties<span class="tsd-signature-symbol">: </span><a href="userupdatedto.html" class="tsd-signature-type">UserUpdateDto</a>, req<span class="tsd-signature-symbol">: </span><a href="../interfaces/authorizedrequest.html" class="tsd-signature-type">AuthorizedRequest</a>, res<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/efdb226/src/controllers/userController.ts#L420">src/controllers/userController.ts:420</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates a user&#39;s properties.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>updateProperties: <a href="userupdatedto.html" class="tsd-signature-type">UserUpdateDto</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The new user properties.</p>
+									</div>
+								</li>
+								<li>
+									<h5>req: <a href="../interfaces/authorizedrequest.html" class="tsd-signature-type">AuthorizedRequest</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The Express request + jwt payload.</p>
+									</div>
+								</li>
+								<li>
+									<h5>res: <span class="tsd-signature-type">Response</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The Express response.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>the updated user (status 200) or, if an error occurred a { error: string } object (status 409).</p>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -245,6 +290,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="usercontroller.html#signup" class="tsd-kind-icon">sign<wbr>Up</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="usercontroller.html#updateuser" class="tsd-kind-icon">update<wbr>User</a>
 							</li>
 						</ul>
 					</li>

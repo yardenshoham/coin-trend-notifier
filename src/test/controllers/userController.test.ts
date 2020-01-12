@@ -9,13 +9,16 @@ import {
   OK,
   UNPROCESSABLE_ENTITY,
   UNAUTHORIZED,
-  NO_CONTENT
+  NO_CONTENT,
+  CONFLICT
 } from "http-status-codes";
 import jwt from "jsonwebtoken";
 import config from "config";
 import UserLoginDto from "../../dtos/userLoginDto";
 import ChangePasswordDto from "./../../dtos/changePasswordDto";
 import bcrypt from "bcrypt";
+import UserService from "../../services/userService";
+import UserUpdateDto from "../../dtos/userUpdateDto";
 
 const route = "/api/users";
 suite(`${route} (UserController)`, function() {
@@ -175,7 +178,7 @@ suite(`${route} (UserController)`, function() {
     });
   });
 
-  describe("PUT /password (changePassword())", function() {
+  describe("PATCH /password (changePassword())", function() {
     it("should change the user's password and return a 204 No Content status", async function() {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
@@ -209,7 +212,7 @@ suite(`${route} (UserController)`, function() {
       };
 
       const response = await request(server)
-        .put(`${route}/password`)
+        .patch(`${route}/password`)
         .set("Authorization", `Bearer ${userJwt}`)
         .send(changePasswordBody);
 
@@ -220,6 +223,84 @@ suite(`${route} (UserController)`, function() {
       const userFromDb = await userDb.findOne({ email: user.email });
 
       expect(await bcrypt.compare(newPassword, userFromDb.password)).to.be.true;
+    });
+  });
+
+  describe("PUT / (updateUser())", function() {
+    it("should update a user's properties and return the updated user with a status of 200 OK", async function() {
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
+      };
+
+      await UserService.signUp(user);
+
+      const { jwt } = (
+        await request(server)
+          .post(`${route}/login`)
+          .send({ email: user.email, password: user.password })
+      ).body;
+
+      const update: UserUpdateDto = {
+        email: "brandnewemail@gmail.com",
+        username: "Cool_Test_User",
+        alertLimit: 3600
+      };
+
+      const response = await request(server)
+        .put(route)
+        .set("Authorization", `Bearer ${jwt}`)
+        .send(update);
+
+      expect(response.status).to.equal(OK);
+      expect(response.body.email).to.equal(update.email);
+      expect(response.body.username).to.equal(update.username);
+      expect(response.body.alertLimit).to.equal(update.alertLimit);
+      expect(response.body.phoneNumber).to.equal(user.phoneNumber);
+    });
+
+    it("should not update the user when given an email that already exists and return a status of 409 Conflict", async function() {
+      const user1: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
+      };
+
+      await UserService.signUp(user1);
+
+      const { jwt } = (
+        await request(server)
+          .post(`${route}/login`)
+          .send({ email: user1.email, password: user1.password })
+      ).body;
+
+      const user2: UserDtoIn = {
+        email: "test.user.2@test.domain.com",
+        username: "my_username",
+        password: "123abcd",
+        alertLimit: 0
+      };
+
+      await UserService.signUp(user2);
+
+      const update: UserUpdateDto = {
+        email: user2.email,
+        username: "Cool_Test_User",
+        alertLimit: 3600
+      };
+
+      const response = await request(server)
+        .put(route)
+        .set("Authorization", `Bearer ${jwt}`)
+        .send(update);
+
+      expect(response.status).to.equal(CONFLICT);
+      expect(response.body).to.have.property("error");
     });
   });
 });
