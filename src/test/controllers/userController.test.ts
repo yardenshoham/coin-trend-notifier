@@ -216,13 +216,57 @@ suite(`${route} (UserController)`, function() {
         .set("Authorization", `Bearer ${userJwt}`)
         .send(changePasswordBody);
 
-      console.log(response.body);
-
       expect(response.status).to.equal(NO_CONTENT);
       const userDb = await userDbPromise;
       const userFromDb = await userDb.findOne({ email: user.email });
 
       expect(await bcrypt.compare(newPassword, userFromDb.password)).to.be.true;
+    });
+
+    it("should not change the password return a 422 Unprocessable Entity when given a wrong old password", async function() {
+      const user: UserDtoIn = {
+        email: "test.user@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
+      };
+
+      // sign up
+      await request(server)
+        .post(route)
+        .send(user);
+
+      const login: UserLoginDto = {
+        email: user.email,
+        password: user.password
+      };
+
+      const { jwt: userJwt } = (
+        await request(server)
+          .post(`${route}/login`)
+          .send(login)
+      ).body;
+
+      const newPassword = "new_pa$$word";
+
+      const changePasswordBody: ChangePasswordDto = {
+        oldPassword: "not the old pass",
+        newPassword: newPassword
+      };
+
+      const response = await request(server)
+        .patch(`${route}/password`)
+        .set("Authorization", `Bearer ${userJwt}`)
+        .send(changePasswordBody);
+
+      expect(response.status).to.equal(UNPROCESSABLE_ENTITY);
+      const userDb = await userDbPromise;
+      const userFromDb = await userDb.findOne({ email: user.email });
+
+      expect(
+        await bcrypt.compare(newPassword, userFromDb.password)
+      ).to.be.false;
     });
   });
 
