@@ -6,3 +6,13 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=coin-trend-notifier-api)](https://coin-trend-notifier-api.herokuapp.com/)
+
+## Links
+
+[API](https://coin-trend-notifier-api.herokuapp.com/)
+
+[API Documentation](https://yardenshoham.github.io/coin-trend-notifier/)
+
+[Class-Level Documentation](https://yardenshoham.github.io/coin-trend-notifier/generated/)
+
+[Website](https://yardenshoham.github.io/coin-trend-notifier-website/)
