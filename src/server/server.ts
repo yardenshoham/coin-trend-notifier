@@ -4,6 +4,7 @@ import UserController from "./../controllers/userController";
 import PreferenceController from "../controllers/preferenceController";
 import helmet from "helmet";
 import compression from "compression";
+import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 import chalk from "chalk";
@@ -21,6 +22,7 @@ const app = express();
 
 app.use(helmet());
 app.use(compression());
+app.use(cors());
 
 app.use(
   morgan(
