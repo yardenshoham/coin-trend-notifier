@@ -32,7 +32,7 @@ class Emailer implements Notifier {
       message: {
         from: "coin.trend.notifier@gmail.com"
       },
-      send: false,
+      send: true,
       transport,
       views: { root: path.join(__dirname, "/../templates") },
       preview: true

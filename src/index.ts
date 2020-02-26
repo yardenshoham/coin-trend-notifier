@@ -2,6 +2,9 @@ import "reflect-metadata";
 import "dotenv/config";
 import app from "./server/server";
 import config from "config";
+import startNotifiers from "./startup/startNotifiers";
+
+startNotifiers();
 
 /**
  * The port the server will use. It's whatever is in the PORT environment variable.
