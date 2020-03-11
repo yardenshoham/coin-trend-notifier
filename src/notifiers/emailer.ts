@@ -35,7 +35,7 @@ class Emailer implements Notifier {
       send: true,
       transport,
       views: { root: path.join(__dirname, "/../templates") },
-      preview: true
+      preview: false
     });
   }
 
@@ -60,7 +60,7 @@ class Emailer implements Notifier {
    * Sends a custom email to the given user.
    * @param userId The hex string representation of the ObjectId of the user.
    * @param template The template of the email.
-   * @param percentage The certainly the event is going to occur. Between 0 and 100.
+   * @param percentage The certainty the event is going to occur. Between 0 and 100.
    * @param symbolString The string representation of the crypto symbol.
    */
   private async sendMail(
