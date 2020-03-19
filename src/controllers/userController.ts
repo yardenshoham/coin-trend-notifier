@@ -7,7 +7,8 @@ import {
   Req,
   HttpCode,
   UseBefore,
-  Patch
+  Patch,
+  Get
 } from "routing-controllers";
 import UserDtoIn from "../dtos/userDtoIn";
 import UserService from "./../services/userService";
@@ -18,7 +19,8 @@ import {
   UNAUTHORIZED,
   OK,
   NO_CONTENT,
-  CONFLICT
+  CONFLICT,
+  BAD_REQUEST
 } from "http-status-codes";
 import { ValidationError } from "class-validator";
 import UserLoginDto from "../dtos/userLoginDto";
@@ -38,7 +40,7 @@ export default class UserController {
    * Registers a user to the system.
    * @param userProperties The request body.
    * @returns One of the following:
-   *  - A [[RegisteredUser]] object if registration went well. Status: OK.
+   *  - A [[RegisteredUserDto]] object if registration went well. Status: OK.
    *  - A { error: string } object if the user already exists. Status: UNPROCESSABLE_ENTITY.
    *  - A [ValidationError](https://github.com/typestack/class-validator#validation-errors)[] if one or more properties were not valid. Status: UNPROCESSABLE_ENTITY.
    */
@@ -428,6 +430,67 @@ export default class UserController {
       );
     } catch (error) {
       return res.status(CONFLICT).send({ error: error.message });
+    }
+  }
+
+  /**
+   * Gets information about the current user.
+   * @param req The Express request + jwt payload.
+   * @param res The Express response.
+   * @returns One of the following:
+   *  - A [[RegisteredUserDto]] object if registration went well. Status: OK.
+   *  - A { error: string } object if the user does not exist. Status: BAD_REQUEST.
+   */
+  @OpenAPI({
+    security: [{ bearerAuth: [] }],
+    description: "Get information about the current user",
+    responses: {
+      [BAD_REQUEST]: {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                error: {
+                  type: "string"
+                }
+              }
+            },
+            example: { error: "The user hasn't registered." }
+          }
+        },
+        description: "An error occurred. The user does not exist."
+      },
+      [OK]: {
+        content: {
+          "application/json": {
+            example: {
+              email: "test.me@gmail.com",
+              username: "test_user",
+              alertLimit: 0,
+              phoneNumber: "+972-523546888",
+              _id: "5e19bb04bed2e852c07554e4"
+            }
+          }
+        }
+      }
+    }
+  })
+  @UseBefore(AuthMiddleware)
+  @ResponseSchema(RegisteredUserDto, {
+    description: "The user was successfully identified."
+  })
+  @Get()
+  public async getById(
+    @Req() req: AuthorizedRequest,
+    @Res() res: Response
+  ): Promise<Response> {
+    try {
+      return res.send(
+        await UserService.getRegisteredDtoById(req.jwtPayload._id)
+      );
+    } catch (error) {
+      return res.status(BAD_REQUEST).send({ error: error.message });
     }
   }
 }

@@ -10,7 +10,8 @@ import {
   UNPROCESSABLE_ENTITY,
   UNAUTHORIZED,
   NO_CONTENT,
-  CONFLICT
+  CONFLICT,
+  BAD_REQUEST
 } from "http-status-codes";
 import jwt from "jsonwebtoken";
 import config from "config";
@@ -344,6 +345,58 @@ suite(`${route} (UserController)`, function() {
         .send(update);
 
       expect(response.status).to.equal(CONFLICT);
+      expect(response.body).to.have.property("error");
+    });
+  });
+
+  describe("GET / (getById())", function() {
+    it("should return a RegisteredUserDto object and a 200 OK status code", async function() {
+      const user: UserDtoIn = {
+        email: "test@test.domain.com",
+        username: "Test_User",
+        password: "123abc",
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
+      };
+
+      // sign up
+      const intialDto = (
+        await request(server)
+          .post(route)
+          .send(user)
+      ).body;
+
+      const login: UserLoginDto = {
+        email: user.email,
+        password: user.password
+      };
+
+      // login
+      const { jwt: userJwt } = (
+        await request(server)
+          .post(`${route}/login`)
+          .send(login)
+      ).body;
+
+      const response = await request(server)
+        .get(route)
+        .set("Authorization", `Bearer ${userJwt}`)
+        .send();
+
+      expect(response.status).to.equal(OK);
+      expect(response.body).deep.equal(intialDto);
+    });
+
+    it("should not return the dto if the user does not exist return a status of 400 Bad Request", async function() {
+      const response = await request(server)
+        .get(route)
+        .set(
+          "Authorization",
+          `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTE5YjhlZmJlZDJlODUyYzA3NTU0ZTMiLCJpYXQiOjE1Nzg3NDQwNTZ9.lnf6tlSA1_EGFA23Ks_rOaZ2skd960zr5QeRc5vOonU`
+        ) // jwt with bad id
+        .send();
+
+      expect(response.status).to.equal(BAD_REQUEST);
       expect(response.body).to.have.property("error");
     });
   });
