@@ -349,7 +349,7 @@ suite(`${route} (UserController)`, function() {
     });
   });
 
-  describe("GET / (getById())", function() {
+  describe("GET / (getUser())", function() {
     it("should return a RegisteredUserDto object and a 200 OK status code", async function() {
       const user: UserDtoIn = {
         email: "test@test.domain.com",

@@ -481,7 +481,7 @@ export default class UserController {
     description: "The user was successfully identified."
   })
   @Get()
-  public async getById(
+  public async getUser(
     @Req() req: AuthorizedRequest,
     @Res() res: Response
   ): Promise<Response> {
