@@ -259,4 +259,31 @@ suite("UserService", function() {
       ).to.be.rejectedWith(UserAlreadyExistsError);
     });
   });
+
+  describe("getRegisteredDtoById()", function() {
+    it("should return a user's RegisteredUserDto given the user's id", async function() {
+      const email = "test.user@test.domain.com";
+      const username = "Test_User";
+
+      const user: UserDtoIn = {
+        email,
+        username,
+        password: "123abc",
+        phoneNumber: "+972-524444444",
+        alertLimit: 0
+      };
+
+      const signUpDto = await UserService.signUp(user);
+
+      const dto = await UserService.getRegisteredDtoById(signUpDto._id);
+
+      expect(dto).to.deep.equal(signUpDto);
+    });
+
+    it("should throw a UserDoesNotExistError if the given id is invalid", function() {
+      return expect(
+        UserService.getRegisteredDtoById("5e72901430f200001fed7d40")
+      ).to.be.rejectedWith(UserDoesNotExistError);
+    });
+  });
 });

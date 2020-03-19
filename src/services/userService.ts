@@ -108,6 +108,23 @@ export default class UserService {
   }
 
   /**
+   * Given a user's id, either returns the associated user's dto, or throws a [[UserDoesNotExistError]].
+   * @param id The user's id string.
+   * @throws [[UserDoesNotExistError]] If the provided id wasn't found in the system.
+   * @returns The user object.
+   */
+  public static async getRegisteredDtoById(
+    id: string
+  ): Promise<RegisteredUserDto> {
+    const user = await this.getById(id);
+
+    // return the user without the password.
+    const dto = _.omit(user, "_password");
+    ((dto as unknown) as RegisteredUserDto)._id = dto._id.toHexString();
+    return (dto as unknown) as RegisteredUserDto;
+  }
+
+  /**
    * Given an id, old password and new password, changes the password of user that has this [[id]].
    * @param id The hex string of the user's id.
    * @param oldPassword The user's current password.
