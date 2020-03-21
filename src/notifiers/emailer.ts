@@ -34,7 +34,7 @@ class Emailer implements Notifier {
       message: {
         from: emailAddress
       },
-      send: true,
+      send: config.get("sendEmail") !== "false",
       transport,
       views: { root: path.join(__dirname, "/../templates") },
       preview: false
