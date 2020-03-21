@@ -60,8 +60,7 @@ export default class EventController {
               }
             ]
           }
-        },
-        description: "Successful response."
+        }
       },
       [BAD_REQUEST]: {
         content: {
@@ -81,7 +80,10 @@ export default class EventController {
       }
     }
   })
-  @ResponseSchema(EventDto, { isArray: true })
+  @ResponseSchema(EventDto, {
+    isArray: true,
+    description: "Successful response."
+  })
   @UseBefore(AuthMiddleware)
   @Get()
   public async getEvents(
@@ -137,7 +139,7 @@ export default class EventController {
       }
     }
   })
-  @ResponseSchema(EventDto)
+  @ResponseSchema(EventDto, { description: "Successful response." })
   @Get("/:id")
   public async getById(
     @Param("id") id: string,
