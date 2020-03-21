@@ -8,12 +8,11 @@ import {
   Param
 } from "routing-controllers";
 import { Response } from "express";
-import { BAD_REQUEST, NOT_FOUND } from "http-status-codes";
+import { BAD_REQUEST, NOT_FOUND, OK } from "http-status-codes";
 import AuthorizedRequest from "../interfaces/authorizedRequest";
 import AuthMiddleware from "./../middleware/authMiddleware";
 import EventService from "../services/eventService";
-import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
-import EventDto from "../dtos/eventDto";
+import { OpenAPI } from "routing-controllers-openapi";
 
 /**
  * Controller for events.
@@ -40,6 +39,33 @@ export default class EventController {
       }
     ],
     responses: {
+      [OK]: {
+        content: {
+          "application/json": {
+            schema: {
+              items: { $ref: "#/components/schemas/EventDto" },
+              type: "array"
+            },
+            example: [
+              {
+                _id: "00000000a26f35468412bb0f",
+                probability: 0.25,
+                firedAt: 20,
+                baseAssetName: "BTC",
+                quoteAssetName: "ETH"
+              },
+              {
+                _id: "00000000a26f35468412bb0e",
+                probability: 0.2,
+                firedAt: 10,
+                baseAssetName: "BTC",
+                quoteAssetName: "USDT"
+              }
+            ]
+          }
+        },
+        description: "Successful response."
+      },
       [BAD_REQUEST]: {
         content: {
           "application/json": {
@@ -58,7 +84,6 @@ export default class EventController {
       }
     }
   })
-  @ResponseSchema(EventDto, { isArray: true })
   @UseBefore(AuthMiddleware)
   @Get()
   public async getEvents(
@@ -82,6 +107,21 @@ export default class EventController {
   @OpenAPI({
     description: "Retrieve a specific event given its id.",
     responses: {
+      [OK]: {
+        content: {
+          "application/json": {
+            schema: { $ref: "#/components/schemas/EventDto" },
+            example: {
+              _id: "00000000a26f35468412bb0f",
+              probability: 0.25,
+              firedAt: 20,
+              baseAssetName: "BTC",
+              quoteAssetName: "ETH"
+            }
+          }
+        },
+        description: "Successful response."
+      },
       [NOT_FOUND]: {
         content: {
           "application/json": {
@@ -100,7 +140,6 @@ export default class EventController {
       }
     }
   })
-  @ResponseSchema(EventDto)
   @Get("/:id")
   public async getById(
     @Param("id") id: string,
