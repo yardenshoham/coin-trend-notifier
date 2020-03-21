@@ -82,7 +82,7 @@
     "chai-as-promised": "^7.1.1",
     "http-status-codes": "^1.4.0",
     "lolex": "^5.1.1",
-    "mocha": "^6.2.2",
+    "mocha": "^7.1.1",
     "nyc": "^14.1.1",
     "source-map-support": "^0.5.16",
     "supertest": "^4.0.2",
