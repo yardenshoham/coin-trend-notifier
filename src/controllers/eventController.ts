@@ -12,7 +12,8 @@ import { BAD_REQUEST, NOT_FOUND, OK } from "http-status-codes";
 import AuthorizedRequest from "../interfaces/authorizedRequest";
 import AuthMiddleware from "./../middleware/authMiddleware";
 import EventService from "../services/eventService";
-import { OpenAPI } from "routing-controllers-openapi";
+import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
+import EventDto from "./../dtos/eventDto";
 
 /**
  * Controller for events.
@@ -42,10 +43,6 @@ export default class EventController {
       [OK]: {
         content: {
           "application/json": {
-            schema: {
-              items: { $ref: "#/components/schemas/EventDto" },
-              type: "array"
-            },
             example: [
               {
                 _id: "00000000a26f35468412bb0f",
@@ -84,6 +81,7 @@ export default class EventController {
       }
     }
   })
+  @ResponseSchema(EventDto, { isArray: true })
   @UseBefore(AuthMiddleware)
   @Get()
   public async getEvents(
@@ -110,7 +108,6 @@ export default class EventController {
       [OK]: {
         content: {
           "application/json": {
-            schema: { $ref: "#/components/schemas/EventDto" },
             example: {
               _id: "00000000a26f35468412bb0f",
               probability: 0.25,
@@ -140,6 +137,7 @@ export default class EventController {
       }
     }
   })
+  @ResponseSchema(EventDto)
   @Get("/:id")
   public async getById(
     @Param("id") id: string,
