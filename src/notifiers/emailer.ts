@@ -20,17 +20,19 @@ class Emailer implements Notifier {
    * Constructs [[email]].
    */
   public constructor() {
+    const emailAddress = config.get("emailAddress") as string;
+
     const transport = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "coin.trend.notifier@gmail.com",
+        user: emailAddress,
         pass: config.get("emailPassword")
       }
     });
 
     this.email = new Email({
       message: {
-        from: "coin.trend.notifier@gmail.com"
+        from: emailAddress
       },
       send: true,
       transport,
