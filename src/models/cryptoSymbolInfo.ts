@@ -73,5 +73,6 @@ export class CryptoSymbolInfo {
     ]);
     this.baseAsset = baseAsset;
     this.quoteAsset = quoteAsset;
+    this.preferences = new Map(Object.entries(this.preferences));
   }
 }
