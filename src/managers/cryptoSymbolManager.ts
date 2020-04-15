@@ -61,7 +61,7 @@ class CryptoSymbolManager {
     // crypto symbol not found, we'll need to create it
     const [baseAsset, quoteAsset] = await Promise.all([
       this.findOrCreateAsset(baseAssetName),
-      this.findOrCreateAsset(quoteAssetName)
+      this.findOrCreateAsset(quoteAssetName),
     ]);
 
     const cryptoSymbol = new CryptoSymbol(
@@ -74,7 +74,12 @@ class CryptoSymbolManager {
     return cryptoSymbol;
   }
 
-  private async findOrCreateAsset(assetName: string): Promise<Asset> {
+  /**
+   * Either finds or creates the requested asset.
+   * @param assetName The requested asset.
+   * @returns The requested asset object.
+   */
+  public async findOrCreateAsset(assetName: string): Promise<Asset> {
     const assetDb = await assetDbPromise;
     let asset = await assetDb.findOne({ name: assetName });
     if (!asset) {
@@ -86,7 +91,7 @@ class CryptoSymbolManager {
   }
 }
 
-const cryptoSymbolManagerPromise = (async function() {
+const cryptoSymbolManagerPromise = (async function () {
   const cryptoSymbolManager = new CryptoSymbolManager();
   await cryptoSymbolManager.populate();
   return cryptoSymbolManager;

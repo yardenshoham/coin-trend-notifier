@@ -28,6 +28,7 @@ class BinanceProvider implements Provider {
    */
   start() {
     this.client = Binance();
+    console.log("Connected to Binance.");
     this.periodicTask();
     this.interval = config.get("binancePeriodicTaskInterval");
     this.intervalHourString = Math.floor(this.interval / 3600000).toString();
@@ -55,7 +56,7 @@ class BinanceProvider implements Provider {
   private calculateMinMax(candles: any[]): [number, number] {
     let max = 0;
     let min = Number.MAX_SAFE_INTEGER;
-    candles.forEach(candle => {
+    candles.forEach((candle) => {
       if (candle.high > max) {
         max = candle.high;
       }
@@ -75,10 +76,10 @@ class BinanceProvider implements Provider {
     const candles: any[] = await this.client.candles({
       symbol: symbolString,
       interval: `${this.intervalHourString}h`,
-      limit: 56
+      limit: 56,
     });
 
-    return candles.map(candle => {
+    return candles.map((candle) => {
       candle.high = parseFloat(candle.high);
       candle.close = parseFloat(candle.close);
       candle.low = parseFloat(candle.low);
