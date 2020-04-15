@@ -4,7 +4,9 @@ import app from "./server/server";
 import config from "config";
 import startNotifiers from "./startup/startNotifiers";
 import startProviders from "./startup/startProviders";
+import startErrorMonitoring from "./startup/startErrorMonitoring";
 
+startErrorMonitoring();
 startNotifiers();
 startProviders();
 
