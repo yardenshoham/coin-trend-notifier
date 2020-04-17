@@ -357,7 +357,7 @@ suite(`${route} (UserController)`, function () {
       expect(response.body).deep.equal(intialDto);
     });
 
-    it("should not return the dto if the user does not exist return a status of 400 Bad Request", async function () {
+    it("should not return the dto if the user does not exist and return a status of 400 Bad Request", async function () {
       const response = await request(server)
         .get(route)
         .set(

@@ -6,6 +6,7 @@ import { SymbolEvent } from "./../models/symbolEvent";
 import path from "path";
 import { userDbPromise } from "../models/user";
 import { ObjectId } from "mongodb";
+/* istanbul ignore next */
 
 /**
  * A notifier that sends emails.
