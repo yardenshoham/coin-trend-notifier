@@ -8,7 +8,7 @@ import {
   Delete,
   QueryParams,
   Get,
-  HttpCode
+  HttpCode,
 } from "routing-controllers";
 import { Response } from "express";
 import { UNPROCESSABLE_ENTITY, NO_CONTENT } from "http-status-codes";
@@ -25,7 +25,7 @@ import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
  * Controller for preferences.
  */
 @OpenAPI({
-  security: [{ bearerAuth: [] }]
+  security: [{ bearerAuth: [] }],
 })
 @UseBefore(AuthMiddleware)
 @JsonController("/preferences")
@@ -49,10 +49,10 @@ export default class PreferenceController {
           example: {
             baseAssetName: "ETH",
             quoteAssetName: "USDT",
-            probability: 0.7
-          }
-        }
-      }
+            probability: 0.7,
+          },
+        },
+      },
     },
     responses: {
       "422": {
@@ -64,10 +64,10 @@ export default class PreferenceController {
                   type: "object",
                   properties: {
                     error: {
-                      type: "string"
-                    }
+                      type: "string",
+                    },
                   },
-                  required: ["error"]
+                  required: ["error"],
                 },
                 {
                   type: "object",
@@ -78,33 +78,33 @@ export default class PreferenceController {
                         type: "object",
                         properties: {
                           property: {
-                            type: "string"
+                            type: "string",
                           },
                           value: {
-                            type: "any"
+                            type: "any",
                           },
                           constraints: {
-                            type: "object"
+                            type: "object",
                           },
                           children: {
-                            type: "object"
-                          }
+                            type: "object",
+                          },
                         },
-                        required: ["property", "value"]
-                      }
-                    }
+                        required: ["property", "value"],
+                      },
+                    },
                   },
-                  required: ["errors"]
-                }
-              ]
-            }
-          }
+                  required: ["errors"],
+                },
+              ],
+            },
+          },
         },
         description:
-          "An error occurred. Either the user already exists, the probability is not between -1 and 1 or one or more properties were not valid."
+          "An error occurred. Either the user already exists, the probability is not between -1 and 1 or one or more properties were not valid.",
       },
-      [NO_CONTENT]: {}
-    }
+      [NO_CONTENT]: {},
+    },
   })
   @HttpCode(NO_CONTENT)
   @Post()
@@ -157,16 +157,16 @@ export default class PreferenceController {
               type: "object",
               properties: {
                 error: {
-                  type: "string"
-                }
+                  type: "string",
+                },
               },
-              required: ["error"]
-            }
-          }
+              required: ["error"],
+            },
+          },
         },
-        description: "An error occurred. The user does not exist."
-      }
-    }
+        description: "An error occurred. The user does not exist.",
+      },
+    },
   })
   @HttpCode(NO_CONTENT)
   @Delete()
@@ -206,18 +206,21 @@ export default class PreferenceController {
               type: "object",
               properties: {
                 error: {
-                  type: "string"
-                }
+                  type: "string",
+                },
               },
-              required: ["error"]
-            }
-          }
+              required: ["error"],
+            },
+          },
         },
-        description: "An error occurred. The user does not exist."
-      }
-    }
+        description: "An error occurred. The user does not exist.",
+      },
+    },
   })
-  @ResponseSchema(SetPreferenceDto, { isArray: true })
+  @ResponseSchema(SetPreferenceDto, {
+    isArray: true,
+    description: "Successful response.",
+  })
   @Get()
   public async getPreferences(
     @Req() req: AuthorizedRequest,
