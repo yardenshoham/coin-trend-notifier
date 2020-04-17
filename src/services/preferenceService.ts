@@ -27,6 +27,10 @@ export default class PreferenceService {
       throw new RangeError("The probability must be between -1 and 1");
     }
 
+    if (baseAssetName === quoteAssetName) {
+      throw new Error("Base asset can not be the same as quote asset.");
+    }
+
     // make sure user exists
     await UserService.getById(userId);
 
@@ -84,7 +88,7 @@ export default class PreferenceService {
         const preference: SetPreferenceDto = {
           baseAssetName: cryptoSymbol.cryptoSymbolInfo.baseAsset.name,
           quoteAssetName: cryptoSymbol.cryptoSymbolInfo.quoteAsset.name,
-          probability: cryptoSymbol.cryptoSymbolInfo.preferences.get(userId)
+          probability: cryptoSymbol.cryptoSymbolInfo.preferences.get(userId),
         };
         result.push(preference);
       }

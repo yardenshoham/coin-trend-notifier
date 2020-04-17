@@ -17,7 +17,6 @@ import AuthorizedRequest from "../interfaces/authorizedRequest";
 import SetPreferenceDto from "../dtos/setPreferenceDto";
 import PreferenceService from "../services/preferenceService";
 import AuthMiddleware from "./../middleware/authMiddleware";
-import UserDoesNotExistError from "../errors/userDoesNotExistError";
 import PreferenceDto from "../dtos/preferenceDto";
 import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 
@@ -101,7 +100,7 @@ export default class PreferenceController {
           },
         },
         description:
-          "An error occurred. Either the user already exists, the probability is not between -1 and 1 or one or more properties were not valid.",
+          "An error occurred. Either the user already exists, the probability is not between -1 and 1, base asset is the same as quote asset or one or more properties were not valid.",
       },
       [NO_CONTENT]: {},
     },
@@ -124,10 +123,7 @@ export default class PreferenceController {
       return res.status(NO_CONTENT).send();
     } catch (error) {
       let errorToReturn: { error: string } | { errors: ValidationError[] };
-      if (
-        error instanceof UserDoesNotExistError ||
-        error instanceof RangeError
-      ) {
+      if (error.message) {
         errorToReturn = { error: error.message };
       } else {
         // ValidationErrors

@@ -3,6 +3,7 @@ import config from "config";
 import cryptoSymbolManagerPromise from "./../managers/cryptoSymbolManager";
 import Binance from "binance-api-node";
 import { CryptoSymbol } from "./../models/cryptoSymbol";
+/* istanbul ignore next */
 
 /**
  * Uses the Binance API to predict trends.

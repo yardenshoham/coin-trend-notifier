@@ -13,28 +13,28 @@ import jwt from "jsonwebtoken";
 import UserDoesNotExistError from "../../errors/userDoesNotExistError";
 chai.use(chaiAsPromised);
 
-suite("PreferenceService", function() {
-  this.afterEach(async function() {
+suite("PreferenceService", function () {
+  this.afterEach(async function () {
     await (await userDbPromise).c.deleteMany({});
     await (await cryptoSymbolDbPromise).c.deleteMany({});
     return (await assetDbPromise).c.deleteMany({});
   });
 
-  describe("setPreference()", function() {
-    it("should add a given preference when the user exists", async function() {
+  describe("setPreference()", function () {
+    it("should add a given preference when the user exists", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const registeredUser = await UserService.signUp(user);
 
       const userJwt = await UserService.login({
         email: registeredUser.email,
-        password: user.password
+        password: user.password,
       });
 
       const payload: UserJwtPayload = jwt.decode(userJwt) as any;
@@ -66,7 +66,7 @@ suite("PreferenceService", function() {
       );
     });
 
-    it("should throw a UserDoesNotExistError when provided a bad id", async function() {
+    it("should throw a UserDoesNotExistError when provided a bad id", async function () {
       let userId = "I don't exist";
       let baseAssetName = "ABC";
       let quoteAssetName = "DEF";
@@ -94,7 +94,7 @@ suite("PreferenceService", function() {
       ).to.be.rejectedWith(UserDoesNotExistError);
     });
 
-    it("should throw a RangeError given a probability that's not between -1 and 1", async function() {
+    it("should throw a RangeError given a probability that's not between -1 and 1", async function () {
       let userId = "5d5072c1d19ed00f84e4c35d";
       let baseAssetName = "ABC";
       let quoteAssetName = "DEF";
@@ -120,10 +120,25 @@ suite("PreferenceService", function() {
         )
       ).to.be.rejectedWith(RangeError);
     });
+
+    it("should throw an error when baseAssetName is the same as quoteAssetName", function () {
+      let userId = "5d5072c1d19ed00f84e4c35d";
+      let baseAssetName = "TRX";
+      let quoteAssetName = "TRX";
+      let probability = 0.5;
+      return expect(
+        PreferenceService.setPreference(
+          userId,
+          baseAssetName,
+          quoteAssetName,
+          probability
+        )
+      ).to.be.rejectedWith(Error);
+    });
   });
 
-  describe("deletePreference()", function() {
-    it("should delete a preference when one was added", async function() {
+  describe("deletePreference()", function () {
+    it("should delete a preference when one was added", async function () {
       const cryptoSymbolManager = await cryptoSymbolManagerPromise;
       await cryptoSymbolManager.populate();
       const user: UserDtoIn = {
@@ -131,14 +146,14 @@ suite("PreferenceService", function() {
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const registeredUser = await UserService.signUp(user);
 
       const userJwt = await UserService.login({
         email: registeredUser.email,
-        password: user.password
+        password: user.password,
       });
 
       const payload: UserJwtPayload = jwt.decode(userJwt) as any;
@@ -172,7 +187,7 @@ suite("PreferenceService", function() {
       expect(cryptoSymbol.cryptoSymbolInfo.preferences.has(userId)).to.be.false;
     });
 
-    it("should delete a preference when one was not added (do nothing)", async function() {
+    it("should delete a preference when one was not added (do nothing)", async function () {
       const cryptoSymbolManager = await cryptoSymbolManagerPromise;
       await cryptoSymbolManager.populate();
       const user: UserDtoIn = {
@@ -180,14 +195,14 @@ suite("PreferenceService", function() {
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const registeredUser = await UserService.signUp(user);
 
       const userJwt = await UserService.login({
         email: registeredUser.email,
-        password: user.password
+        password: user.password,
       });
 
       const payload: UserJwtPayload = jwt.decode(userJwt) as any;
@@ -210,7 +225,7 @@ suite("PreferenceService", function() {
       expect(cryptoSymbol.cryptoSymbolInfo.preferences.has(userId)).to.be.false;
     });
 
-    it("should throw a UserDoesNotExistError when provided a bad user id", async function() {
+    it("should throw a UserDoesNotExistError when provided a bad user id", async function () {
       let userId = "I don't exist";
       let baseAssetName = "ABC";
       let quoteAssetName = "DEF";
@@ -236,15 +251,15 @@ suite("PreferenceService", function() {
     });
   });
 
-  describe("getPreferences()", function() {
-    it("should return all preferences of a given user", async function() {
+  describe("getPreferences()", function () {
+    it("should return all preferences of a given user", async function () {
       const cryptoSymbolManager = await cryptoSymbolManagerPromise;
       await cryptoSymbolManager.populate();
       const user: UserDtoIn = {
         email: "abc@def.com",
         username: "atestuser",
         password: "atestpassword",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       // signup
@@ -253,7 +268,7 @@ suite("PreferenceService", function() {
       // login
       await UserService.login({
         email: user.email,
-        password: user.password
+        password: user.password,
       });
 
       // add preferences
@@ -261,22 +276,22 @@ suite("PreferenceService", function() {
         {
           baseAssetName: "BTC",
           quoteAssetName: "USDT",
-          probability: 0.6
+          probability: 0.6,
         },
         {
           baseAssetName: "ABC",
           quoteAssetName: "DEF",
-          probability: -0.1
+          probability: -0.1,
         },
         {
           baseAssetName: "QWER",
           quoteAssetName: "TYUI",
-          probability: 0.4
-        }
+          probability: 0.4,
+        },
       ];
 
       await Promise.all(
-        preferences.map(preference => {
+        preferences.map((preference) => {
           return PreferenceService.setPreference(
             _id,
             preference.baseAssetName,
@@ -298,7 +313,7 @@ suite("PreferenceService", function() {
       }
     });
 
-    it("should throw a UserDoesNotExistError if given a bad user id", async function() {
+    it("should throw a UserDoesNotExistError if given a bad user id", async function () {
       let userId = "I don't exist";
 
       await expect(PreferenceService.getPreferences(userId)).to.be.rejectedWith(
