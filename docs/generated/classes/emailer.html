@@ -66,13 +66,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>A notifier that sends emails.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -125,14 +118,9 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/notifiers/emailer.ts#L17">src/notifiers/emailer.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/notifiers/emailer.ts#L17">src/notifiers/emailer.ts:17</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Constructs <a href="emailer.html#email">email</a>.</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <a href="emailer.html" class="tsd-signature-type">Emailer</a></h4>
 						</li>
 					</ul>
@@ -146,14 +134,9 @@
 					<div class="tsd-signature tsd-kind-icon">email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Email</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/notifiers/emailer.ts#L17">src/notifiers/emailer.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/notifiers/emailer.ts#L17">src/notifiers/emailer.ts:17</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The email client.</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -169,21 +152,13 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/notifier.html">Notifier</a>.<a href="../interfaces/notifier.html#notify">notify</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/notifiers/emailer.ts#L48">src/notifiers/emailer.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/notifiers/emailer.ts#L48">src/notifiers/emailer.ts:48</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Sends an email to the event&#39;s subscribers.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>symbolEvent: <a href="../globals.html#symbolevent" class="tsd-signature-type">SymbolEvent</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The event to send an email about.</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -200,39 +175,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/notifiers/emailer.ts#L68">src/notifiers/emailer.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/notifiers/emailer.ts#L68">src/notifiers/emailer.ts:68</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Sends a custom email to the given user.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>userId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The hex string representation of the ObjectId of the user.</p>
-									</div>
 								</li>
 								<li>
 									<h5>template: <span class="tsd-signature-type">"up"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"down"</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The template of the email.</p>
-									</div>
 								</li>
 								<li>
 									<h5>percentage: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The certainty the event is going to occur. Between 0 and 100.</p>
-									</div>
 								</li>
 								<li>
 									<h5>symbolString: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The string representation of the crypto symbol.</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>

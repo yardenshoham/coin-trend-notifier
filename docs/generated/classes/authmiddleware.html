@@ -66,17 +66,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Decodes the jwt provided by the Authorization Bearer <token> header and assigns it to req.jwtPayload.
-								If the header was not provided it returns an error with an UNAUTHORIZED status.
-								If the header was provided but was not in the shape of Authorization Bearer <token> it returns an error with a BAD_REQUEST status.
-						If the token was provided but was not valid it returns an error with a BAD_REQUEST status.</p>
-					</div>
-					<p>An error is of type { error: string }</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -118,7 +107,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/middleware/authMiddleware.ts#L58">src/middleware/authMiddleware.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/middleware/authMiddleware.ts#L58">src/middleware/authMiddleware.ts:58</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -147,7 +136,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/middleware/authMiddleware.ts#L50">src/middleware/authMiddleware.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/middleware/authMiddleware.ts#L50">src/middleware/authMiddleware.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -170,39 +159,25 @@
 					<a name="use" class="tsd-anchor"></a>
 					<h3>use</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">use<span class="tsd-signature-symbol">(</span>req<span class="tsd-signature-symbol">: </span><a href="../interfaces/authorizedrequest.html" class="tsd-signature-type">AuthorizedRequest</a>, res<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span>, next<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">NextFunction</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span></li>
+						<li class="tsd-signature tsd-kind-icon">use<span class="tsd-signature-symbol">(</span>req<span class="tsd-signature-symbol">: </span><a href="../interfaces/authorizedrequest.html" class="tsd-signature-type">AuthorizedRequest</a>, res<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span>, next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NextFunction</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/middleware/authMiddleware.ts#L24">src/middleware/authMiddleware.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/middleware/authMiddleware.ts#L24">src/middleware/authMiddleware.ts:24</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>The actual middleware function.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>req: <a href="../interfaces/authorizedrequest.html" class="tsd-signature-type">AuthorizedRequest</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The request with an Authorization header.</p>
-									</div>
 								</li>
 								<li>
 									<h5>res: <span class="tsd-signature-type">Response</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The Express response object.</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> next: <span class="tsd-signature-type">NextFunction</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The Express next function.</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Response</span></h4>

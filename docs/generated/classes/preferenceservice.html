@@ -66,13 +66,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>A service to perform various preference related methods.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -108,38 +101,19 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/services/preferenceService.ts#L49">src/services/preferenceService.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/services/preferenceService.ts#L49">src/services/preferenceService.ts:49</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Removes a user&#39;s preference from a certain symbol.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p><a href="userdoesnotexisterror.html">UserDoesNotExistError</a> If the given user&#39;s id is not found.</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>userId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The user&#39;s ObjectId&#39;s hex string.</p>
-									</div>
 								</li>
 								<li>
 									<h5>baseAssetName: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The name of the base asset of the symbol.</p>
-									</div>
 								</li>
 								<li>
 									<h5>quoteAssetName: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The name of the quote asset of the symbol.</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -156,26 +130,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/services/preferenceService.ts#L73">src/services/preferenceService.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/services/preferenceService.ts#L73">src/services/preferenceService.ts:73</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Retrieves all of the given user&#39;s preferences.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p><a href="userdoesnotexisterror.html">UserDoesNotExistError</a> If the given user&#39;s id is not found.</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>userId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The user&#39;s ObjectId&#39;s hex string.</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="setpreferencedto.html" class="tsd-signature-type">SetPreferenceDto</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -192,50 +153,22 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/fc0b6e1/src/services/preferenceService.ts#L20">src/services/preferenceService.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/d3e6f3f/src/services/preferenceService.ts#L20">src/services/preferenceService.ts:20</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Sets a user&#39;s wanted probability threshold to be notified about a rise/fall of a symbol.</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>throws</dt>
-									<dd><p>{RangeError} If the probability is not between -1 and 1.</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p><a href="userdoesnotexisterror.html">UserDoesNotExistError</a> If the given user&#39;s id is not found.</p>
-									</dd>
-									<dt>throws</dt>
-									<dd><p><a href="https://github.com/typestack/class-validator#validation-errors">ValidationError</a>[] If either of the assets is not valid.</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>userId: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The user&#39;s ObjectId&#39;s hex string.</p>
-									</div>
 								</li>
 								<li>
 									<h5>baseAssetName: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The name of the base asset of the symbol.</p>
-									</div>
 								</li>
 								<li>
 									<h5>quoteAssetName: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The name of the quote asset of the symbol.</p>
-									</div>
 								</li>
 								<li>
 									<h5>probability: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The wanted probability threshold to be notified about a rise/fall of a symbol.</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>

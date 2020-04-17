@@ -8,7 +8,7 @@ import {
   HttpCode,
   UseBefore,
   Patch,
-  Get
+  Get,
 } from "routing-controllers";
 import UserDtoIn from "../dtos/userDtoIn";
 import UserService from "./../services/userService";
@@ -20,7 +20,7 @@ import {
   OK,
   NO_CONTENT,
   CONFLICT,
-  BAD_REQUEST
+  BAD_REQUEST,
 } from "http-status-codes";
 import { ValidationError } from "class-validator";
 import UserLoginDto from "../dtos/userLoginDto";
@@ -54,10 +54,10 @@ export default class UserController {
             password: "12345678",
             username: "test_user",
             phoneNumber: "+972-523546888",
-            alertLimit: 0
-          }
-        }
-      }
+            alertLimit: 0,
+          },
+        },
+      },
     },
     responses: {
       "422": {
@@ -69,10 +69,10 @@ export default class UserController {
                   type: "object",
                   properties: {
                     error: {
-                      type: "string"
-                    }
+                      type: "string",
+                    },
                   },
-                  required: ["error"]
+                  required: ["error"],
                 },
                 {
                   type: "object",
@@ -83,30 +83,30 @@ export default class UserController {
                         type: "object",
                         properties: {
                           property: {
-                            type: "string"
+                            type: "string",
                           },
                           value: {
-                            type: "any"
+                            type: "any",
                           },
                           constraints: {
-                            type: "object"
+                            type: "object",
                           },
                           children: {
-                            type: "object"
-                          }
+                            type: "object",
+                          },
                         },
-                        required: ["property", "value"]
-                      }
-                    }
+                        required: ["property", "value"],
+                      },
+                    },
                   },
-                  required: ["errors"]
-                }
-              ]
-            }
-          }
+                  required: ["errors"],
+                },
+              ],
+            },
+          },
         },
         description:
-          "An error occurred. Either the user already exists or one or more properties were not valid."
+          "An error occurred. Either the user already exists or one or more properties were not valid.",
       },
       [OK]: {
         content: {
@@ -116,15 +116,15 @@ export default class UserController {
               username: "test_user",
               alertLimit: 0,
               phoneNumber: "+972-523546888",
-              _id: "5e19bb04bed2e852c07554e4"
-            }
-          }
-        }
-      }
-    }
+              _id: "5e19bb04bed2e852c07554e4",
+            },
+          },
+        },
+      },
+    },
   })
   @ResponseSchema(RegisteredUserDto, {
-    description: "The user successfully registered."
+    description: "The user successfully registered.",
   })
   @Post()
   public async signUp(
@@ -161,10 +161,10 @@ export default class UserController {
         "application/json": {
           example: {
             email: "test.user@testdomain.com",
-            password: "123456789"
-          }
-        }
-      }
+            password: "123456789",
+          },
+        },
+      },
     },
     responses: {
       [UNAUTHORIZED]: {
@@ -174,15 +174,15 @@ export default class UserController {
               type: "object",
               properties: {
                 error: {
-                  type: "string"
-                }
+                  type: "string",
+                },
               },
-              required: ["error"]
-            }
-          }
+              required: ["error"],
+            },
+          },
         },
         description:
-          "The user is not registered or an incorrect password was provided."
+          "The user is not registered or an incorrect password was provided.",
       },
       [OK]: {
         content: {
@@ -191,19 +191,19 @@ export default class UserController {
               type: "object",
               properties: {
                 jwt: {
-                  type: "string"
-                }
+                  type: "string",
+                },
               },
-              required: ["jwt"]
+              required: ["jwt"],
             },
             example: {
               jwt:
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTE5YjhlZmJlZDJlODUyYzA3NTU0ZTMiLCJpYXQiOjE1Nzg3NDQwNTZ9.lnf6tlSA1_EGFA23Ks_rOaZ2skd960zr5QeRc5vOonU"
-            }
-          }
-        }
-      }
-    }
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTE5YjhlZmJlZDJlODUyYzA3NTU0ZTMiLCJpYXQiOjE1Nzg3NDQwNTZ9.lnf6tlSA1_EGFA23Ks_rOaZ2skd960zr5QeRc5vOonU",
+            },
+          },
+        },
+      },
+    },
   })
   @Post("/login")
   public async login(
@@ -233,10 +233,10 @@ export default class UserController {
         "application/json": {
           example: {
             oldPassword: "12345678",
-            newPassword: "123456789"
-          }
-        }
-      }
+            newPassword: "123456789",
+          },
+        },
+      },
     },
     responses: {
       "400": {
@@ -246,10 +246,10 @@ export default class UserController {
               type: "object",
               properties: {
                 name: {
-                  type: "string"
+                  type: "string",
                 },
                 message: {
-                  type: "string"
+                  type: "string",
                 },
                 errors: {
                   type: "array",
@@ -257,29 +257,29 @@ export default class UserController {
                     type: "object",
                     properties: {
                       target: {
-                        type: ChangePasswordDto
+                        type: ChangePasswordDto,
                       },
                       property: {
-                        type: "string"
+                        type: "string",
                       },
                       value: {
-                        type: "any"
+                        type: "any",
                       },
                       constraints: {
-                        type: "object"
+                        type: "object",
                       },
                       children: {
-                        type: "array"
-                      }
+                        type: "array",
+                      },
                     },
-                    required: ["property", "value"]
-                  }
-                }
-              }
-            }
-          }
+                    required: ["property", "value"],
+                  },
+                },
+              },
+            },
+          },
         },
-        description: "Validation Error."
+        description: "Validation Error.",
       },
       "422": {
         content: {
@@ -288,17 +288,17 @@ export default class UserController {
               type: "object",
               properties: {
                 error: {
-                  type: "string"
-                }
+                  type: "string",
+                },
               },
-              required: ["error"]
-            }
-          }
+              required: ["error"],
+            },
+          },
         },
         description:
-          "An error occurred. Either the user does not exist or password was not correct/invalid."
-      }
-    }
+          "An error occurred. Either the user does not exist or password was not correct/invalid.",
+      },
+    },
   })
   @HttpCode(NO_CONTENT)
   @UseBefore(AuthMiddleware)
@@ -337,10 +337,10 @@ export default class UserController {
             email: "test.me@gmail.com",
             username: "test_user",
             phoneNumber: "+972-523546888",
-            alertLimit: 604800
-          }
-        }
-      }
+            alertLimit: 604800,
+          },
+        },
+      },
     },
     responses: {
       "400": {
@@ -350,10 +350,10 @@ export default class UserController {
               type: "object",
               properties: {
                 name: {
-                  type: "string"
+                  type: "string",
                 },
                 message: {
-                  type: "string"
+                  type: "string",
                 },
                 errors: {
                   type: "array",
@@ -361,29 +361,29 @@ export default class UserController {
                     type: "object",
                     properties: {
                       target: {
-                        type: UserUpdateDto
+                        type: UserUpdateDto,
                       },
                       property: {
-                        type: "string"
+                        type: "string",
                       },
                       value: {
-                        type: "any"
+                        type: "any",
                       },
                       constraints: {
-                        type: "object"
+                        type: "object",
                       },
                       children: {
-                        type: "array"
-                      }
+                        type: "array",
+                      },
                     },
-                    required: ["property", "value"]
-                  }
-                }
-              }
-            }
-          }
+                    required: ["property", "value"],
+                  },
+                },
+              },
+            },
+          },
         },
-        description: "Validation Error."
+        description: "Validation Error.",
       },
       "409": {
         content: {
@@ -392,15 +392,15 @@ export default class UserController {
               type: "object",
               properties: {
                 error: {
-                  type: "string"
-                }
+                  type: "string",
+                },
               },
-              required: ["error"]
-            }
-          }
+              required: ["error"],
+            },
+          },
         },
         description:
-          "Either the user does not exist or the given email was taken."
+          "Either the user does not exist or the given email was taken.",
       },
       [OK]: {
         content: {
@@ -410,14 +410,17 @@ export default class UserController {
               email: "test.me@gmail.com",
               username: "test_user",
               phoneNumber: "+972-523546888",
-              alertLimit: 604800
-            }
-          }
-        }
-      }
-    }
+              alertLimit: 604800,
+            },
+          },
+        },
+      },
+    },
   })
   @UseBefore(AuthMiddleware)
+  @ResponseSchema(RegisteredUserDto, {
+    description: "The user's properties were successfully updated.",
+  })
   @Put()
   public async updateUser(
     @Body({ required: true }) updateProperties: UserUpdateDto,
@@ -452,14 +455,14 @@ export default class UserController {
               type: "object",
               properties: {
                 error: {
-                  type: "string"
-                }
-              }
+                  type: "string",
+                },
+              },
             },
-            example: { error: "The user hasn't registered." }
-          }
+            example: { error: "The user hasn't registered." },
+          },
         },
-        description: "An error occurred. The user does not exist."
+        description: "An error occurred. The user does not exist.",
       },
       [OK]: {
         content: {
@@ -469,16 +472,16 @@ export default class UserController {
               username: "test_user",
               alertLimit: 0,
               phoneNumber: "+972-523546888",
-              _id: "5e19bb04bed2e852c07554e4"
-            }
-          }
-        }
-      }
-    }
+              _id: "5e19bb04bed2e852c07554e4",
+            },
+          },
+        },
+      },
+    },
   })
   @UseBefore(AuthMiddleware)
   @ResponseSchema(RegisteredUserDto, {
-    description: "The user was successfully identified."
+    description: "The user was successfully identified.",
   })
   @Get()
   public async getUser(
