@@ -5,7 +5,7 @@ import {
   UseBefore,
   Get,
   QueryParam,
-  Param
+  Param,
 } from "routing-controllers";
 import { Response } from "express";
 import { BAD_REQUEST, NOT_FOUND, OK } from "http-status-codes";
@@ -36,8 +36,8 @@ export default class EventController {
         in: "query",
         name: "amount",
         description:
-          "A positive number representing the limit of events to return."
-      }
+          "A positive number representing the limit of events to return.",
+      },
     ],
     responses: {
       [OK]: {
@@ -49,18 +49,18 @@ export default class EventController {
                 probability: 0.25,
                 firedAt: 20,
                 baseAssetName: "BTC",
-                quoteAssetName: "ETH"
+                quoteAssetName: "ETH",
               },
               {
                 _id: "00000000a26f35468412bb0e",
                 probability: 0.2,
                 firedAt: 10,
                 baseAssetName: "BTC",
-                quoteAssetName: "USDT"
-              }
-            ]
-          }
-        }
+                quoteAssetName: "USDT",
+              },
+            ],
+          },
+        },
       },
       [BAD_REQUEST]: {
         content: {
@@ -69,20 +69,20 @@ export default class EventController {
               type: "object",
               properties: {
                 error: {
-                  type: "string"
-                }
+                  type: "string",
+                },
               },
-              required: ["error"]
-            }
-          }
+              required: ["error"],
+            },
+          },
         },
-        description: "An error occurred. Invalid user or a negative amount."
-      }
-    }
+        description: "An error occurred. Invalid user or a negative amount.",
+      },
+    },
   })
   @ResponseSchema(EventDto, {
     isArray: true,
-    description: "Successful response."
+    description: "Successful response.",
   })
   @UseBefore(AuthMiddleware)
   @Get()
@@ -115,11 +115,11 @@ export default class EventController {
               probability: 0.25,
               firedAt: 20,
               baseAssetName: "BTC",
-              quoteAssetName: "ETH"
-            }
-          }
+              quoteAssetName: "ETH",
+            },
+          },
         },
-        description: "Successful response."
+        description: "Successful response.",
       },
       [NOT_FOUND]: {
         content: {
@@ -128,16 +128,16 @@ export default class EventController {
               type: "object",
               properties: {
                 error: {
-                  type: "string"
-                }
+                  type: "string",
+                },
               },
-              required: ["error"]
-            }
-          }
+              required: ["error"],
+            },
+          },
         },
-        description: "An error occurred. The id is invalid."
-      }
-    }
+        description: "An error occurred. The id is invalid.",
+      },
+    },
   })
   @ResponseSchema(EventDto, { description: "Successful response." })
   @Get("/:id")

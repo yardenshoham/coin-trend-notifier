@@ -15,14 +15,14 @@ import UserUpdateDto from "../../dtos/userUpdateDto";
 
 chai.use(chaiAsPromised);
 
-suite("UserService", function() {
-  this.afterEach(async function() {
+suite("UserService", function () {
+  this.afterEach(async function () {
     const userDb = await userDbPromise;
     return userDb.c.deleteMany({});
   });
 
-  describe("signUp()", function() {
-    it("should be given a user and register them", async function() {
+  describe("signUp()", function () {
+    it("should be given a user and register them", async function () {
       const email = "test.user@test.domain.com";
       const username = "Test_User";
 
@@ -31,7 +31,7 @@ suite("UserService", function() {
         username,
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user);
@@ -42,7 +42,7 @@ suite("UserService", function() {
       expect(userFromDb).to.have.property("username", username);
     });
 
-    it("should throw a UserAlreadyExistsError when a user with the same email address as one that already exists tries to sign up", async function() {
+    it("should throw a UserAlreadyExistsError when a user with the same email address as one that already exists tries to sign up", async function () {
       const email = "test.user@test.domain.com";
 
       const user1: UserDtoIn = {
@@ -50,7 +50,7 @@ suite("UserService", function() {
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const user2: UserDtoIn = {
@@ -58,7 +58,7 @@ suite("UserService", function() {
         username: "Another-Test-User",
         password: "123456",
         phoneNumber: "+972-52111111",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user1);
@@ -68,13 +68,13 @@ suite("UserService", function() {
       );
     });
 
-    it("should throw validation errors when a user tries to sign up with invalid properties", async function() {
+    it("should throw validation errors when a user tries to sign up with invalid properties", async function () {
       const user: UserDtoIn = {
         email: "I'm not an email",
         username: "I'm way too long to be a username, much too long",
         password: "123abc",
         phoneNumber: "Not a phone number",
-        alertLimit: -8888
+        alertLimit: -8888,
       };
 
       try {
@@ -91,30 +91,30 @@ suite("UserService", function() {
     });
   });
 
-  describe("login()", function() {
-    it("should be given an email and a password and return a jwt with the user's id", async function() {
+  describe("login()", function () {
+    it("should be given an email and a password and return a jwt with the user's id", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const registeredUser = await UserService.signUp(user);
 
       const userJwt = await UserService.login({
         email: user.email,
-        password: user.password
+        password: user.password,
       });
 
       expect(jwt.decode(userJwt)).to.have.property("_id", registeredUser._id);
     });
 
-    it("should throw a UserDoesNotExistError when provided a bad email", async function() {
+    it("should throw a UserDoesNotExistError when provided a bad email", async function () {
       const user: UserLoginDto = {
         email: "test.user@test.domain.com",
-        password: "123abc"
+        password: "123abc",
       };
 
       return expect(UserService.login(user)).to.be.rejectedWith(
@@ -122,13 +122,13 @@ suite("UserService", function() {
       );
     });
 
-    it("should throw a WrongPasswordError when provided an incorrect password", async function() {
+    it("should throw a WrongPasswordError when provided an incorrect password", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user);
@@ -136,20 +136,20 @@ suite("UserService", function() {
       return expect(
         UserService.login({
           email: user.email,
-          password: "wrong"
+          password: "wrong",
         })
       ).to.be.rejectedWith(WrongPasswordError);
     });
   });
 
-  describe("changePassword()", function() {
-    it("should change a user's password", async function() {
+  describe("changePassword()", function () {
+    it("should change a user's password", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user);
@@ -169,13 +169,13 @@ suite("UserService", function() {
       expect(await bcrypt.compare(newPassword, userFromDb.password)).to.be.true;
     });
 
-    it("should throw a WrongPasswordError when given an incorrect old password", async function() {
+    it("should throw a WrongPasswordError when given an incorrect old password", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user);
@@ -195,14 +195,14 @@ suite("UserService", function() {
     });
   });
 
-  describe("updateUser()", function() {
-    it("should update a user with their new properties", async function() {
+  describe("updateUser()", function () {
+    it("should update a user with their new properties", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user);
@@ -213,7 +213,7 @@ suite("UserService", function() {
       const update: UserUpdateDto = {
         email: "brandnewemail@gmail.com",
         username: "Cool_Test_User",
-        alertLimit: 3600
+        alertLimit: 3600,
       };
 
       await UserService.updateUser(_id.toHexString(), update);
@@ -225,13 +225,13 @@ suite("UserService", function() {
       expect(userFromDb.phoneNumber).to.equal(user.phoneNumber);
     });
 
-    it("should throw a UserAlreadyExistsError when given a new email that's already taken", async function() {
+    it("should throw a UserAlreadyExistsError when given a new email that's already taken", async function () {
       const user1: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user1);
@@ -243,7 +243,7 @@ suite("UserService", function() {
         email: "test.user.2@test.domain.com",
         username: "my_username",
         password: "123abcd",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user2);
@@ -251,7 +251,7 @@ suite("UserService", function() {
       const update: UserUpdateDto = {
         email: user2.email,
         username: "Cool_Test_User",
-        alertLimit: 3600
+        alertLimit: 3600,
       };
 
       return expect(
@@ -260,8 +260,8 @@ suite("UserService", function() {
     });
   });
 
-  describe("getRegisteredDtoById()", function() {
-    it("should return a user's RegisteredUserDto given the user's id", async function() {
+  describe("getRegisteredDtoById()", function () {
+    it("should return a user's RegisteredUserDto given the user's id", async function () {
       const email = "test.user@test.domain.com";
       const username = "Test_User";
 
@@ -270,7 +270,7 @@ suite("UserService", function() {
         username,
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const signUpDto = await UserService.signUp(user);
@@ -280,7 +280,7 @@ suite("UserService", function() {
       expect(dto).to.deep.equal(signUpDto);
     });
 
-    it("should throw a UserDoesNotExistError if the given id is invalid", function() {
+    it("should throw a UserDoesNotExistError if the given id is invalid", function () {
       return expect(
         UserService.getRegisteredDtoById("5e72901430f200001fed7d40")
       ).to.be.rejectedWith(UserDoesNotExistError);

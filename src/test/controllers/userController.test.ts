@@ -11,7 +11,7 @@ import {
   UNAUTHORIZED,
   NO_CONTENT,
   CONFLICT,
-  BAD_REQUEST
+  BAD_REQUEST,
 } from "http-status-codes";
 import jwt from "jsonwebtoken";
 import config from "config";
@@ -22,14 +22,14 @@ import UserService from "../../services/userService";
 import UserUpdateDto from "../../dtos/userUpdateDto";
 
 const route = "/api/users";
-suite(`${route} (UserController)`, function() {
-  this.afterEach(async function() {
+suite(`${route} (UserController)`, function () {
+  this.afterEach(async function () {
     const userDb = await userDbPromise;
     return userDb.c.deleteMany({});
   });
 
-  describe("POST / (signUp())", function() {
-    it("should save the user, return a RegisteredUser object and a 200 OK status code", async function() {
+  describe("POST / (signUp())", function () {
+    it("should save the user, return a RegisteredUser object and a 200 OK status code", async function () {
       const email = "test.user@test.domain.com";
       const username = "Test_User";
 
@@ -38,12 +38,10 @@ suite(`${route} (UserController)`, function() {
         username,
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
-      const response = await request(server)
-        .post(route)
-        .send(userToRegister);
+      const response = await request(server).post(route).send(userToRegister);
 
       expect(response.status).to.equal(OK);
       expect(response.body).to.have.property("email", email);
@@ -60,22 +58,18 @@ suite(`${route} (UserController)`, function() {
       expect(userFromDb).to.have.property("username", username);
     });
 
-    it("should not save the user once they are already registered, return an error message and a 422 Unprocessable Entity status code", async function() {
+    it("should not save the user once they are already registered, return an error message and a 422 Unprocessable Entity status code", async function () {
       const userToRegister: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
-      await request(server)
-        .post(route)
-        .send(userToRegister);
+      await request(server).post(route).send(userToRegister);
 
-      const response = await request(server)
-        .post(route)
-        .send(userToRegister);
+      const response = await request(server).post(route).send(userToRegister);
 
       expect(response.status).to.equal(UNPROCESSABLE_ENTITY);
       expect(response.body).to.have.property("error");
@@ -84,18 +78,16 @@ suite(`${route} (UserController)`, function() {
       expect(await userDb.count({})).to.equal(1);
     });
 
-    it("should not save the user once they are already registered, return a ValidationError array and a 422 Unprocessable Entity status code", async function() {
+    it("should not save the user once they are already registered, return a ValidationError array and a 422 Unprocessable Entity status code", async function () {
       const userToRegister: UserDtoIn = {
         email: "Not a valid email",
         username: "Not a valid username",
         password: "123abc",
         phoneNumber: "Not a valid phone number",
-        alertLimit: -100
+        alertLimit: -100,
       };
 
-      const response = await request(server)
-        .post(route)
-        .send(userToRegister);
+      const response = await request(server).post(route).send(userToRegister);
 
       expect(response.status).to.equal(UNPROCESSABLE_ENTITY);
       expect(response.body).to.have.property("errors");
@@ -106,31 +98,27 @@ suite(`${route} (UserController)`, function() {
     });
   });
 
-  describe("POST /login (login())", function() {
-    it("should return the jwt for the user and a 200 OK status", async function() {
+  describe("POST /login (login())", function () {
+    it("should return the jwt for the user and a 200 OK status", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       // sign up
-      let response = await request(server)
-        .post(route)
-        .send(user);
+      let response = await request(server).post(route).send(user);
 
       const id = response.body._id;
 
       const userLogin: UserLoginDto = {
         email: user.email,
-        password: user.password
+        password: user.password,
       };
 
-      response = await request(server)
-        .post(`${route}/login`)
-        .send(userLogin);
+      response = await request(server).post(`${route}/login`).send(userLogin);
 
       expect(response.status).to.equal(OK);
       expect(response.body).to.have.property("jwt");
@@ -139,23 +127,21 @@ suite(`${route} (UserController)`, function() {
       ).to.have.property("_id", id);
     });
 
-    it("should return an error message and a 401 Unauthorized status when given a bad email or password", async function() {
+    it("should return an error message and a 401 Unauthorized status when given a bad email or password", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       // sign up
-      await request(server)
-        .post(route)
-        .send(user);
+      await request(server).post(route).send(user);
 
       let userLogin: UserLoginDto = {
         email: "bad email",
-        password: user.password
+        password: user.password,
       };
 
       let response = await request(server)
@@ -167,49 +153,43 @@ suite(`${route} (UserController)`, function() {
 
       userLogin = {
         email: user.email,
-        password: "bad password"
+        password: "bad password",
       };
 
-      response = await request(server)
-        .post(`${route}/login`)
-        .send(userLogin);
+      response = await request(server).post(`${route}/login`).send(userLogin);
 
       expect(response.status).to.equal(UNAUTHORIZED);
       expect(response.body).to.have.property("error");
     });
   });
 
-  describe("PATCH /password (changePassword())", function() {
-    it("should change the user's password and return a 204 No Content status", async function() {
+  describe("PATCH /password (changePassword())", function () {
+    it("should change the user's password and return a 204 No Content status", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       // sign up
-      await request(server)
-        .post(route)
-        .send(user);
+      await request(server).post(route).send(user);
 
       const login: UserLoginDto = {
         email: user.email,
-        password: user.password
+        password: user.password,
       };
 
       const { jwt: userJwt } = (
-        await request(server)
-          .post(`${route}/login`)
-          .send(login)
+        await request(server).post(`${route}/login`).send(login)
       ).body;
 
       const newPassword = "new_pa$$word";
 
       const changePasswordBody: ChangePasswordDto = {
         oldPassword: user.password,
-        newPassword: newPassword
+        newPassword: newPassword,
       };
 
       const response = await request(server)
@@ -224,36 +204,32 @@ suite(`${route} (UserController)`, function() {
       expect(await bcrypt.compare(newPassword, userFromDb.password)).to.be.true;
     });
 
-    it("should not change the password return a 422 Unprocessable Entity when given a wrong old password", async function() {
+    it("should not change the password return a 422 Unprocessable Entity when given a wrong old password", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       // sign up
-      await request(server)
-        .post(route)
-        .send(user);
+      await request(server).post(route).send(user);
 
       const login: UserLoginDto = {
         email: user.email,
-        password: user.password
+        password: user.password,
       };
 
       const { jwt: userJwt } = (
-        await request(server)
-          .post(`${route}/login`)
-          .send(login)
+        await request(server).post(`${route}/login`).send(login)
       ).body;
 
       const newPassword = "new_pa$$word";
 
       const changePasswordBody: ChangePasswordDto = {
         oldPassword: "not the old pass",
-        newPassword: newPassword
+        newPassword: newPassword,
       };
 
       const response = await request(server)
@@ -271,14 +247,14 @@ suite(`${route} (UserController)`, function() {
     });
   });
 
-  describe("PUT / (updateUser())", function() {
-    it("should update a user's properties and return the updated user with a status of 200 OK", async function() {
+  describe("PUT / (updateUser())", function () {
+    it("should update a user's properties and return the updated user with a status of 200 OK", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user);
@@ -292,7 +268,7 @@ suite(`${route} (UserController)`, function() {
       const update: UserUpdateDto = {
         email: "brandnewemail@gmail.com",
         username: "Cool_Test_User",
-        alertLimit: 3600
+        alertLimit: 3600,
       };
 
       const response = await request(server)
@@ -307,13 +283,13 @@ suite(`${route} (UserController)`, function() {
       expect(response.body.phoneNumber).to.equal(user.phoneNumber);
     });
 
-    it("should not update the user when given an email that already exists and return a status of 409 Conflict", async function() {
+    it("should not update the user when given an email that already exists and return a status of 409 Conflict", async function () {
       const user1: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user1);
@@ -328,7 +304,7 @@ suite(`${route} (UserController)`, function() {
         email: "test.user.2@test.domain.com",
         username: "my_username",
         password: "123abcd",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       await UserService.signUp(user2);
@@ -336,7 +312,7 @@ suite(`${route} (UserController)`, function() {
       const update: UserUpdateDto = {
         email: user2.email,
         username: "Cool_Test_User",
-        alertLimit: 3600
+        alertLimit: 3600,
       };
 
       const response = await request(server)
@@ -349,33 +325,27 @@ suite(`${route} (UserController)`, function() {
     });
   });
 
-  describe("GET / (getUser())", function() {
-    it("should return a RegisteredUserDto object and a 200 OK status code", async function() {
+  describe("GET / (getUser())", function () {
+    it("should return a RegisteredUserDto object and a 200 OK status code", async function () {
       const user: UserDtoIn = {
         email: "test@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       // sign up
-      const intialDto = (
-        await request(server)
-          .post(route)
-          .send(user)
-      ).body;
+      const intialDto = (await request(server).post(route).send(user)).body;
 
       const login: UserLoginDto = {
         email: user.email,
-        password: user.password
+        password: user.password,
       };
 
       // login
       const { jwt: userJwt } = (
-        await request(server)
-          .post(`${route}/login`)
-          .send(login)
+        await request(server).post(`${route}/login`).send(login)
       ).body;
 
       const response = await request(server)
@@ -387,7 +357,7 @@ suite(`${route} (UserController)`, function() {
       expect(response.body).deep.equal(intialDto);
     });
 
-    it("should not return the dto if the user does not exist return a status of 400 Bad Request", async function() {
+    it("should not return the dto if the user does not exist return a status of 400 Bad Request", async function () {
       const response = await request(server)
         .get(route)
         .set(

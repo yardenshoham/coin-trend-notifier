@@ -18,31 +18,31 @@ import { CryptoSymbolInfo } from "./../../models/cryptoSymbolInfo";
 import { Asset } from "./../../models/asset";
 chai.use(chaiAsPromised);
 
-suite("EventService", function() {
-  describe("getEvents()", function() {
+suite("EventService", function () {
+  describe("getEvents()", function () {
     let clock: lolex.InstalledClock;
-    this.beforeEach(function(): void {
+    this.beforeEach(function (): void {
       clock = lolex.install();
     });
 
-    this.afterEach(function(): void {
+    this.afterEach(function (): void {
       clock.uninstall();
     });
 
-    it("should return a sorted array of EventDto when given a max limit amount", async function() {
+    it("should return a sorted array of EventDto when given a max limit amount", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const registeredUser = await UserService.signUp(user);
 
       const userJwt = await UserService.login({
         email: registeredUser.email,
-        password: user.password
+        password: user.password,
       });
 
       const { _id } = jwt.decode(userJwt) as UserJwtPayload;
@@ -73,20 +73,20 @@ suite("EventService", function() {
       await (await symbolEventDbPromise).c.deleteMany({});
     });
 
-    it("should return a sorted array of all EventDtos", async function() {
+    it("should return a sorted array of all EventDtos", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const registeredUser = await UserService.signUp(user);
 
       const userJwt = await UserService.login({
         email: registeredUser.email,
-        password: user.password
+        password: user.password,
       });
 
       const { _id } = jwt.decode(userJwt) as UserJwtPayload;
@@ -119,15 +119,15 @@ suite("EventService", function() {
       await (await symbolEventDbPromise).c.deleteMany({});
     });
 
-    it("should throw a RangeError if given a negative amount", async function() {
+    it("should throw a RangeError if given a negative amount", async function () {
       expect(
         EventService.getEvents("0000000092a2141f3cb7a66a", -1)
       ).to.be.rejectedWith(RangeError);
     });
   });
 
-  describe("findEventById()", function() {
-    it("should retrieve an EventDto given its id", async function() {
+  describe("findEventById()", function () {
+    it("should retrieve an EventDto given its id", async function () {
       const btc = new Asset("BTC");
       const usdt = new Asset("USDT");
       const assetDb = await assetDbPromise;
@@ -159,7 +159,7 @@ suite("EventService", function() {
       await assetDb.c.deleteMany({});
     });
 
-    it("should throw an error if the given id is invalid", async function() {
+    it("should throw an error if the given id is invalid", async function () {
       await expect(EventService.findEventById("uhuhhhgtggghh")).to.be.rejected;
       return expect(
         EventService.findEventById("5e196cd3bb5f685ca029e93d")

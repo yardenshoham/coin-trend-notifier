@@ -7,7 +7,7 @@ import {
   IsOptional,
   IsPhoneNumber,
   IsDefined,
-  Min
+  Min,
 } from "class-validator";
 
 /**
@@ -105,6 +105,6 @@ export class User {
 /**
  * The context from which one could access all [[User]] documents.
  */
-export const userDbPromise = (async function() {
+export const userDbPromise = (async function () {
   return new Repository<User>(User, await clientPromise, "users");
 })();

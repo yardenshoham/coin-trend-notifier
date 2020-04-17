@@ -42,7 +42,7 @@ export default class EventService {
         probability: symbolEvent.probability,
         firedAt: symbolEvent.firedAt,
         baseAssetName: symbolEvent.cryptoSymbolInfo.baseAsset.name,
-        quoteAssetName: symbolEvent.cryptoSymbolInfo.quoteAsset.name
+        quoteAssetName: symbolEvent.cryptoSymbolInfo.quoteAsset.name,
       };
       return eventDto;
     });
@@ -73,7 +73,7 @@ export default class EventService {
         baseAssetName: event.cryptoSymbolInfo.baseAsset.name,
         quoteAssetName: event.cryptoSymbolInfo.quoteAsset.name,
         firedAt: event.firedAt,
-        probability: event.probability
+        probability: event.probability,
       };
     } catch (error) {
       throw new Error("Event not found.");

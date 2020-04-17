@@ -93,7 +93,7 @@ export class CryptoSymbol extends EventEmitter {
 /**
  * The context from which one could access all [[CryptoSymbol]] documents.
  */
-export const cryptoSymbolDbPromise = (async function() {
+export const cryptoSymbolDbPromise = (async function () {
   return new Repository<CryptoSymbol>(
     CryptoSymbol,
     await clientPromise,

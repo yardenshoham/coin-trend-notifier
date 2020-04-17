@@ -26,18 +26,18 @@ class Emailer implements Notifier {
       service: "gmail",
       auth: {
         user: emailAddress,
-        pass: config.get("emailPassword")
-      }
+        pass: config.get("emailPassword"),
+      },
     });
 
     this.email = new Email({
       message: {
-        from: emailAddress
+        from: emailAddress,
       },
       send: config.get("sendEmail") !== "false",
       transport,
       views: { root: path.join(__dirname, "/../templates") },
-      preview: false
+      preview: false,
     });
   }
 
@@ -52,7 +52,7 @@ class Emailer implements Notifier {
     return Promise.all(
       symbolEvent
         .getSubscribers()
-        .map(userId =>
+        .map((userId) =>
           this.sendMail(userId, template, percentage, symbolString)
         )
     );
@@ -86,13 +86,13 @@ class Emailer implements Notifier {
     return this.email.send({
       template,
       message: {
-        to: user.email
+        to: user.email,
       },
       locals: {
         username: user.username,
         percentage,
-        symbolString
-      }
+        symbolString,
+      },
     });
   }
 }

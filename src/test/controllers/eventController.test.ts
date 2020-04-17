@@ -18,31 +18,31 @@ import { symbolEventDbPromise, SymbolEvent } from "../../models/symbolEvent";
 import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
 
 const route = "/api/events";
-suite(`${route} (EventController)`, function() {
-  describe("GET / (getEvents())", function() {
+suite(`${route} (EventController)`, function () {
+  describe("GET / (getEvents())", function () {
     let clock: lolex.InstalledClock;
-    this.beforeEach(function(): void {
+    this.beforeEach(function (): void {
       clock = lolex.install();
     });
 
-    this.afterEach(function(): void {
+    this.afterEach(function (): void {
       clock.uninstall();
     });
 
-    it("should return all the user's events and a status code of 200 OK", async function() {
+    it("should return all the user's events and a status code of 200 OK", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const registeredUser = await UserService.signUp(user);
 
       const userJwt = await UserService.login({
         email: registeredUser.email,
-        password: user.password
+        password: user.password,
       });
 
       const { _id } = jwt.decode(userJwt) as UserJwtPayload;
@@ -86,20 +86,20 @@ suite(`${route} (EventController)`, function() {
       await (await symbolEventDbPromise).c.deleteMany({});
     });
 
-    it("should return a given amount of events and status code of 200 OK", async function() {
+    it("should return a given amount of events and status code of 200 OK", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const registeredUser = await UserService.signUp(user);
 
       const userJwt = await UserService.login({
         email: registeredUser.email,
-        password: user.password
+        password: user.password,
       });
 
       const { _id } = jwt.decode(userJwt) as UserJwtPayload;
@@ -139,20 +139,20 @@ suite(`${route} (EventController)`, function() {
       await (await symbolEventDbPromise).c.deleteMany({});
     });
 
-    it("should return 400 Bad Request if given a negative amount", async function() {
+    it("should return 400 Bad Request if given a negative amount", async function () {
       const user: UserDtoIn = {
         email: "test.user@test.domain.com",
         username: "Test_User",
         password: "123abc",
         phoneNumber: "+972-524444444",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       const registeredUser = await UserService.signUp(user);
 
       const userJwt = await UserService.login({
         email: registeredUser.email,
-        password: user.password
+        password: user.password,
       });
 
       const response = await request(server)
@@ -166,8 +166,8 @@ suite(`${route} (EventController)`, function() {
     });
   });
 
-  describe("GET /:id (getById())", function() {
-    it("should return an EventDto given its id and a status of 200 OK", async function() {
+  describe("GET /:id (getById())", function () {
+    it("should return an EventDto given its id and a status of 200 OK", async function () {
       const btc = new Asset("BTC");
       const usdt = new Asset("USDT");
       const assetDb = await assetDbPromise;
@@ -202,7 +202,7 @@ suite(`${route} (EventController)`, function() {
       await assetDb.c.deleteMany({});
     });
 
-    it("should return a status of 404 Not Found when provided a bad id", async function() {
+    it("should return a status of 404 Not Found when provided a bad id", async function () {
       let response = await request(server).get(`${route}/uhuhhhgtggghh`);
       expect(response.status).to.equal(NOT_FOUND);
 

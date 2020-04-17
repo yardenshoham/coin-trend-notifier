@@ -9,28 +9,24 @@ import UserDtoIn from "../../dtos/userDtoIn";
 import { UNAUTHORIZED, BAD_REQUEST } from "http-status-codes";
 
 const testRoute = "/api/preferences";
-suite("AuthMiddleware", function() {
-  describe("use()", function() {
-    it("should indicate success if a valid token was provided", async function() {
+suite("AuthMiddleware", function () {
+  describe("use()", function () {
+    it("should indicate success if a valid token was provided", async function () {
       const user: UserDtoIn = {
         email: "abc@def.com",
         username: "atestuser",
         password: "atestpassword",
-        alertLimit: 0
+        alertLimit: 0,
       };
 
       // signup
-      await request(server)
-        .post("/api/users")
-        .send(user);
+      await request(server).post("/api/users").send(user);
 
       // login
-      let response = await request(server)
-        .post("/api/users/login")
-        .send({
-          email: user.email,
-          password: user.password
-        });
+      let response = await request(server).post("/api/users/login").send({
+        email: user.email,
+        password: user.password,
+      });
 
       const { jwt } = response.body;
 
@@ -40,7 +36,7 @@ suite("AuthMiddleware", function() {
         .send({
           baseAssetName: "BTC",
           quoteAssetName: "USDT",
-          probability: 0.6
+          probability: 0.6,
         });
 
       expect(response.statusType).to.equal(2);
@@ -51,39 +47,37 @@ suite("AuthMiddleware", function() {
       await (await userDbPromise).c.deleteMany({});
     });
 
-    it("should return UNAUTHORIZED if Authorization header was not provided", async function() {
-      const response = await request(server)
-        .post(testRoute)
-        .send({
-          baseAssetName: "BTC",
-          quoteAssetName: "USDT",
-          probability: 0.6
-        });
+    it("should return UNAUTHORIZED if Authorization header was not provided", async function () {
+      const response = await request(server).post(testRoute).send({
+        baseAssetName: "BTC",
+        quoteAssetName: "USDT",
+        probability: 0.6,
+      });
 
       expect(response.status).to.equal(UNAUTHORIZED);
     });
 
-    it("should return BAD_REQUEST if Authorization header was not structured properly", async function() {
+    it("should return BAD_REQUEST if Authorization header was not structured properly", async function () {
       const response = await request(server)
         .post(testRoute)
         .set("Authorization", "I'm not structured properly")
         .send({
           baseAssetName: "BTC",
           quoteAssetName: "USDT",
-          probability: 0.6
+          probability: 0.6,
         });
 
       expect(response.status).to.equal(BAD_REQUEST);
     });
 
-    it("should return BAD_REQUEST if an invalid token was provided", async function() {
+    it("should return BAD_REQUEST if an invalid token was provided", async function () {
       const response = await request(server)
         .post(testRoute)
         .set("Authorization", "Bearer I'm-not-a-token")
         .send({
           baseAssetName: "BTC",
           quoteAssetName: "USDT",
-          probability: 0.6
+          probability: 0.6,
         });
 
       expect(response.status).to.equal(BAD_REQUEST);

@@ -5,7 +5,7 @@ import {
   IsOptional,
   IsString,
   IsPhoneNumber,
-  Min
+  Min,
 } from "class-validator";
 
 /**

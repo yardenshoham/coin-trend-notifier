@@ -35,6 +35,6 @@ export class Asset {
 /**
  * The context from which one could access all [[Asset]] documents.
  */
-export const assetDbPromise = (async function() {
+export const assetDbPromise = (async function () {
   return new Repository<Asset>(Asset, await clientPromise, "assets");
 })();

@@ -3,27 +3,27 @@ import chai, { expect } from "chai";
 import { Asset, assetDbPromise } from "../../models/asset";
 import {
   CryptoSymbol,
-  cryptoSymbolDbPromise
+  cryptoSymbolDbPromise,
 } from "./../../models/cryptoSymbol";
 import { CryptoSymbolInfo } from "../../models/cryptoSymbolInfo";
 import cryptoSymbolManagerPromise from "./../../managers/cryptoSymbolManager";
 import chaiAsPromised from "chai-as-promised";
 chai.use(chaiAsPromised);
 
-suite("CryptoSymbolManager", function() {
-  describe("populate()", function() {
-    it("should populate the manager with all crypto symbols from the db", async function() {
+suite("CryptoSymbolManager", function () {
+  describe("populate()", function () {
+    it("should populate the manager with all crypto symbols from the db", async function () {
       const baseAssets = [new Asset("ABC"), new Asset("DEF"), new Asset("GHI")];
       const quoteAssets = [
         new Asset("JKL"),
         new Asset("MNO"),
-        new Asset("PQR")
+        new Asset("PQR"),
       ];
 
       const assetDb = await assetDbPromise;
       await Promise.all([
-        ...baseAssets.map(asset => assetDb.insert(asset)),
-        ...quoteAssets.map(asset => assetDb.insert(asset))
+        ...baseAssets.map((asset) => assetDb.insert(asset)),
+        ...quoteAssets.map((asset) => assetDb.insert(asset)),
       ]);
 
       const cryptoSymbols = [];
@@ -35,7 +35,7 @@ suite("CryptoSymbolManager", function() {
 
       const cryptoSymbolDb = await cryptoSymbolDbPromise;
       await Promise.all(
-        cryptoSymbols.map(cryptoSymbol => cryptoSymbolDb.insert(cryptoSymbol))
+        cryptoSymbols.map((cryptoSymbol) => cryptoSymbolDb.insert(cryptoSymbol))
       );
 
       const cryptoSymbolManager = await cryptoSymbolManagerPromise;
@@ -45,8 +45,8 @@ suite("CryptoSymbolManager", function() {
         baseAssets.length
       );
 
-      const baseAssetIds = baseAssets.map(a => a._id.toHexString());
-      const quoteAssetIds = quoteAssets.map(a => a._id.toHexString());
+      const baseAssetIds = baseAssets.map((a) => a._id.toHexString());
+      const quoteAssetIds = quoteAssets.map((a) => a._id.toHexString());
       for (const cryptoSymbol of cryptoSymbolManager.cryptoSymbols.values()) {
         expect(baseAssetIds).to.include(
           cryptoSymbol.cryptoSymbolInfo.baseAsset._id.toHexString()
@@ -61,8 +61,8 @@ suite("CryptoSymbolManager", function() {
     });
   });
 
-  describe("getCryptoSymbol()", function() {
-    it("should return a crypto symbol given its corresponding base and quote asset when the assets do not exist and save the assets", async function() {
+  describe("getCryptoSymbol()", function () {
+    it("should return a crypto symbol given its corresponding base and quote asset when the assets do not exist and save the assets", async function () {
       const baseAssetName = "ABC";
       const quoteAssetName = "DEF";
 
@@ -85,7 +85,7 @@ suite("CryptoSymbolManager", function() {
 
       await Promise.all([
         expect(assetDb.findOne({ name: baseAssetName })).to.be.fulfilled,
-        expect(assetDb.findOne({ name: quoteAssetName })).to.be.fulfilled
+        expect(assetDb.findOne({ name: quoteAssetName })).to.be.fulfilled,
       ]);
 
       const cryptoSymbolDb = await cryptoSymbolDbPromise;
@@ -95,7 +95,7 @@ suite("CryptoSymbolManager", function() {
       return assetDb.c.deleteMany({});
     });
 
-    it("should return a crypto symbol given its corresponding base and quote asset when the crypto symbol exists", async function() {
+    it("should return a crypto symbol given its corresponding base and quote asset when the crypto symbol exists", async function () {
       const baseAssetName = "ABC";
       const quoteAssetName = "DEF";
 
@@ -104,7 +104,7 @@ suite("CryptoSymbolManager", function() {
       const quoteAsset = new Asset(quoteAssetName);
       await Promise.all([
         assetDb.insert(baseAsset),
-        assetDb.insert(quoteAsset)
+        assetDb.insert(quoteAsset),
       ]);
 
       const cryptoSymbolDb = await cryptoSymbolDbPromise;

@@ -7,12 +7,12 @@ import config from "config";
 import { SymbolEvent, symbolEventDbPromise } from "../../models/symbolEvent";
 import { expect } from "chai";
 
-suite("CryptoSymbol", function(): void {
-  describe("event handling", function(): void {
-    this.afterAll(async function() {
+suite("CryptoSymbol", function (): void {
+  describe("event handling", function (): void {
+    this.afterAll(async function () {
       return (await symbolEventDbPromise).c.deleteMany({});
     });
-    it("should fire a SymbolEvent when Chance fires an event", function(done: Mocha.Done): void {
+    it("should fire a SymbolEvent when Chance fires an event", function (done: Mocha.Done): void {
       const chance = new Chance();
       const cryptoSymbol = new CryptoSymbol(
         new CryptoSymbolInfo(new Asset("ABC"), new Asset("DEF")),
@@ -32,7 +32,7 @@ suite("CryptoSymbol", function(): void {
       chance.emit(config.get("chanceEventName"));
     });
 
-    it("should fire a SymbolEvent with the appropriate probability and CryptoSymbolInfo when a (threshold-passing) probability sample is added", function(): void {
+    it("should fire a SymbolEvent with the appropriate probability and CryptoSymbolInfo when a (threshold-passing) probability sample is added", function (): void {
       const cryptoSymbolInfo = new CryptoSymbolInfo(
         new Asset("ABC"),
         new Asset("DEF")

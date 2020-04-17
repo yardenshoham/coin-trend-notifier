@@ -69,7 +69,7 @@ export class CryptoSymbolInfo {
     const assetDb = await assetDbPromise;
     const [baseAsset, quoteAsset] = await Promise.all([
       assetDb.findById(this.baseAssetId),
-      assetDb.findById(this.quoteAssetId)
+      assetDb.findById(this.quoteAssetId),
     ]);
     this.baseAsset = baseAsset;
     this.quoteAsset = quoteAsset;

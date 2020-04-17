@@ -5,7 +5,7 @@ import {
   IsMongoId,
   Max,
   IsPositive,
-  IsUppercase
+  IsUppercase,
 } from "class-validator";
 
 /**

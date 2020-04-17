@@ -6,7 +6,7 @@ import config from "config";
  */
 export const clientPromise = MongoClient.connect(config.get("dbUrl"), {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
 
 clientPromise.then(() => {

@@ -72,7 +72,7 @@ export class SymbolEvent {
 /**
  * The context from which one could access all [[SymbolEvent]] documents.
  */
-export const symbolEventDbPromise = (async function() {
+export const symbolEventDbPromise = (async function () {
   return new Repository<SymbolEvent>(
     SymbolEvent,
     await clientPromise,

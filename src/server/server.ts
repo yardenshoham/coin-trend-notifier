@@ -35,11 +35,11 @@ app.use(
         chalk.hex("#2ed573").bold(tokens["response-time"](req, res) + " ms"),
         chalk.hex("#f78fb3").bold("@ " + tokens.date(req, res)),
         chalk.yellow(tokens["remote-addr"](req, res)),
-        chalk.hex("#1e90ff")(tokens["user-agent"](req, res))
+        chalk.hex("#1e90ff")(tokens["user-agent"](req, res)),
       ].join(" ");
     },
     {
-      skip: req => req.headers["user-agent"]?.includes("node-superagent")
+      skip: (req) => req.headers["user-agent"]?.includes("node-superagent"),
     }
   )
 );
@@ -51,14 +51,14 @@ app.get("/", (_, res: Response) => {
 useExpressServer(app, {
   development: false,
   routePrefix: "/api",
-  controllers: [UserController, PreferenceController, EventController]
+  controllers: [UserController, PreferenceController, EventController],
 });
 
 // parse class-validator classes into JSON Schema
 const metadatas = (getFromContainer(MetadataStorage) as any)
   .validationMetadatas;
 const schemas = validationMetadatasToSchemas(metadatas, {
-  refPointerPrefix: "#/components/schemas/"
+  refPointerPrefix: "#/components/schemas/",
 });
 
 // parse routing-controllers classes into OpenAPI spec
@@ -74,14 +74,14 @@ const spec = routingControllersToSpec(
         bearerAuth: {
           scheme: "bearer",
           type: "http",
-          bearerFormat: "JWT"
-        }
-      }
+          bearerFormat: "JWT",
+        },
+      },
     },
     info: {
       title: "Coin Trend Notifier API",
-      version: "1.0.0"
-    }
+      version: "1.0.0",
+    },
   }
 );
 

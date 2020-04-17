@@ -5,9 +5,9 @@ import { Asset, assetDbPromise } from "../../models/asset";
 import { CryptoSymbol, cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
 import { ObjectId } from "mongodb";
 
-suite("CryptoSymbolInfo", function(): void {
-  describe("constructor", function(): void {
-    it("should be given a base asset and a quote and assign them", function(): void {
+suite("CryptoSymbolInfo", function (): void {
+  describe("constructor", function (): void {
+    it("should be given a base asset and a quote and assign them", function (): void {
       const base = "ABC";
       const quote = "DEF";
       const cryptoSymbolInfo = new CryptoSymbolInfo(
@@ -18,10 +18,10 @@ suite("CryptoSymbolInfo", function(): void {
       expect(cryptoSymbolInfo.quoteAsset.name).to.equal(quote);
     });
 
-    it("should be optionally given preferences and assign them", function(): void {
+    it("should be optionally given preferences and assign them", function (): void {
       const preferences = new Map([
         [new ObjectId().toHexString(), 0.4],
-        [new ObjectId().toHexString(), -0.6]
+        [new ObjectId().toHexString(), -0.6],
       ]);
 
       const cryptoSymbolInfo = new CryptoSymbolInfo(
@@ -33,8 +33,8 @@ suite("CryptoSymbolInfo", function(): void {
     });
   });
 
-  describe("populate()", function() {
-    it("should populate a crypto symbol info's base asset and quote asset", async function() {
+  describe("populate()", function () {
+    it("should populate a crypto symbol info's base asset and quote asset", async function () {
       const assetDb = await assetDbPromise;
       const cryptoSymbolDb = await cryptoSymbolDbPromise;
 
@@ -43,7 +43,7 @@ suite("CryptoSymbolInfo", function(): void {
       const quoteAsset = new Asset("DEF");
       await Promise.all([
         assetDb.insert(baseAsset),
-        assetDb.insert(quoteAsset)
+        assetDb.insert(quoteAsset),
       ]);
 
       // create crypto symbol info
@@ -66,7 +66,7 @@ suite("CryptoSymbolInfo", function(): void {
       expect(after.quoteAsset).to.have.property("name", quoteAsset.name);
     });
 
-    it("should make sure the hydrated object's preferences is an ES6 Map type", async function() {
+    it("should make sure the hydrated object's preferences is an ES6 Map type", async function () {
       const assetDb = await assetDbPromise;
       const cryptoSymbolDb = await cryptoSymbolDbPromise;
 
@@ -75,7 +75,7 @@ suite("CryptoSymbolInfo", function(): void {
       const quoteAsset = new Asset("DEF");
       await Promise.all([
         assetDb.insert(baseAsset),
-        assetDb.insert(quoteAsset)
+        assetDb.insert(quoteAsset),
       ]);
 
       // create crypto symbol info

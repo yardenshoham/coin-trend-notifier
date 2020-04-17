@@ -15,9 +15,9 @@ import config from "config";
 import { userDbPromise } from "../../models/user";
 import { cryptoSymbolDbPromise } from "../../models/cryptoSymbol";
 
-suite("SymbolEvent", function(): void {
-  describe("constructor", function(): void {
-    it("should be given a probability and a CryptoSymbolInfo object and assign them", function(): void {
+suite("SymbolEvent", function (): void {
+  describe("constructor", function (): void {
+    it("should be given a probability and a CryptoSymbolInfo object and assign them", function (): void {
       const probability = 0.1;
       const cryptoSymbolInfo = new CryptoSymbolInfo(
         new Asset("ABC"),
@@ -29,32 +29,32 @@ suite("SymbolEvent", function(): void {
     });
   });
 
-  describe("getSubscribers()", function() {
-    it("should return all subscribers of the event", async function() {
+  describe("getSubscribers()", function () {
+    it("should return all subscribers of the event", async function () {
       const users: UserDtoIn[] = [
         {
           email: "abcd@gmail.com",
           username: "AB_CD",
           password: "12345",
-          alertLimit: 0
+          alertLimit: 0,
         },
         {
           email: "qwert@gmail.com",
           username: "hey",
           password: "qwertyuiop",
-          alertLimit: 8888
+          alertLimit: 8888,
         },
         {
           email: "aaaa@gmail.com",
           username: "AaaaaD",
           password: "TEST",
-          alertLimit: 14598533
-        }
+          alertLimit: 14598533,
+        },
       ];
 
       // register
       const registeredUsers: RegisteredUserDto[] = await Promise.all(
-        users.map(user => UserService.signUp(user))
+        users.map((user) => UserService.signUp(user))
       );
 
       // login
@@ -62,7 +62,7 @@ suite("SymbolEvent", function(): void {
         registeredUsers.map((user, index) =>
           UserService.login({
             email: user.email,
-            password: users[index].password
+            password: users[index].password,
           })
         )
       );
@@ -75,18 +75,18 @@ suite("SymbolEvent", function(): void {
         {
           baseAssetName: "BTC",
           quoteAssetName: "ETH",
-          probability: 0.1
+          probability: 0.1,
         },
         {
           baseAssetName: "BTC",
           quoteAssetName: "ETH",
-          probability: 0.5
+          probability: 0.5,
         },
         {
           baseAssetName: "BTC",
           quoteAssetName: "ETH",
-          probability: 0.9
-        }
+          probability: 0.9,
+        },
       ];
 
       // add preferences

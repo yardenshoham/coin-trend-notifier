@@ -33,7 +33,7 @@ class NotifierManager implements Notifier {
    * @param symbolEvent The event to notify about.
    */
   notify = (symbolEvent: SymbolEvent) => {
-    this.notifiers.forEach(notifier => notifier.notify(symbolEvent));
+    this.notifiers.forEach((notifier) => notifier.notify(symbolEvent));
   };
 }
 
