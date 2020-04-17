@@ -26,20 +26,20 @@ class BinanceProvider implements Provider {
   /**
    * Initializes members and sets interval.
    */
-  start() {
+  start = () => {
     this.client = Binance();
     console.log("Connected to Binance.");
     this.periodicTask();
     this.interval = config.get("binancePeriodicTaskInterval");
     this.intervalHourString = Math.floor(this.interval / 3600000).toString();
     setInterval(this.periodicTask, this.interval);
-  }
+  };
 
   /**
    * Implements the following algorithm.
    * ![Algorithm](https://user-images.githubusercontent.com/20454870/72290021-00b1e500-3655-11ea-8d32-b0f6bfc09f3d.png)
    */
-  async periodicTask() {
+  periodicTask = async () => {
     const cryptoSymbolIterator = (
       await cryptoSymbolManagerPromise
     ).cryptoSymbols.values();
@@ -47,13 +47,13 @@ class BinanceProvider implements Provider {
     return Promise.all(
       Array.from(cryptoSymbolIterator).map(this.analyzeSymbol)
     );
-  }
+  };
 
   /**
    * Calculates the minimum and maximum value  for a given array of candles.
    * @param candles The candles for the current symbol.
    */
-  private calculateMinMax(candles: any[]): [number, number] {
+  private calculateMinMax = (candles: any[]): [number, number] => {
     let max = 0;
     let min = Number.MAX_SAFE_INTEGER;
     candles.forEach((candle) => {
@@ -66,13 +66,13 @@ class BinanceProvider implements Provider {
     });
 
     return [min, max];
-  }
+  };
 
   /**
    * Retrieves candles for a given symbol.
    * @param symbolString The symbol to fetch the candles for.
    */
-  private async fetchCandles(symbolString: string) {
+  private fetchCandles = async (symbolString: string) => {
     const candles: any[] = await this.client.candles({
       symbol: symbolString,
       interval: `${this.intervalHourString}h`,
@@ -85,13 +85,13 @@ class BinanceProvider implements Provider {
       candle.low = parseFloat(candle.low);
       return candle;
     });
-  }
+  };
 
   /**
    * Analyzes recent symbol data and in turn updates its probability.
    * @param cryptoSymbol The symbol for which we'll update the probability.
    */
-  private async analyzeSymbol(cryptoSymbol: CryptoSymbol) {
+  private analyzeSymbol = async (cryptoSymbol: CryptoSymbol) => {
     const symbolString =
       cryptoSymbol.cryptoSymbolInfo.baseAsset.name +
       cryptoSymbol.cryptoSymbolInfo.quoteAsset.name;
@@ -110,7 +110,7 @@ class BinanceProvider implements Provider {
     } else {
       cryptoSymbol.addProbability(1 - priceToMax * 2);
     }
-  }
+  };
 }
 
 export default new BinanceProvider();
