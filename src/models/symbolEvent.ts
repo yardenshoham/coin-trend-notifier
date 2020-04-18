@@ -54,14 +54,10 @@ export class SymbolEvent {
    */
   getSubscribers(): string[] {
     const result: string[] = [];
-    const sign = Math.sign(this.probability);
     const abs = Math.abs(this.probability);
     for (const [userId, wantedProbability] of this.cryptoSymbolInfo
       .preferences) {
-      if (
-        Math.sign(wantedProbability) == sign &&
-        Math.abs(wantedProbability) <= abs
-      ) {
+      if (Math.abs(wantedProbability) <= abs) {
         result.push(userId);
       }
     }
