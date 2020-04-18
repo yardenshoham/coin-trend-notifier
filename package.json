@@ -4,7 +4,7 @@
   "description": "📈 Get notified when cryptocurrency trends are identified",
   "main": "./index.ts",
   "scripts": {
-    "prestart": "tsc",
+    "prestart": "tsc && copyfiles -u 1 src/**/*.pug dist/",
     "start": "node dist/index.js",
     "start:dev": "ts-node ./src/index.ts",
     "watch": "ts-node-dev --no-notify src/index.ts",
@@ -83,6 +83,7 @@
     "@types/twit": "^2.2.23",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
+    "copyfiles": "^2.2.0",
     "http-status-codes": "^1.4.0",
     "lolex": "^5.1.1",
     "mocha": "^7.1.1",
