@@ -48,7 +48,7 @@ class Emailer implements Notifier {
    */
   public notify(symbolEvent: SymbolEvent) {
     const template = symbolEvent.probability > 0 ? "up" : "down";
-    const percentage = Math.abs(symbolEvent.probability) * 100;
+    const percentage = Math.round(Math.abs(symbolEvent.probability) * 100);
     const symbolString = `${symbolEvent.cryptoSymbolInfo.baseAsset.name}${symbolEvent.cryptoSymbolInfo.quoteAsset.name}`;
     return Promise.all(
       symbolEvent
