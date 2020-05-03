@@ -96,21 +96,27 @@ suite("EventService", function () {
 
       await PreferenceService.setPreference(_id, "ABC", "DEF", 0.1);
       await PreferenceService.setPreference(_id, "BTC", "ETH", 0.2);
+      await PreferenceService.setPreference(_id, "TRX", "BTC", -0.3);
 
       const abcdef = await cryptoSymbolManager.getCryptoSymbol("ABC", "DEF");
       const btceth = await cryptoSymbolManager.getCryptoSymbol("BTC", "ETH");
+      const trxbtc = await cryptoSymbolManager.getCryptoSymbol("TRX", "BTC");
 
       abcdef.addProbability(0.4);
       clock.tick(1);
       btceth.addProbability(0.5);
+      clock.tick(1);
+      trxbtc.addProbability(0.8);
 
       const events = await EventService.getEvents(_id);
 
-      expect(events).to.have.property("length", 2);
-      expect(events[0]).to.have.property("baseAssetName", "BTC");
-      expect(events[0]).to.have.property("quoteAssetName", "ETH");
-      expect(events[1]).to.have.property("baseAssetName", "ABC");
-      expect(events[1]).to.have.property("quoteAssetName", "DEF");
+      expect(events).to.have.property("length", 3);
+      expect(events[0]).to.have.property("baseAssetName", "TRX");
+      expect(events[0]).to.have.property("quoteAssetName", "BTC");
+      expect(events[1]).to.have.property("baseAssetName", "BTC");
+      expect(events[1]).to.have.property("quoteAssetName", "ETH");
+      expect(events[2]).to.have.property("baseAssetName", "ABC");
+      expect(events[2]).to.have.property("quoteAssetName", "DEF");
 
       // cleanup
       await (await userDbPromise).c.deleteMany({});

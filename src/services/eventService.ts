@@ -49,10 +49,8 @@ export default class EventService {
   }
 
   private static buildFetchQuery(queryKey: string): FilterQuery<SymbolEvent> {
-    const $queryKey = `$${queryKey}`;
-
     // prettier-ignore
-    return {$and:[{[queryKey]:{$exists:true}},{$expr:{$or:[{$and:[{$gt:[$queryKey,0]},{$lte:[$queryKey,"$probability"]}]},{$and:[{$lt:[$queryKey,0]},{$gte:[$queryKey,"$probability"]}]}]}}]};
+    return {$and:[{[queryKey]:{$exists:true}},{$expr:{$lte:[{$abs:`$${queryKey}`},{ $abs: "$probability" }]}}]};
   }
 
   /**

@@ -52,9 +52,11 @@ suite(`${route} (EventController)`, function () {
 
       await PreferenceService.setPreference(_id, "ABC", "DEF", 0.1);
       await PreferenceService.setPreference(_id, "BTC", "ETH", 0.2);
+      await PreferenceService.setPreference(_id, "TRX", "BTC", -0.3);
 
       const abcdef = await cryptoSymbolManager.getCryptoSymbol("ABC", "DEF");
       const btceth = await cryptoSymbolManager.getCryptoSymbol("BTC", "ETH");
+      const trxbtc = await cryptoSymbolManager.getCryptoSymbol("TRX", "BTC");
 
       clock.tick(10);
       abcdef.addProbability(0.4);
@@ -62,6 +64,9 @@ suite(`${route} (EventController)`, function () {
       clock.tick(10);
       btceth.addProbability(0.5);
       const btcethFiredAt = Date.now();
+      clock.tick(10);
+      trxbtc.addProbability(0.8);
+      const trxbtcFiredAt = Date.now();
 
       const response = await request(server)
         .get(route)
@@ -71,13 +76,16 @@ suite(`${route} (EventController)`, function () {
 
       const events: EventDto[] = response.body;
 
-      expect(events).to.have.property("length", 2);
-      expect(events[0]).to.have.property("baseAssetName", "BTC");
-      expect(events[0]).to.have.property("quoteAssetName", "ETH");
-      expect(events[0]).to.have.property("firedAt", btcethFiredAt);
-      expect(events[1]).to.have.property("baseAssetName", "ABC");
-      expect(events[1]).to.have.property("quoteAssetName", "DEF");
-      expect(events[1]).to.have.property("firedAt", abcdefFiredAt);
+      expect(events).to.have.property("length", 3);
+      expect(events[0]).to.have.property("baseAssetName", "TRX");
+      expect(events[0]).to.have.property("quoteAssetName", "BTC");
+      expect(events[0]).to.have.property("firedAt", trxbtcFiredAt);
+      expect(events[1]).to.have.property("baseAssetName", "BTC");
+      expect(events[1]).to.have.property("quoteAssetName", "ETH");
+      expect(events[1]).to.have.property("firedAt", btcethFiredAt);
+      expect(events[2]).to.have.property("baseAssetName", "ABC");
+      expect(events[2]).to.have.property("quoteAssetName", "DEF");
+      expect(events[2]).to.have.property("firedAt", abcdefFiredAt);
 
       // cleanup
       await (await userDbPromise).c.deleteMany({});
