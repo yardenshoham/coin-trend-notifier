@@ -50,11 +50,18 @@ class Emailer implements Notifier {
     const template = symbolEvent.probability > 0 ? "up" : "down";
     const percentage = Math.round(Math.abs(symbolEvent.probability) * 100);
     const symbolString = `${symbolEvent.cryptoSymbolInfo.baseAsset.name}${symbolEvent.cryptoSymbolInfo.quoteAsset.name}`;
+    const symbolEventId = symbolEvent._id.toHexString();
     return Promise.all(
       symbolEvent
         .getSubscribers()
         .map((userId) =>
-          this.sendMail(userId, template, percentage, symbolString)
+          this.sendMail(
+            userId,
+            template,
+            percentage,
+            symbolString,
+            symbolEventId
+          )
         )
     );
   }
@@ -65,12 +72,14 @@ class Emailer implements Notifier {
    * @param template The template of the email.
    * @param percentage The certainty the event is going to occur. Between 0 and 100.
    * @param symbolString The string representation of the crypto symbol.
+   * @param symbolEventId The hex string representation of the ObjectId of the symbolEvent.
    */
   private async sendMail(
     userId: string,
     template: "up" | "down",
     percentage: number,
-    symbolString: string
+    symbolString: string,
+    symbolEventId: string
   ) {
     const user = await (await userDbPromise).findById(
       ObjectId.createFromHexString(userId)
@@ -93,6 +102,7 @@ class Emailer implements Notifier {
         username: user.username,
         percentage,
         symbolString,
+        symbolEventId,
       },
     });
   }
