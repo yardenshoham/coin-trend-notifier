@@ -63,6 +63,12 @@ export class User {
   public phoneNumber?: string;
 
   /**
+   * The user's mobile app id. This is how we know where to send notifications.
+   */
+  @IsOptional()
+  private _firebaseInstanceIdToken?: string;
+
+  /**
    * Constructs a new user.
    * @param email The user's email address.
    * @param username The user's username.
@@ -99,6 +105,22 @@ export class User {
    */
   public get password(): string {
     return this._password;
+  }
+
+  /**
+   * Sets a user's mobile app id.
+   * @param value The new mobile app id.
+   */
+  public set firebaseInstanceIdToken(value: string) {
+    this._firebaseInstanceIdToken = value;
+  }
+
+  /**
+   * Gets the user's mobile app id.
+   * @returns The mobile app id.
+   */
+  public get firebaseInstanceIdToken(): string {
+    return this._firebaseInstanceIdToken;
   }
 }
 

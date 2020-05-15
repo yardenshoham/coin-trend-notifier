@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>EventDto | coin-trend-notifier</title>
+	<title>PushNotifications | coin-trend-notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="eventdto.html">EventDto</a>
+					<a href="pushnotifications.html">PushNotifications</a>
 				</li>
 			</ul>
-			<h1>Class EventDto</h1>
+			<h1>Class PushNotifications</h1>
 		</div>
 	</div>
 </header>
@@ -70,8 +70,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">EventDto</span>
+						<span class="target">PushNotifications</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/notifier.html" class="tsd-signature-type">Notifier</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -79,69 +85,127 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="eventdto.html#_id" class="tsd-kind-icon">_id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="eventdto.html#baseassetname" class="tsd-kind-icon">base<wbr>Asset<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="eventdto.html#firedat" class="tsd-kind-icon">fired<wbr>At</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="eventdto.html#probability" class="tsd-kind-icon">probability</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="eventdto.html#quoteassetname" class="tsd-kind-icon">quote<wbr>Asset<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="pushnotifications.html#notify" class="tsd-kind-icon">notify</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="pushnotifications.html#pushnotification" class="tsd-kind-icon">push<wbr>Notification</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="pushnotifications.html#start" class="tsd-kind-icon">start</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-class"><a href="pushnotifications.html#notification_options" class="tsd-kind-icon">NOTIFICATION_<wbr>OPTIONS</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="_id" class="tsd-anchor"></a>
-					<h3>_id</h3>
-					<div class="tsd-signature tsd-kind-icon">_id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/793ba4e/src/dtos/eventDto.ts#L20">src/dtos/eventDto.ts:20</a></li>
-						</ul>
-					</aside>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="notify" class="tsd-anchor"></a>
+					<h3>notify</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">notify<span class="tsd-signature-symbol">(</span>symbolEvent<span class="tsd-signature-symbol">: </span><a href="../globals.html#symbolevent" class="tsd-signature-type">SymbolEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">MessagingDevicesResponse</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/notifier.html">Notifier</a>.<a href="../interfaces/notifier.html#notify">notify</a></p>
+								<ul>
+									<li>Defined in src/notifiers/pushNotifications.ts:31</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>symbolEvent: <a href="../globals.html#symbolevent" class="tsd-signature-type">SymbolEvent</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">MessagingDevicesResponse</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="baseassetname" class="tsd-anchor"></a>
-					<h3>base<wbr>Asset<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">base<wbr>Asset<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/793ba4e/src/dtos/eventDto.ts#L43">src/dtos/eventDto.ts:43</a></li>
-						</ul>
-					</aside>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="pushnotification" class="tsd-anchor"></a>
+					<h3>push<wbr>Notification</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">push<wbr>Notification<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, title<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">MessagingDevicesResponse</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/notifiers/pushNotifications.ts:57</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>userId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>title: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>body: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">MessagingDevicesResponse</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="firedat" class="tsd-anchor"></a>
-					<h3>fired<wbr>At</h3>
-					<div class="tsd-signature tsd-kind-icon">fired<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/793ba4e/src/dtos/eventDto.ts#L36">src/dtos/eventDto.ts:36</a></li>
-						</ul>
-					</aside>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="start" class="tsd-anchor"></a>
+					<h3>start</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/notifier.html">Notifier</a>.<a href="../interfaces/notifier.html#start">start</a></p>
+								<ul>
+									<li>Defined in src/notifiers/pushNotifications.ts:20</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="probability" class="tsd-anchor"></a>
-					<h3>probability</h3>
-					<div class="tsd-signature tsd-kind-icon">probability<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class">
+					<a name="notification_options" class="tsd-anchor"></a>
+					<h3>NOTIFICATION_<wbr>OPTIONS</h3>
+					<div class="tsd-signature tsd-kind-icon">NOTIFICATION_<wbr>OPTIONS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/793ba4e/src/dtos/eventDto.ts#L29">src/dtos/eventDto.ts:29</a></li>
+							<li>Defined in src/notifiers/pushNotifications.ts:12</li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="quoteassetname" class="tsd-anchor"></a>
-					<h3>quote<wbr>Asset<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">quote<wbr>Asset<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/YardenShoham/coin-trend-notifier/blob/793ba4e/src/dtos/eventDto.ts#L50">src/dtos/eventDto.ts:50</a></li>
-						</ul>
-					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="notification_options.priority" class="tsd-anchor"></a>
+						<h3>priority</h3>
+						<div class="tsd-signature tsd-kind-icon">priority<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;high&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in src/notifiers/pushNotifications.ts:13</li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="notification_options.timetolive" class="tsd-anchor"></a>
+						<h3>time<wbr>ToLive</h3>
+						<div class="tsd-signature tsd-kind-icon">time<wbr>ToLive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;60 * 60 * 24</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in src/notifiers/pushNotifications.ts:14</li>
+							</ul>
+						</aside>
+					</section>
 				</section>
 			</section>
 		</div>
@@ -158,22 +222,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="eventdto.html" class="tsd-kind-icon">Event<wbr>Dto</a>
+						<a href="pushnotifications.html" class="tsd-kind-icon">Push<wbr>Notifications</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="eventdto.html#_id" class="tsd-kind-icon">_id</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="pushnotifications.html#notify" class="tsd-kind-icon">notify</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="eventdto.html#baseassetname" class="tsd-kind-icon">base<wbr>Asset<wbr>Name</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="pushnotifications.html#pushnotification" class="tsd-kind-icon">push<wbr>Notification</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="eventdto.html#firedat" class="tsd-kind-icon">fired<wbr>At</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="pushnotifications.html#start" class="tsd-kind-icon">start</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="eventdto.html#probability" class="tsd-kind-icon">probability</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="eventdto.html#quoteassetname" class="tsd-kind-icon">quote<wbr>Asset<wbr>Name</a>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-class">
+								<a href="pushnotifications.html#notification_options" class="tsd-kind-icon">NOTIFICATION_<wbr>OPTIONS</a>
 							</li>
 						</ul>
 					</li>

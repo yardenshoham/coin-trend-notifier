@@ -30,6 +30,7 @@ import ChangePasswordDto from "./../dtos/changePasswordDto";
 import AuthorizedRequest from "./../interfaces/authorizedRequest";
 import AuthMiddleware from "./../middleware/authMiddleware";
 import UserUpdateDto from "./../dtos/userUpdateDto";
+import SetFirebaseInstanceIdTokenDto from "../dtos/setFirebaseInstanceIdTokenDto";
 
 /**
  * Controller for users.
@@ -492,6 +493,91 @@ export default class UserController {
       return res.send(
         await UserService.getRegisteredDtoById(req.jwtPayload._id)
       );
+    } catch (error) {
+      return res.status(BAD_REQUEST).send({ error: error.message });
+    }
+  }
+
+  /**
+   * Sets a user's mobile app id.
+   * @param req The Express request + jwt payload.
+   * @param res The Express response.
+   */
+  @OpenAPI({
+    security: [{ bearerAuth: [] }],
+    description: "Set a user's mobile app id.",
+    requestBody: {
+      content: {
+        "application/json": {
+          example: {
+            token:
+              "d-xrKw7GQyWJP0pALT8nQx:APA91bFqgP4DlUUFteEWEQjAusC2oTu94qYYcfCrjGes4VAG9voEXgtVKgipquZJumxOIAzSGZHz8di0PA2TAY46lyKGHsNFNh_RYfAJ5RM-2Aw7uR8I4kld2pffxGpTMbKjCwWl3nOs",
+          },
+        },
+      },
+    },
+    responses: {
+      "400": {
+        content: {
+          "application/json": {
+            schema: {
+              type: "object",
+              properties: {
+                name: {
+                  type: "string",
+                },
+                message: {
+                  type: "string",
+                },
+                errors: {
+                  type: "array",
+                  items: {
+                    type: "object",
+                    properties: {
+                      target: {
+                        type: SetFirebaseInstanceIdTokenDto,
+                      },
+                      property: {
+                        type: "string",
+                      },
+                      value: {
+                        type: "any",
+                      },
+                      constraints: {
+                        type: "object",
+                      },
+                      children: {
+                        type: "array",
+                      },
+                    },
+                    required: ["property", "value"],
+                  },
+                },
+              },
+            },
+          },
+        },
+        description: "Validation Error.",
+      },
+    },
+  })
+  @HttpCode(NO_CONTENT)
+  @UseBefore(AuthMiddleware)
+  @Patch("/firebase")
+  public async setFirebaseInstanceIdToken(
+    @Body({ required: true }) setRequest: SetFirebaseInstanceIdTokenDto,
+    @Req() req: AuthorizedRequest,
+    @Res() res: Response
+  ): Promise<Response> {
+    try {
+      return res
+        .status(NO_CONTENT)
+        .send(
+          await UserService.setFirebaseInstanceIdToken(
+            req.jwtPayload._id,
+            setRequest.token
+          )
+        );
     } catch (error) {
       return res.status(BAD_REQUEST).send({ error: error.message });
     }

@@ -16,9 +16,11 @@ install:
 notifications:
   email: false
 script:
+  - curl $FIREBASE_KEY > src/notifiers/serviceAccountKey.json
   - npm run coverage
   - codecov -f coverage/*.json
 deploy:
+  skip_cleanup: true
   provider: heroku
   api_key: $HEROKU_API_KEY
   app: coin-trend-notifier-api

@@ -182,4 +182,17 @@ export default class UserService {
     ((dto as unknown) as RegisteredUserDto)._id = dto._id.toHexString();
     return (dto as unknown) as RegisteredUserDto;
   }
+
+  /**
+   * Sets a user's firebase instance id token.
+   * @param id The hex string of the user's id.
+   * @param token The firebase instance id token of the user.
+   * @throws [[UserDoesNotExistError]] If the given user id is invalid.
+   */
+  /* istanbul ignore next */
+  public static async setFirebaseInstanceIdToken(id: string, token: string) {
+    const user = await this.getById(id);
+    user.firebaseInstanceIdToken = token;
+    return (await userDbPromise).update(user);
+  }
 }
