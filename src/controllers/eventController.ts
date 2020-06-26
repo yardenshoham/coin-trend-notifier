@@ -106,14 +106,6 @@ export default class EventController {
    */
   @OpenAPI({
     description: "Retrieve all events.",
-    parameters: [
-      {
-        in: "query",
-        name: "amount",
-        description:
-          "A positive number representing the limit of events to return.",
-      },
-    ],
     responses: {
       [OK]: {
         content: {
