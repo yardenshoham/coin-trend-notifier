@@ -77,4 +77,30 @@ export default class EventService {
       throw new Error("Event not found.");
     }
   }
+
+  /**
+   * @returns all events that exist.
+   */
+  public static async getAllEvents(): Promise<EventDto[]> {
+    // query db
+    let cursor = (await symbolEventDbPromise).find().sort("firedAt", -1);
+
+    const populatedEvents = await Promise.all(
+      (await cursor.toArray()).map(async (symbolEvent: SymbolEvent) => {
+        await symbolEvent.cryptoSymbolInfo.populate();
+        return symbolEvent;
+      })
+    );
+
+    return populatedEvents.map((symbolEvent: SymbolEvent) => {
+      const eventDto: EventDto = {
+        _id: symbolEvent._id.toHexString(),
+        probability: symbolEvent.probability,
+        firedAt: symbolEvent.firedAt,
+        baseAssetName: symbolEvent.cryptoSymbolInfo.baseAsset.name,
+        quoteAssetName: symbolEvent.cryptoSymbolInfo.quoteAsset.name,
+      };
+      return eventDto;
+    });
+  }
 }

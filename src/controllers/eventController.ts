@@ -99,6 +99,60 @@ export default class EventController {
   }
 
   /**
+   * Returns all events.
+   * @param req The Express request.
+   * @param res The Express response.
+   * @returns an array of [[EventDto]] if everything went well (status 200).
+   */
+  @OpenAPI({
+    description: "Retrieve all events.",
+    parameters: [
+      {
+        in: "query",
+        name: "amount",
+        description:
+          "A positive number representing the limit of events to return.",
+      },
+    ],
+    responses: {
+      [OK]: {
+        content: {
+          "application/json": {
+            example: [
+              {
+                _id: "00000000a26f35468412bb0f",
+                probability: 0.25,
+                firedAt: 20,
+                baseAssetName: "BTC",
+                quoteAssetName: "ETH",
+              },
+              {
+                _id: "00000000a26f35468412bb0e",
+                probability: 0.2,
+                firedAt: 10,
+                baseAssetName: "BTC",
+                quoteAssetName: "USDT",
+              },
+            ],
+          },
+        },
+      },
+    },
+  })
+  @ResponseSchema(EventDto, {
+    isArray: true,
+    description: "Successful response.",
+  })
+  @Get("/analysis")
+  public async getAllEvents(@Res() res: Response): Promise<Response> {
+    try {
+      return res.send(await EventService.getAllEvents());
+    } catch (error) {
+      return res.status(BAD_REQUEST).send({ error: error.message });
+    }
+  }
+
+  /**
    * Returns a specific event given its id.
    * @param id The hex string of te event id.
    * @param res The Express response.
